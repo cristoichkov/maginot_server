@@ -1,0 +1,54 @@
+project:
+  type: book
+  output-dir: _book
+  resources:
+    - files/**    
+
+
+book:
+  title: "Maginot Server"
+  author: "Dr. Cristian Cervantes"
+  date: today
+  repo-url: https://cristoichkov.github.io/maginot_server/
+  repo-actions: [edit, issue]
+  favicon: images/logo.png
+  sidebar:
+    logo: images/logo.png   # aquí apuntas al logo
+    collapse-level: 1
+  page-navigation: true
+  search: true
+
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+format:
+  html:
+    theme: litera
+    css: styles/styles.css   # usa un solo CSS (ver punto 3)
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    include-in-header:
+      text: |
+        <meta name="description" content="Guía rápida de acceso y uso del servidor MAGINOT">
+        <meta name="robots" content="index,follow">
+        <meta property="og:title" content="MAGINOT">
+        <meta property="og:description" content="Guía rápida de acceso y uso del servidor MAGINOT">
+        <meta property="og:image" content="https://cristoichkov.github.io/maginot_server/images/logo.png">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <link rel="canonical" href="https://cristoichkov.github.io/maginot_server/">
+        
+website:
+  site-url: https://cristoichkov.github.io/maginot_server/
+
+editor: visual
+
+# Publicación a gh-pages (opcional)
+publish:
+  gh-pages:
+    branch: gh-pages
+    dir: _book
