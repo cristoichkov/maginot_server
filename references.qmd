@@ -1,4 +1,22 @@
-# References {.unnumbered}
+---
+title: "Referencias"
+---
 
-::: {#refs}
-:::
+Esta página reúne enlaces y recursos citados o recomendados a lo largo del manual.
+
+## Documentación y recursos oficiales
+
+-   **WireGuard — Sitio oficial:** https://www.wireguard.com/
+-   **OpenSSH (cliente SSH):** https://www.openssh.com/
+-   **RStudio Server (Posit):** https://posit.co/products/open-source/rstudio-server/
+-   **Lmod (Environment Modules):** https://lmod.readthedocs.io/
+-   **Apptainer (documentación):** https://apptainer.org/docs/
+-   **Micromamba:** https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html
+
+## Tutoriales recomendados
+
+-   **Biocontainers / Apptainer (tutorial):** https://cristoichkov.github.io/biocontainers/
+
+## Créditos
+
+Este manual fue elaborado para apoyar el uso responsable del servidor MAGINOT.

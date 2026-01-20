@@ -1,0 +1,286 @@
+---
+title: "Uso básico de Linux"
+---
+
+## Objetivo
+
+Esta sección te ayuda a moverte con seguridad dentro de MAGINOT: entender la estructura de carpetas, usar comandos básicos, revisar almacenamiento y recursos (CPU/RAM), y monitorear/detener procesos propios.
+
+------------------------------------------------------------------------
+
+## 2) Comandos esenciales para moverte
+
+### ¿Dónde estoy?
+
+``` bash
+pwd
+```
+
+### Listar archivos
+
+``` bash
+ls
+ls -lh
+ls -lah
+```
+
+### Cambiar de carpeta
+
+``` bash
+cd /ruta
+cd ~
+cd ..
+```
+
+### Crear carpetas
+
+``` bash
+mkdir proyecto
+mkdir -p proyecto/{data,scripts,results,logs,metadata}
+```
+
+### Copiar, mover y borrar (con cuidado)
+
+``` bash
+cp archivoA archivoB
+cp -r carpetaA carpetaB
+
+mv viejo.txt nuevo.txt
+mv carpeta /otra/ruta/
+
+rm archivo.txt
+rm -r carpeta/
+```
+
+> ⚠️ `rm` borra (no hay papelera). Antes de borrar, confirma con `ls`.
+
+------------------------------------------------------------------------
+
+## 3) Revisar almacenamiento (disco) y tamaño de datos
+
+### Espacio libre por partición
+
+``` bash
+df -h
+```
+
+### Tamaño de una carpeta (resumen)
+
+``` bash
+du -sh carpeta/
+du -sh *
+```
+
+### Encontrar lo que más pesa (rápido)
+
+``` bash
+du -sh * | sort -h
+```
+
+> Buen hábito: revisa tu uso de disco antes de lanzar análisis grandes.
+
+------------------------------------------------------------------------
+
+## 4) Revisar recursos disponibles (CPU y RAM)
+
+### CPU (modelo, núcleos, hilos)
+
+```         
+lscpu
+```
+
+### RAM (memoria)
+
+``` bash
+free -h
+```
+
+### Ver procesos en tiempo real
+
+``` bash
+top
+```
+
+O `htop` es más cómodo:
+
+```         
+htop
+```
+
+------------------------------------------------------------------------
+
+## 5) Monitoreo básico: ver tus procesos, PID y cómo detenerlos
+
+### Ver procesos de tu usuario
+
+``` bash
+ps -u $USER
+```
+
+Más legible:
+
+``` bash
+ps -u $USER -o pid,ppid,cmd,%cpu,%mem,etime --sort=-%cpu | head -n 20
+```
+
+### Buscar un proceso por nombre
+
+``` bash
+pgrep -a nombre_programa
+```
+
+Ejemplo:
+
+``` bash
+pgrep -a mafft
+```
+
+### Ver el PID de un proceso específico
+
+``` bash
+pidof nombre_programa
+```
+
+### Detener un proceso (solo tus procesos)
+
+Primero intenta un “apagado limpio”:
+
+``` bash
+kill PID
+```
+
+Si no se detiene, fuerza:
+
+``` bash
+kill -9 PID
+```
+
+> Recomendación: usa `kill` normal primero. `kill -9` es el último recurso.
+
+### Detener varios procesos por nombre (con cuidado)
+
+``` bash
+pkill nombre_programa
+```
+
+Verifica antes con:
+
+``` bash
+pgrep -a nombre_programa
+```
+
+------------------------------------------------------------------------
+
+## 6) Sesiones persistentes (recomendado): `tmux`
+
+Si tu conexión se corta, una sesión persistente evita perder tu trabajo.
+
+Crear una sesión:
+
+``` bash
+tmux new -s mi_sesion
+```
+
+Salir sin cerrar la sesión:
+
+-   Presiona `Ctrl+b` y luego `d`
+
+Volver a entrar:
+
+``` bash
+tmux attach -t mi_sesion
+```
+
+Listar sesiones:
+
+``` bash
+tmux ls
+```
+
+------------------------------------------------------------------------
+
+## 7) Permisos y propiedad (solo lo necesario)
+
+### Ver permisos
+
+``` bash
+ls -l
+```
+
+### Cambiar permisos (ejemplos típicos)
+
+Dar permiso de ejecución a un script:
+
+``` bash
+chmod +x script.sh
+```
+
+Permisos comunes:
+
+-   `644` archivos (lectura para todos, escritura solo dueño)
+
+-   `755` ejecutables o carpetas (dueño escribe, otros leen/entran)
+
+Ejemplos:
+
+``` bash
+chmod 644 archivo.txt
+chmod 755 carpeta/
+```
+
+------------------------------------------------------------------------
+
+## 8) Edición rápida de archivos: `nano` (y opcional `vim`)
+
+Abrir un archivo:
+
+``` bash
+nano archivo.txt
+```
+
+Atajos útiles:
+
+-   Guardar: `Ctrl+O` (Enter)
+
+-   Salir: `Ctrl+X`
+
+-   Buscar: `Ctrl+W`
+
+------------------------------------------------------------------------
+
+## 9) Compresión y empaquetado
+
+### Crear un `.tar.gz` (carpeta completa)
+
+``` bash
+tar -czvf proyecto.tar.gz proyecto/
+```
+
+### Extraer un `.tar.gz`
+
+``` bash
+tar -xzvf proyecto.tar.gz
+```
+
+### Comprimir un archivo con gzip
+
+``` bash
+gzip archivo.txt
+gunzip archivo.txt.gz
+```
+
+### Compresión paralela (si está instalado): `pigz`
+
+`pigz` es como gzip pero usa varios núcleos.
+
+Comprimir:
+
+``` bash
+pigz archivo_grande.fastq
+```
+
+Descomprimir:
+
+``` bash
+unpigz archivo_grande.fastq.gz
+```

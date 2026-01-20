@@ -6,7 +6,7 @@ project:
 
 
 book:
-  title: "Maginot Server"
+  title: "Servidor MAGINOT"
   author: "Dr. Cristian Cervantes"
   date: today
   repo-url: https://cristoichkov.github.io/maginot_server/
@@ -20,8 +20,9 @@ book:
 
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - requirements.qmd
+    - commands.qmd
+    - module.qmd
     - references.qmd
 
 format:

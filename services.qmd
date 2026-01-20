@@ -1,0 +1,73 @@
+---
+title: "Servicios: RStudio Server"
+---
+
+## RStudio Server 
+
+MAGINOT puede ofrecer **RStudio Server** como servicio web para trabajar en R desde el navegador.\
+Como el acceso es por **VPN (WireGuard)**, normalmente **no es necesario usar port forwarding**: basta con conectarte a la IP interna asignada y el puerto del servicio.
+
+------------------------------------------------------------------------
+
+## 1) Requisitos
+
+-   VPN (WireGuard) **activa**
+-   IP o dominio interno del servidor (proporcionado por el administrador)
+-   **Puerto de RStudio Server** (proporcionado por el administrador)
+-   Credenciales de tu cuenta de MAGINOT (usuario/contraseña)
+
+------------------------------------------------------------------------
+
+## 2) Cómo conectarte
+
+1.  Conéctate a la **VPN**.
+2.  Abre tu navegador (Chrome/Firefox/Safari).
+3.  En la barra de direcciones escribe:
+
+Ejemplo:
+
+IP: `192.168.50.25`
+
+Puerto: 7272
+
+[http://192.168.50.25:7272](http://IP_DEL_SERVIDOR:PUERTO)
+
+4.  Inicia sesión con tu **usuario y contraseña** de MAGINOT.
+
+------------------------------------------------------------------------
+
+## 3) Recomendaciones de uso
+
+-   Usa RStudio para análisis interactivos, edición de scripts y revisión de resultados.
+
+-   Para análisis largos o pesados, sigue las reglas del servidor (por ejemplo, ejecutarlos de forma controlada y guardando logs).
+
+-   Mantén tus proyectos organizados (por ejemplo `data/`, `scripts/`, `results/`, `logs/`).
+
+------------------------------------------------------------------------
+
+## 4) Problemas comunes
+
+### No carga la página
+
+-   Verifica que la VPN esté activa.
+
+-   Confirma que estás usando la **IP correcta** y el **puerto correcto**.
+
+-   Prueba conectividad:
+
+``` bash
+ping -c 3 192.168.50.25
+```
+
+### “Connection refused” o “No se puede establecer conexión”
+
+-   El servicio puede estar detenido o el puerto cambió.
+
+-   Contacta al administrador.
+
+### Login incorrecto
+
+-   Asegúrate de usar tu usuario de MAGINOT.
+
+-   Si tu contraseña expiró, entra primero por SSH para cambiarla y vuelve a intentar.

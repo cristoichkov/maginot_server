@@ -1,9 +1,56 @@
-# Preface {.unnumbered}
+---
+title: "MAGINOT — Manual de usuario"
+subtitle: "Guía para acceder, trabajar y ejecutar análisis en el servidor"
+---
 
-This is a Quarto book.
+## ¿Qué es MAGINOT?
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+MAGINOT es un servidor GNU/Linux multiusuario orientado a la ejecución rápida y reproducible de pipelines bioinformáticos, con acceso seguro, almacenamiento organizado y control responsable de recursos.
 
-```{r}
-1 + 1
-```
+## Objetivo del servidor
+
+Diseñar e implementar un servidor GNU/Linux multiusuario, seguro y observable que permita la ejecución rápida y reproducible de pipelines bioinformáticos mediante contenedores y control de recursos, con almacenamiento confiable y cuotas, para dar un servicio estable.
+
+## ¿A quién está dirigido?
+
+A estudiantes, técnicos y personal académico que requieran ejecutar análisis bioinformáticos en un entorno compartido, siguiendo buenas prácticas de seguridad, organización y uso responsable de recursos.
+
+## Alcances del manual
+
+**Incluye**
+- Acceso (VPN/SSH)
+- Navegación y organización de proyectos
+- Transferencia de archivos (SFTP/SCP/rsync)
+- Uso de software (módulos/ambientes/contenedores)
+- Ejecución y monitoreo básico de análisis
+
+**No incluye**
+- Cursos completos de Linux o bioinformática
+- Desarrollo de pipelines desde cero
+- Instalación libre de software sin solicitud previa al administrador
+
+## Reglas rápidas (uso responsable)
+
+- La cuenta es personal e intransferible.
+- No compartas contraseñas.
+- Mantén tus proyectos ordenados y limpia datos temporales.
+- Reporta incidentes o problemas al administrador.
+
+## Buenas prácticas recomendadas
+
+- **Organiza tus proyectos:** usa una estructura consistente (por ejemplo `data/`, `scripts/`, `results/`, `logs/`, `metadata/`).
+- **Reproducibilidad:** registra versiones, parámetros y comandos (idealmente en scripts).
+- **Logs:** guarda salida estándar y errores; te ahorran tiempo para depurar.
+- **Almacenamiento responsable:** comprime resultados grandes y elimina temporales cuando ya no se requieran.
+- **Seguridad:** usa contraseñas fuertes.
+
+## Ruta rápida (para usuarios con prisa)
+
+1. Conéctate a la VPN (WireGuard).
+2. Entra por SSH al servidor.
+3. Ubica o crea tu carpeta de proyecto.
+4. Sube tus datos (SFTP/rsync/scp).
+5. Carga software (modules/conda) o usa contenedores (Apptainer).
+6. Ejecuta tu análisis siguiendo las reglas de recursos.
+7. Monitorea y guarda logs/resultados.
+

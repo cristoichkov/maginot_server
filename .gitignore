@@ -1,0 +1,19 @@
+# RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Quarto cache / preview
+.quarto/
+*_files/
+
+# Quarto book output
+_book/
+
+# Logs/temporales
+*.log
+*.aux
+*.out
+*.toc
+*.synctex.gz

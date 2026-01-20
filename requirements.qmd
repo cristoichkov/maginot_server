@@ -1,0 +1,233 @@
+---
+title: "Conexión: VPN, SSH y transferencia de archivos"
+---
+
+## Objetivo
+
+Esta sección describe lo necesario para conectarte a MAGINOT desde tu sistema operativo: **VPN (WireGuard)** + **SSH**, y (opcional) **SFTP** para transferir archivos.
+
+------------------------------------------------------------------------
+
+## Lo que necesitas (antes de empezar)
+
+Debes contar con:
+
+-   ✅ **Usuario** en MAGINOT
+-   ✅ **Acceso VPN**: archivo **WireGuard `.conf`**
+-   ✅ **Datos de conexión SSH**
+    -   **Host** (IP)
+    -   **Puerto**
+    -   **Usuario**
+-   ✅ Conexión a internet
+
+> Importante: normalmente MAGINOT **solo es accesible después de conectarte a la VPN**.
+
+------------------------------------------------------------------------
+
+## 1) VPN — WireGuard (obligatorio)
+
+### Windows
+
+1.  Instala **WireGuard** (Windows).
+2.  Abre WireGuard → **Add Tunnel** → **Import tunnel(s) from file**.
+3.  Selecciona tu archivo `usuario.conf`.
+4.  Activa el túnel (**Activate**).
+
+### macOS
+
+1.  Instala **WireGuard** desde la App Store.
+2.  Abre WireGuard → **Import tunnel(s) from file** (o “Add Tunnel”).
+3.  Selecciona tu `usuario.conf`.
+4.  Activa el túnel.
+
+### Linux
+
+Dependiendo de la distribución:
+
+-   **Cliente CLI**: `wireguard-tools`
+-   **Cliente GUI**: WireGuard app / NetworkManager plugin (si aplica)
+
+Flujo general: 1. Importa tu configuración `.conf` en la herramienta que uses (GUI o CLI). 2. Levanta el túnel.
+
+------------------------------------------------------------------------
+
+## 2) Verificar que la VPN está funcionando (recomendado)
+
+Con el túnel activo, valida conectividad con la IP que te indique el administrador.
+
+Ejemplo:
+
+IP: `192.168.50.211`
+
+``` bash
+ping -c 3 192.168.50.211
+```
+
+Si el ping falla:
+
+-   revisa que el túnel esté activo
+
+-   revisa que importaste el `.conf` correcto
+
+-   contacta al administrador si persiste
+
+------------------------------------------------------------------------
+
+## 3) Acceso por SSH
+
+> Nota: La IP y el puerto es la que te indique el administrador.
+
+### Opción A — Terminal (OpenSSH) recomendado
+
+**macOS / Linux**
+
+Ejemplo:
+
+IP: `192.168.50.25`
+
+Puerto: `14232`
+
+``` bash
+ssh -p 14232 usuario@192.168.50.25
+```
+
+**Windows 10/11 (PowerShell o Windows Terminal)**
+
+``` bash
+ssh -p 14232 usuario@192.168.50.25
+```
+
+La primera vez, te pedirá confirmar la llave del servidor:
+
+-   escribe `yes` y Enter
+
+------------------------------------------------------------------------
+
+## 4) Contraseña y primer cambio
+
+Tu cuenta se crea con una **contraseña temporal**.\
+✅ **En tu primer inicio de sesión, el sistema te pedirá cambiarla automáticamente** (no podrás continuar sin hacerlo).
+
+Si por alguna razón no te aparece el cambio automático, puedes forzarlo manualmente con:
+
+``` bash
+passwd usuario
+```
+
+### Reglas de contraseña (obligatorias)
+
+-   Mínimo **10 caracteres**
+
+-   Debe incluir al menos:
+
+    -   **1 letra minúscula**
+
+    -   **1 letra mayúscula**
+
+    -   **1 número**
+
+    -   **1 símbolo**
+
+-   **No compartir credenciales** (la cuenta es personal e intransferible)
+
+------------------------------------------------------------------------
+
+## 5) Transferencia de archivos con `scp`
+
+`scp` (Secure Copy) permite copiar archivos y carpetas **de forma segura** usando SSH.\
+Funciona en **macOS, Linux** y también en **Windows (PowerShell/Windows Terminal)**.
+
+> Requisito: debes estar conectado a la **VPN (WireGuard)** y tener acceso por **SSH**.
+
+### Sintaxis básica (Linux y macOS)
+
+IP: `192.168.50.25`
+
+Puerto: `14232`
+
+Copiar **archivo local → servidor**:
+
+``` bash
+scp -P 14232 archivo.ext USUARIO@192.168.50.25:/ruta/destino/
+```
+
+Copiar **archivo servidor → local**:
+
+``` bash
+scp -P 14232 USUARIO@192.168.50.25:/ruta/archivo.ext /ruta/local/
+```
+
+**Copiar carpetas (recursivo)**
+
+Para subir una carpeta completa usa `-r`:
+
+``` bash
+scp -r -P 14232 carpeta_proyecto/ USUARIO@192.168.50.25:/ruta/destino/
+```
+
+Para bajar una carpeta del servidor:
+
+``` bash
+scp -r -P 14232 USUARIO@192.168.50.25:/ruta/carpeta_en_servidor/ ./
+```
+
+### Windows (PowerShell / Windows Terminal)
+
+En Windows 10/11, `scp` suele venir incluido. Los comandos son iguales:
+
+``` bash
+scp -P 14232 archivo.ext USUARIO@192.168.50.25:~/
+```
+
+**Tip de rutas en Windows:** usa comillas si hay espacios:
+
+``` bash
+scp -P 14232 "C:\Users\TuUsuario\Desktop\archivo.ext" USUARIO@192.168.50.25:~/
+```
+
+### Errores comunes
+
+**`Permission denied`**
+
+-   No tienes permisos de escritura en esa ruta.
+
+-   Solución: copia primero a tu `HOME` y luego mueve dentro del servidor (si tienes permisos), o pide acceso.
+
+**`No such file or directory`**
+
+-   La ruta remota no existe o está mal escrita.
+
+-   Verifica con `ls` en SSH.
+
+**Se corta la transferencia**
+
+-   Para archivos grandes, considera `rsync` (más robusto).
+
+### Buenas prácticas
+
+-   Usa rutas claras y estructura de proyecto (`data/`, `results/`, `logs/`).
+
+-   Para archivos grandes, comprime antes de transferir (`tar.gz`) o usa `rsync`.
+
+-   Evita copiar datos sensibles sin autorización.
+
+------------------------------------------------------------------------
+
+## 6) Clientes gráficos (recomendado): Termius
+
+Además de la terminal (OpenSSH) y `scp`, existen **clientes gráficos** que facilitan mucho el trabajo diario: guardan tus hosts, simplifican la autenticación, integran **SFTP** para transferencia de archivos y permiten **port forwarding** con asistentes.
+
+Una opción que recomiendo es [**Termius**](https://termius.com/index.html), un cliente moderno de SSH disponible para **Windows, macOS, Linux, iOS, iPadOS y Android**. Incluye funciones como “hosts”, **SFTP integrado** y **port forwarding** con un asistente paso a paso.
+
+### ¿Por qué Termius?
+
+-   **Multiplataforma** (desktop y móvil).
+-   **Organización de accesos**: guardas hosts (IP/dominio, puerto, usuario) para conectar con un clic.
+-   **SFTP integrado**: transferencia de archivos sin salir de la app.
+-   **Port forwarding** guiado**:** ideal para acceder a servicios como RStudio Server u otros puertos internos (cuando esté permitido).
+
+> Nota: Termius tiene planes gratuitos y de pago; algunas funciones avanzadas dependen del plan.
+
+**Buenas prácticas de seguridad (muy importante)**
+
+-   Evita guardar contraseñas en equipos compartidos.
