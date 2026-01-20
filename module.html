@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;Cristian Cervantes">
-<meta name="dcterms.date" content="2026-01-20">
 
-<title>Servidor MAGINOT</title>
+<title>Software en MAGINOT – Servidor MAGINOT</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./requirements.html" rel="next">
+<link href="./references.html" rel="next">
+<link href="./commands.html" rel="prev">
 <link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -74,8 +108,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <meta name="description" content="Guía rápida de acceso y uso del servidor MAGINOT">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Servidor MAGINOT">
-<meta property="og:description" content="Guía para acceder, trabajar y ejecutar análisis en el servidor">
+<meta property="og:title" content="Software en MAGINOT – Servidor MAGINOT">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://cristoichkov.github.io/maginot_server/images/logo.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -94,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">MAGINOT — Manual de usuario</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module.html"><span class="chapter-title">Software en MAGINOT</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">MAGINOT — Manual de usuario</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">MAGINOT — Manual de usuario</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -143,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./module.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Software en MAGINOT</span></a>
+  <a href="./module.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Software en MAGINOT</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -161,42 +195,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#qué-es-maginot" id="toc-qué-es-maginot" class="nav-link active" data-scroll-target="#qué-es-maginot">¿Qué es MAGINOT?</a></li>
-  <li><a href="#objetivo-del-servidor" id="toc-objetivo-del-servidor" class="nav-link" data-scroll-target="#objetivo-del-servidor">Objetivo del servidor</a></li>
-  <li><a href="#a-quién-está-dirigido" id="toc-a-quién-está-dirigido" class="nav-link" data-scroll-target="#a-quién-está-dirigido">¿A quién está dirigido?</a></li>
-  <li><a href="#alcances-del-manual" id="toc-alcances-del-manual" class="nav-link" data-scroll-target="#alcances-del-manual">Alcances del manual</a></li>
-  <li><a href="#reglas-rápidas-uso-responsable" id="toc-reglas-rápidas-uso-responsable" class="nav-link" data-scroll-target="#reglas-rápidas-uso-responsable">Reglas rápidas (uso responsable)</a></li>
-  <li><a href="#buenas-prácticas-recomendadas" id="toc-buenas-prácticas-recomendadas" class="nav-link" data-scroll-target="#buenas-prácticas-recomendadas">Buenas prácticas recomendadas</a></li>
-  <li><a href="#ruta-rápida-para-usuarios-con-prisa" id="toc-ruta-rápida-para-usuarios-con-prisa" class="nav-link" data-scroll-target="#ruta-rápida-para-usuarios-con-prisa">Ruta rápida (para usuarios con prisa)</a></li>
+  <li><a href="#objetivo" id="toc-objetivo" class="nav-link active" data-scroll-target="#objetivo">Objetivo</a></li>
+  <li><a href="#si-necesitas-un-programa-nuevo-importante" id="toc-si-necesitas-un-programa-nuevo-importante" class="nav-link" data-scroll-target="#si-necesitas-un-programa-nuevo-importante">Si necesitas un programa nuevo (importante)</a></li>
+  <li><a href="#módulos-lmod-qué-son-y-cómo-se-usan" id="toc-módulos-lmod-qué-son-y-cómo-se-usan" class="nav-link" data-scroll-target="#módulos-lmod-qué-son-y-cómo-se-usan">Módulos (Lmod): qué son y cómo se usan</a></li>
+  <li><a href="#micromamba-ambientes-administrados" id="toc-micromamba-ambientes-administrados" class="nav-link" data-scroll-target="#micromamba-ambientes-administrados">Micromamba (ambientes administrados)</a></li>
+  <li><a href="#apptainer-contenedores" id="toc-apptainer-contenedores" class="nav-link" data-scroll-target="#apptainer-contenedores">Apptainer (contenedores)</a></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/module.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Servidor MAGINOT</h1>
-<p class="subtitle lead">Guía para acceder, trabajar y ejecutar análisis en el servidor</p>
+<h1 class="title"><span class="chapter-title">Software en MAGINOT</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dr.&nbsp;Cristian Cervantes </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 20, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -206,53 +225,162 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="qué-es-maginot" class="level2">
-<h2 class="anchored" data-anchor-id="qué-es-maginot">¿Qué es MAGINOT?</h2>
-<p>MAGINOT es un servidor GNU/Linux multiusuario orientado a la ejecución rápida y reproducible de pipelines bioinformáticos, con acceso seguro, almacenamiento organizado y control responsable de recursos.</p>
+<section id="objetivo" class="level2">
+<h2 class="anchored" data-anchor-id="objetivo">Objetivo</h2>
+<p>En MAGINOT el software se ofrece de forma controlada para mantener un entorno **estable, seguro y reproducible**.</p>
+<p>Esta sección explica cómo usar el sistema de <strong>módulos (Lmod)</strong> y, al final, cómo se gestionan herramientas vía <strong>Micromamba</strong> y <strong>Apptainer</strong>.</p>
+<hr>
 </section>
-<section id="objetivo-del-servidor" class="level2">
-<h2 class="anchored" data-anchor-id="objetivo-del-servidor">Objetivo del servidor</h2>
-<p>Diseñar e implementar un servidor GNU/Linux multiusuario, seguro y observable que permita la ejecución rápida y reproducible de pipelines bioinformáticos mediante contenedores y control de recursos, con almacenamiento confiable y cuotas, para dar un servicio estable.</p>
-</section>
-<section id="a-quién-está-dirigido" class="level2">
-<h2 class="anchored" data-anchor-id="a-quién-está-dirigido">¿A quién está dirigido?</h2>
-<p>A estudiantes, técnicos y personal académico que requieran ejecutar análisis bioinformáticos en un entorno compartido, siguiendo buenas prácticas de seguridad, organización y uso responsable de recursos.</p>
-</section>
-<section id="alcances-del-manual" class="level2">
-<h2 class="anchored" data-anchor-id="alcances-del-manual">Alcances del manual</h2>
-<p><strong>Incluye</strong> - Acceso (VPN/SSH) - Navegación y organización de proyectos - Transferencia de archivos (SFTP/SCP/rsync) - Uso de software (módulos/ambientes/contenedores) - Ejecución y monitoreo básico de análisis</p>
-<p><strong>No incluye</strong> - Cursos completos de Linux o bioinformática - Desarrollo de pipelines desde cero - Instalación libre de software sin solicitud previa al administrador</p>
-</section>
-<section id="reglas-rápidas-uso-responsable" class="level2">
-<h2 class="anchored" data-anchor-id="reglas-rápidas-uso-responsable">Reglas rápidas (uso responsable)</h2>
+<section id="si-necesitas-un-programa-nuevo-importante" class="level2">
+<h2 class="anchored" data-anchor-id="si-necesitas-un-programa-nuevo-importante">Si necesitas un programa nuevo (importante)</h2>
+<p>Si el software que necesitas <strong>no está disponible</strong> como módulo o contenedor, <strong>no intentes instalarlo por tu cuenta</strong>.</p>
+<p>✅ En MAGINOT, la instalación de software que requiere permisos (y la creación/actualización de ambientes) se realiza <strong>solo por el administrador</strong>.</p>
+<section id="cómo-solicitar-software-al-administrador" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-solicitar-software-al-administrador">¿Cómo solicitar software al administrador?</h3>
+<p>Incluye en tu solicitud:</p>
 <ul>
-<li>La cuenta es personal e intransferible.</li>
-<li>No compartas contraseñas.</li>
-<li>Mantén tus proyectos ordenados y limpia datos temporales.</li>
-<li>Reporta incidentes o problemas al administrador.</li>
+<li><strong>Nombre del software</strong></li>
+<li><strong>Versión</strong> (si aplica)</li>
+<li><strong>Uso</strong> (curso/proyecto)</li>
+<li><strong>Enlace oficial</strong> (GitHub/docs) o referencia de instalación (conda/bioconda, contenedor, etc.)</li>
+<li>Requerimientos especiales: <strong>MPI</strong>, <strong>GPU</strong>, bases de datos externas, etc.</li>
+</ul>
+<p>Cuando el software esté disponible, el administrador te avisará y te indicará si se usa como:</p>
+<p>- <strong>módulo</strong>,<br>
+- <strong>contenedor Apptainer</strong>,<br>
+- o dentro de un <strong>ambiente Micromamba</strong>.</p>
+<hr>
+</section>
+</section>
+<section id="módulos-lmod-qué-son-y-cómo-se-usan" class="level2">
+<h2 class="anchored" data-anchor-id="módulos-lmod-qué-son-y-cómo-se-usan">Módulos (Lmod): qué son y cómo se usan</h2>
+<p>Los <strong>módulos</strong> permiten activar software instalado en el servidor sin instalar nada en tu cuenta.<br>
+Al cargar un módulo, se ajustan variables de entorno (por ejemplo <code>PATH</code>) para que el comando quede disponible.</p>
+<section id="ver-el-catálogo-de-módulos-disponibles" class="level3">
+<h3 class="anchored" data-anchor-id="ver-el-catálogo-de-módulos-disponibles">Ver el catálogo de módulos disponibles</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> spider</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/software/pic1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="650"></p>
+</figure>
+</div>
+<p>En este momento (ejemplo real en MAGINOT) aparecen módulos como:</p>
+<ul>
+<li><p><code>edta/2.0.1</code></p></li>
+<li><p><code>repeatmasker/4.2.2</code></p></li>
+<li><p><code>repeatmodeler/2.0.7</code></p></li>
+<li><p><code>revbayes/1.2.5-mpi</code></p></li>
+<li><p><code>samtools/1.19</code></p></li>
 </ul>
 </section>
-<section id="buenas-prácticas-recomendadas" class="level2">
-<h2 class="anchored" data-anchor-id="buenas-prácticas-recomendadas">Buenas prácticas recomendadas</h2>
-<ul>
-<li><strong>Organiza tus proyectos:</strong> usa una estructura consistente (por ejemplo <code>data/</code>, <code>scripts/</code>, <code>results/</code>, <code>logs/</code>, <code>metadata/</code>).</li>
-<li><strong>Reproducibilidad:</strong> registra versiones, parámetros y comandos (idealmente en scripts).</li>
-<li><strong>Logs:</strong> guarda salida estándar y errores; te ahorran tiempo para depurar.</li>
-<li><strong>Almacenamiento responsable:</strong> comprime resultados grandes y elimina temporales cuando ya no se requieran.</li>
-<li><strong>Seguridad:</strong> usa contraseñas fuertes.</li>
-</ul>
+<section id="cargar-un-módulo-micromamba" class="level3">
+<h3 class="anchored" data-anchor-id="cargar-un-módulo-micromamba">Cargar un módulo (micromamba)</h3>
+<p><strong>Buscar información de un módulo</strong></p>
+<pre><code>module spider samtools</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/software/pic4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="450"></p>
+</figure>
+</div>
+<p><strong>Cargar un módulo</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load samtools/1.19</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Verifica:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> samtools</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/software/pic5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="450"></p>
+</figure>
+</div>
 </section>
-<section id="ruta-rápida-para-usuarios-con-prisa" class="level2">
-<h2 class="anchored" data-anchor-id="ruta-rápida-para-usuarios-con-prisa">Ruta rápida (para usuarios con prisa)</h2>
-<ol type="1">
-<li>Conéctate a la VPN (WireGuard).</li>
-<li>Entra por SSH al servidor.</li>
-<li>Ubica o crea tu carpeta de proyecto.</li>
-<li>Sube tus datos (SFTP/rsync/scp).</li>
-<li>Carga software (modules/conda) o usa contenedores (Apptainer).</li>
-<li>Ejecuta tu análisis siguiendo las reglas de recursos.</li>
-<li>Monitorea y guarda logs/resultados.</li>
-</ol>
+<section id="cargar-un-módulo-apptainer" class="level3">
+<h3 class="anchored" data-anchor-id="cargar-un-módulo-apptainer">Cargar un módulo (apptainer)</h3>
+<p><strong>Buscar información de un módulo</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> spider revbayes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/software/pic2.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>El módulo <strong><code>revbayes/1.2.5-mpi</code></strong> proporciona <strong>RevBayes 1.2.5 con soporte MPI</strong>, ejecutándose <strong>dentro de un contenedor Apptainer</strong>, pero tú lo usas como un módulo normal.</p>
+<p>Este módulo expone dos comandos principales:</p>
+<ul>
+<li><p><code>rb-mpi</code><br>
+Ejecuta RevBayes (1 proceso) en el directorio actual.</p></li>
+<li><p><code>rb-mpi-np N</code><br>
+Ejecuta RevBayes usando <code>mpirun -np N</code> (multinúcleo) en el directorio actual.</p></li>
+</ul>
+<p><strong>Cargar un módulo</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load revbayes/1.2.5-mpi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Verifica:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> rb-mpi</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rb-mpi</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/software/pic3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="650"></p>
+</figure>
+</div>
+<p>Ejemplo de ejecución:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /ruta/al/proyecto/Clade_001/input</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load revbayes/1.2.5-mpi</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">rb-mpi-np</span> 8 Clade_001.rev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ver-módulos-cargados" class="level3">
+<h3 class="anchored" data-anchor-id="ver-módulos-cargados">Ver módulos cargados</h3>
+<pre><code>module list</code></pre>
+</section>
+<section id="descargar-un-módulo" class="level3">
+<h3 class="anchored" data-anchor-id="descargar-un-módulo">Descargar un módulo</h3>
+<pre><code>module unload samtools/1.19</code></pre>
+</section>
+<section id="limpiar-el-entorno-recomendado-si-cambias-de-proyecto" class="level3">
+<h3 class="anchored" data-anchor-id="limpiar-el-entorno-recomendado-si-cambias-de-proyecto">Limpiar el entorno (recomendado si cambias de proyecto)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="consejos-para-evitar-conflictos" class="level3">
+<h3 class="anchored" data-anchor-id="consejos-para-evitar-conflictos">Consejos para evitar conflictos</h3>
+<ul>
+<li><p>Inicia con <code>module purge</code> si vienes de otra sesión/proyecto.</p></li>
+<li><p>Si algo “no corre”, revisa primero <code>module list</code> y confirma versiones.</p></li>
+<li><p>Si necesitas otra versión, pide al administrador que la agregue como módulo.</p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="micromamba-ambientes-administrados" class="level2">
+<h2 class="anchored" data-anchor-id="micromamba-ambientes-administrados">Micromamba (ambientes administrados)</h2>
+<p>Micromamba se usa para mantener ambientes controlados y reproducibles, pero en MAGINOT:</p>
+<p>✅ <strong>Solo el administrador</strong> puede:</p>
+<ul>
+<li><p>crear nuevos ambientes</p></li>
+<li><p>instalar/actualizar paquetes dentro de los ambientes</p></li>
+</ul>
+<p>👥 Los usuarios <strong>no crean</strong> ambientes ni instalan paquetes.<br>
+Si necesitas un programa por esta vía, <strong>solicítalo al administrador</strong>.<br>
+Cuando esté disponible, se te indicará cómo usarlo.</p>
+<p><strong>Ver ambientes disponibles</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> env list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Activar (cargar) un ambiente</strong></p>
+<pre><code>micromamba activate NOMBRE_DEL_AMBIENTE</code></pre>
+<p><strong>Verifica que el programa ya esté disponible:</strong></p>
+<pre><code>which programa
+programa --version</code></pre>
+<p><strong>Ver paquetes instalados en el ambiente</strong></p>
+<pre><code>micromamba list</code></pre>
+<p><strong>Salir del ambiente</strong></p>
+<pre><code>micromamba deactivate</code></pre>
+</section>
+<section id="apptainer-contenedores" class="level2">
+<h2 class="anchored" data-anchor-id="apptainer-contenedores">Apptainer (contenedores)</h2>
+<p><strong>Apptainer</strong> es una herramienta de contenedores diseñada para entornos Linux multiusuario (común en HPC).<br>
+Permite ejecutar software empaquetado en una imagen (por ejemplo <code>.sif</code>) de forma <strong>reproducible</strong>, sin tener que instalar dependencias en tu cuenta, y sin requerir privilegios de administrador para correrlo.</p>
+<p>En MAGINOT, Apptainer ya está instalado y puede usarse para correr herramientas bioinformáticas dentro de contenedores (propios o institucionales), siempre que tengas permisos de lectura sobre la imagen.</p>
+<p><strong>Ejemplos:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec imagen.sif comando <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Montar tu carpeta de trabajo dentro del contenedor:</strong></p>
+<pre><code>apptainer exec -B "$PWD":/work --pwd /work imagen.sif comando</code></pre>
+<p>📌 Si necesitas una guía más completa sobre <strong>Apptainer</strong>, consulta mi tutorial:<br>
+<a href="https://cristoichkov.github.io/biocontainers/" class="uri">https://cristoichkov.github.io/biocontainers/</a></p>
 
 
 </section>
@@ -660,10 +788,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./commands.html" class="pagination-link" aria-label="Uso básico de Linux">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Uso básico de Linux</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./requirements.html" class="pagination-link" aria-label="Conexión: VPN, SSH y transferencia de archivos">
-        <span class="nav-page-text"><span class="chapter-title">Conexión: VPN, SSH y transferencia de archivos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="Referencias">
+        <span class="nav-page-text"><span class="chapter-title">Referencias</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -672,4 +803,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/module.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

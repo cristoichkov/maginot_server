@@ -2,31 +2,331 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Maginot Server",
+    "title": "Servidor MAGINOT",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "text": "¿Qué es MAGINOT?\nMAGINOT es un servidor GNU/Linux multiusuario orientado a la ejecución rápida y reproducible de pipelines bioinformáticos, con acceso seguro, almacenamiento organizado y control responsable de recursos.",
     "crumbs": [
-      "Preface"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
     ]
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "Introduction",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee @knuth84 for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2",
+    "objectID": "index.html#objetivo-del-servidor",
+    "href": "index.html#objetivo-del-servidor",
+    "title": "Servidor MAGINOT",
+    "section": "Objetivo del servidor",
+    "text": "Objetivo del servidor\nDiseñar e implementar un servidor GNU/Linux multiusuario, seguro y observable que permita la ejecución rápida y reproducible de pipelines bioinformáticos mediante contenedores y control de recursos, con almacenamiento confiable y cuotas, para dar un servicio estable.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "Summary",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "objectID": "index.html#a-quién-está-dirigido",
+    "href": "index.html#a-quién-está-dirigido",
+    "title": "Servidor MAGINOT",
+    "section": "¿A quién está dirigido?",
+    "text": "¿A quién está dirigido?\nA estudiantes, técnicos y personal académico que requieran ejecutar análisis bioinformáticos en un entorno compartido, siguiendo buenas prácticas de seguridad, organización y uso responsable de recursos.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#alcances-del-manual",
+    "href": "index.html#alcances-del-manual",
+    "title": "Servidor MAGINOT",
+    "section": "Alcances del manual",
+    "text": "Alcances del manual\nIncluye - Acceso (VPN/SSH) - Navegación y organización de proyectos - Transferencia de archivos (SFTP/SCP/rsync) - Uso de software (módulos/ambientes/contenedores) - Ejecución y monitoreo básico de análisis\nNo incluye - Cursos completos de Linux o bioinformática - Desarrollo de pipelines desde cero - Instalación libre de software sin solicitud previa al administrador",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#reglas-rápidas-uso-responsable",
+    "href": "index.html#reglas-rápidas-uso-responsable",
+    "title": "Servidor MAGINOT",
+    "section": "Reglas rápidas (uso responsable)",
+    "text": "Reglas rápidas (uso responsable)\n\nLa cuenta es personal e intransferible.\nNo compartas contraseñas.\nMantén tus proyectos ordenados y limpia datos temporales.\nReporta incidentes o problemas al administrador.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#buenas-prácticas-recomendadas",
+    "href": "index.html#buenas-prácticas-recomendadas",
+    "title": "Servidor MAGINOT",
+    "section": "Buenas prácticas recomendadas",
+    "text": "Buenas prácticas recomendadas\n\nOrganiza tus proyectos: usa una estructura consistente (por ejemplo data/, scripts/, results/, logs/, metadata/).\nReproducibilidad: registra versiones, parámetros y comandos (idealmente en scripts).\nLogs: guarda salida estándar y errores; te ahorran tiempo para depurar.\nAlmacenamiento responsable: comprime resultados grandes y elimina temporales cuando ya no se requieran.\nSeguridad: usa contraseñas fuertes.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#ruta-rápida-para-usuarios-con-prisa",
+    "href": "index.html#ruta-rápida-para-usuarios-con-prisa",
+    "title": "Servidor MAGINOT",
+    "section": "Ruta rápida (para usuarios con prisa)",
+    "text": "Ruta rápida (para usuarios con prisa)\n\nConéctate a la VPN (WireGuard).\nEntra por SSH al servidor.\nUbica o crea tu carpeta de proyecto.\nSube tus datos (SFTP/rsync/scp).\nCarga software (modules/conda) o usa contenedores (Apptainer).\nEjecuta tu análisis siguiendo las reglas de recursos.\nMonitorea y guarda logs/resultados.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html",
+    "href": "requirements.html",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "",
+    "text": "Objetivo\nEsta sección describe lo necesario para conectarte a MAGINOT desde tu sistema operativo: VPN (WireGuard) + SSH, y (opcional) SFTP para transferir archivos.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html#lo-que-necesitas-antes-de-empezar",
+    "href": "requirements.html#lo-que-necesitas-antes-de-empezar",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "Lo que necesitas (antes de empezar)",
+    "text": "Lo que necesitas (antes de empezar)\nDebes contar con:\n\n✅ Usuario en MAGINOT\n✅ Acceso VPN: archivo WireGuard .conf\n✅ Datos de conexión SSH\n\nHost (IP)\nPuerto\nUsuario\n\n✅ Conexión a internet\n\n\nImportante: normalmente MAGINOT solo es accesible después de conectarte a la VPN.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html#vpn-wireguard-obligatorio",
+    "href": "requirements.html#vpn-wireguard-obligatorio",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "1) VPN — WireGuard (obligatorio)",
+    "text": "1) VPN — WireGuard (obligatorio)\n\nWindows\n\nInstala WireGuard (Windows).\nAbre WireGuard → Add Tunnel → Import tunnel(s) from file.\nSelecciona tu archivo usuario.conf.\nActiva el túnel (Activate).\n\n\n\nmacOS\n\nInstala WireGuard desde la App Store.\nAbre WireGuard → Import tunnel(s) from file (o “Add Tunnel”).\nSelecciona tu usuario.conf.\nActiva el túnel.\n\n\n\nLinux\nDependiendo de la distribución:\n\nCliente CLI: wireguard-tools\nCliente GUI: WireGuard app / NetworkManager plugin (si aplica)\n\nFlujo general: 1. Importa tu configuración .conf en la herramienta que uses (GUI o CLI). 2. Levanta el túnel.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html#verificar-que-la-vpn-está-funcionando-recomendado",
+    "href": "requirements.html#verificar-que-la-vpn-está-funcionando-recomendado",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "2) Verificar que la VPN está funcionando (recomendado)",
+    "text": "2) Verificar que la VPN está funcionando (recomendado)\nCon el túnel activo, valida conectividad con la IP que te indique el administrador.\nEjemplo:\nIP: 192.168.50.211\nping -c 3 192.168.50.211\nSi el ping falla:\n\nrevisa que el túnel esté activo\nrevisa que importaste el .conf correcto\ncontacta al administrador si persiste",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html#acceso-por-ssh",
+    "href": "requirements.html#acceso-por-ssh",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "3) Acceso por SSH",
+    "text": "3) Acceso por SSH\n\nNota: La IP y el puerto es la que te indique el administrador.\n\n\nOpción A — Terminal (OpenSSH) recomendado\nmacOS / Linux\nEjemplo:\nIP: 192.168.50.25\nPuerto: 14232\nssh -p 14232 usuario@192.168.50.25\nWindows 10/11 (PowerShell o Windows Terminal)\nssh -p 14232 usuario@192.168.50.25\nLa primera vez, te pedirá confirmar la llave del servidor:\n\nescribe yes y Enter",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html#contraseña-y-primer-cambio",
+    "href": "requirements.html#contraseña-y-primer-cambio",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "4) Contraseña y primer cambio",
+    "text": "4) Contraseña y primer cambio\nTu cuenta se crea con una contraseña temporal.\n✅ En tu primer inicio de sesión, el sistema te pedirá cambiarla automáticamente (no podrás continuar sin hacerlo).\nSi por alguna razón no te aparece el cambio automático, puedes forzarlo manualmente con:\npasswd usuario\n\nReglas de contraseña (obligatorias)\n\nMínimo 10 caracteres\nDebe incluir al menos:\n\n1 letra minúscula\n1 letra mayúscula\n1 número\n1 símbolo\n\nNo compartir credenciales (la cuenta es personal e intransferible)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html#transferencia-de-archivos-con-scp",
+    "href": "requirements.html#transferencia-de-archivos-con-scp",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "5) Transferencia de archivos con scp",
+    "text": "5) Transferencia de archivos con scp\nscp (Secure Copy) permite copiar archivos y carpetas de forma segura usando SSH.\nFunciona en macOS, Linux y también en Windows (PowerShell/Windows Terminal).\n\nRequisito: debes estar conectado a la VPN (WireGuard) y tener acceso por SSH.\n\n\nSintaxis básica (Linux y macOS)\nIP: 192.168.50.25\nPuerto: 14232\nCopiar archivo local → servidor:\nscp -P 14232 archivo.ext USUARIO@192.168.50.25:/ruta/destino/\nCopiar archivo servidor → local:\nscp -P 14232 USUARIO@192.168.50.25:/ruta/archivo.ext /ruta/local/\nCopiar carpetas (recursivo)\nPara subir una carpeta completa usa -r:\nscp -r -P 14232 carpeta_proyecto/ USUARIO@192.168.50.25:/ruta/destino/\nPara bajar una carpeta del servidor:\nscp -r -P 14232 USUARIO@192.168.50.25:/ruta/carpeta_en_servidor/ ./\n\n\nWindows (PowerShell / Windows Terminal)\nEn Windows 10/11, scp suele venir incluido. Los comandos son iguales:\nscp -P 14232 archivo.ext USUARIO@192.168.50.25:~/\nTip de rutas en Windows: usa comillas si hay espacios:\nscp -P 14232 \"C:\\Users\\TuUsuario\\Desktop\\archivo.ext\" USUARIO@192.168.50.25:~/\n\n\nErrores comunes\nPermission denied\n\nNo tienes permisos de escritura en esa ruta.\nSolución: copia primero a tu HOME y luego mueve dentro del servidor (si tienes permisos), o pide acceso.\n\nNo such file or directory\n\nLa ruta remota no existe o está mal escrita.\nVerifica con ls en SSH.\n\nSe corta la transferencia\n\nPara archivos grandes, considera rsync (más robusto).\n\n\n\nBuenas prácticas\n\nUsa rutas claras y estructura de proyecto (data/, results/, logs/).\nPara archivos grandes, comprime antes de transferir (tar.gz) o usa rsync.\nEvita copiar datos sensibles sin autorización.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html#clientes-gráficos-recomendado-termius",
+    "href": "requirements.html#clientes-gráficos-recomendado-termius",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "6) Clientes gráficos (recomendado): Termius",
+    "text": "6) Clientes gráficos (recomendado): Termius\nAdemás de la terminal (OpenSSH) y scp, existen clientes gráficos que facilitan mucho el trabajo diario: guardan tus hosts, simplifican la autenticación, integran SFTP para transferencia de archivos y permiten port forwarding con asistentes.\nUna opción que recomiendo es Termius, un cliente moderno de SSH disponible para Windows, macOS, Linux, iOS, iPadOS y Android. Incluye funciones como “hosts”, SFTP integrado y port forwarding con un asistente paso a paso.\n\n¿Por qué Termius?\n\nMultiplataforma (desktop y móvil).\nOrganización de accesos: guardas hosts (IP/dominio, puerto, usuario) para conectar con un clic.\nSFTP integrado: transferencia de archivos sin salir de la app.\nPort forwarding guiado: ideal para acceder a servicios como RStudio Server u otros puertos internos (cuando esté permitido).\n\n\nNota: Termius tiene planes gratuitos y de pago; algunas funciones avanzadas dependen del plan.\n\nBuenas prácticas de seguridad (muy importante)\n\nEvita guardar contraseñas en equipos compartidos.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html",
+    "href": "commands.html",
+    "title": "Uso básico de Linux",
+    "section": "",
+    "text": "Objetivo\nEsta sección te ayuda a moverte con seguridad dentro de MAGINOT: entender la estructura de carpetas, usar comandos básicos, revisar almacenamiento y recursos (CPU/RAM), y monitorear/detener procesos propios.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#comandos-esenciales-para-moverte",
+    "href": "commands.html#comandos-esenciales-para-moverte",
+    "title": "Uso básico de Linux",
+    "section": "2) Comandos esenciales para moverte",
+    "text": "2) Comandos esenciales para moverte\n\n¿Dónde estoy?\npwd\n\n\nListar archivos\nls\nls -lh\nls -lah\n\n\nCambiar de carpeta\ncd /ruta\ncd ~\ncd ..\n\n\nCrear carpetas\nmkdir proyecto\nmkdir -p proyecto/{data,scripts,results,logs,metadata}\n\n\nCopiar, mover y borrar (con cuidado)\ncp archivoA archivoB\ncp -r carpetaA carpetaB\n\nmv viejo.txt nuevo.txt\nmv carpeta /otra/ruta/\n\nrm archivo.txt\nrm -r carpeta/\n\n⚠️ rm borra (no hay papelera). Antes de borrar, confirma con ls.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#revisar-almacenamiento-disco-y-tamaño-de-datos",
+    "href": "commands.html#revisar-almacenamiento-disco-y-tamaño-de-datos",
+    "title": "Uso básico de Linux",
+    "section": "3) Revisar almacenamiento (disco) y tamaño de datos",
+    "text": "3) Revisar almacenamiento (disco) y tamaño de datos\n\nEspacio libre por partición\ndf -h\n\n\nTamaño de una carpeta (resumen)\ndu -sh carpeta/\ndu -sh *\n\n\nEncontrar lo que más pesa (rápido)\ndu -sh * | sort -h\n\nBuen hábito: revisa tu uso de disco antes de lanzar análisis grandes.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#revisar-recursos-disponibles-cpu-y-ram",
+    "href": "commands.html#revisar-recursos-disponibles-cpu-y-ram",
+    "title": "Uso básico de Linux",
+    "section": "4) Revisar recursos disponibles (CPU y RAM)",
+    "text": "4) Revisar recursos disponibles (CPU y RAM)\n\nCPU (modelo, núcleos, hilos)\nlscpu\n\n\nRAM (memoria)\nfree -h\n\n\nVer procesos en tiempo real\ntop\nO htop es más cómodo:\nhtop",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#monitoreo-básico-ver-tus-procesos-pid-y-cómo-detenerlos",
+    "href": "commands.html#monitoreo-básico-ver-tus-procesos-pid-y-cómo-detenerlos",
+    "title": "Uso básico de Linux",
+    "section": "5) Monitoreo básico: ver tus procesos, PID y cómo detenerlos",
+    "text": "5) Monitoreo básico: ver tus procesos, PID y cómo detenerlos\n\nVer procesos de tu usuario\nps -u $USER\nMás legible:\nps -u $USER -o pid,ppid,cmd,%cpu,%mem,etime --sort=-%cpu | head -n 20\n\n\nBuscar un proceso por nombre\npgrep -a nombre_programa\nEjemplo:\npgrep -a mafft\n\n\nVer el PID de un proceso específico\npidof nombre_programa\n\n\nDetener un proceso (solo tus procesos)\nPrimero intenta un “apagado limpio”:\nkill PID\nSi no se detiene, fuerza:\nkill -9 PID\n\nRecomendación: usa kill normal primero. kill -9 es el último recurso.\n\n\n\nDetener varios procesos por nombre (con cuidado)\npkill nombre_programa\nVerifica antes con:\npgrep -a nombre_programa",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#sesiones-persistentes-recomendado-tmux",
+    "href": "commands.html#sesiones-persistentes-recomendado-tmux",
+    "title": "Uso básico de Linux",
+    "section": "6) Sesiones persistentes (recomendado): tmux",
+    "text": "6) Sesiones persistentes (recomendado): tmux\nSi tu conexión se corta, una sesión persistente evita perder tu trabajo.\nCrear una sesión:\ntmux new -s mi_sesion\nSalir sin cerrar la sesión:\n\nPresiona Ctrl+b y luego d\n\nVolver a entrar:\ntmux attach -t mi_sesion\nListar sesiones:\ntmux ls",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#permisos-y-propiedad-solo-lo-necesario",
+    "href": "commands.html#permisos-y-propiedad-solo-lo-necesario",
+    "title": "Uso básico de Linux",
+    "section": "7) Permisos y propiedad (solo lo necesario)",
+    "text": "7) Permisos y propiedad (solo lo necesario)\n\nVer permisos\nls -l\n\n\nCambiar permisos (ejemplos típicos)\nDar permiso de ejecución a un script:\nchmod +x script.sh\nPermisos comunes:\n\n644 archivos (lectura para todos, escritura solo dueño)\n755 ejecutables o carpetas (dueño escribe, otros leen/entran)\n\nEjemplos:\nchmod 644 archivo.txt\nchmod 755 carpeta/",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#edición-rápida-de-archivos-nano-y-opcional-vim",
+    "href": "commands.html#edición-rápida-de-archivos-nano-y-opcional-vim",
+    "title": "Uso básico de Linux",
+    "section": "8) Edición rápida de archivos: nano (y opcional vim)",
+    "text": "8) Edición rápida de archivos: nano (y opcional vim)\nAbrir un archivo:\nnano archivo.txt\nAtajos útiles:\n\nGuardar: Ctrl+O (Enter)\nSalir: Ctrl+X\nBuscar: Ctrl+W",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#compresión-y-empaquetado",
+    "href": "commands.html#compresión-y-empaquetado",
+    "title": "Uso básico de Linux",
+    "section": "9) Compresión y empaquetado",
+    "text": "9) Compresión y empaquetado\n\nCrear un .tar.gz (carpeta completa)\ntar -czvf proyecto.tar.gz proyecto/\n\n\nExtraer un .tar.gz\ntar -xzvf proyecto.tar.gz\n\n\nComprimir un archivo con gzip\ngzip archivo.txt\ngunzip archivo.txt.gz\n\n\nCompresión paralela (si está instalado): pigz\npigz es como gzip pero usa varios núcleos.\nComprimir:\npigz archivo_grande.fastq\nDescomprimir:\nunpigz archivo_grande.fastq.gz",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "module.html",
+    "href": "module.html",
+    "title": "Software en MAGINOT",
+    "section": "",
+    "text": "Objetivo\nEn MAGINOT el software se ofrece de forma controlada para mantener un entorno **estable, seguro y reproducible**.\nEsta sección explica cómo usar el sistema de módulos (Lmod) y, al final, cómo se gestionan herramientas vía Micromamba y Apptainer.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+    ]
+  },
+  {
+    "objectID": "module.html#si-necesitas-un-programa-nuevo-importante",
+    "href": "module.html#si-necesitas-un-programa-nuevo-importante",
+    "title": "Software en MAGINOT",
+    "section": "Si necesitas un programa nuevo (importante)",
+    "text": "Si necesitas un programa nuevo (importante)\nSi el software que necesitas no está disponible como módulo o contenedor, no intentes instalarlo por tu cuenta.\n✅ En MAGINOT, la instalación de software que requiere permisos (y la creación/actualización de ambientes) se realiza solo por el administrador.\n\n¿Cómo solicitar software al administrador?\nIncluye en tu solicitud:\n\nNombre del software\nVersión (si aplica)\nUso (curso/proyecto)\nEnlace oficial (GitHub/docs) o referencia de instalación (conda/bioconda, contenedor, etc.)\nRequerimientos especiales: MPI, GPU, bases de datos externas, etc.\n\nCuando el software esté disponible, el administrador te avisará y te indicará si se usa como:\n- módulo,\n- contenedor Apptainer,\n- o dentro de un ambiente Micromamba.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+    ]
+  },
+  {
+    "objectID": "module.html#módulos-lmod-qué-son-y-cómo-se-usan",
+    "href": "module.html#módulos-lmod-qué-son-y-cómo-se-usan",
+    "title": "Software en MAGINOT",
+    "section": "Módulos (Lmod): qué son y cómo se usan",
+    "text": "Módulos (Lmod): qué son y cómo se usan\nLos módulos permiten activar software instalado en el servidor sin instalar nada en tu cuenta.\nAl cargar un módulo, se ajustan variables de entorno (por ejemplo PATH) para que el comando quede disponible.\n\nVer el catálogo de módulos disponibles\nmodule spider\n\n\n\n\n\nEn este momento (ejemplo real en MAGINOT) aparecen módulos como:\n\nedta/2.0.1\nrepeatmasker/4.2.2\nrepeatmodeler/2.0.7\nrevbayes/1.2.5-mpi\nsamtools/1.19\n\n\n\nCargar un módulo (micromamba)\nBuscar información de un módulo\nmodule spider samtools\n\n\n\n\n\nCargar un módulo\nmodule load samtools/1.19\nVerifica:\nwhich samtools\nsamtools --version\n\n\n\n\n\n\n\nCargar un módulo (apptainer)\nBuscar información de un módulo\nmodule spider revbayes\n\n\n\n\n\nEl módulo revbayes/1.2.5-mpi proporciona RevBayes 1.2.5 con soporte MPI, ejecutándose dentro de un contenedor Apptainer, pero tú lo usas como un módulo normal.\nEste módulo expone dos comandos principales:\n\nrb-mpi\nEjecuta RevBayes (1 proceso) en el directorio actual.\nrb-mpi-np N\nEjecuta RevBayes usando mpirun -np N (multinúcleo) en el directorio actual.\n\nCargar un módulo\nmodule load revbayes/1.2.5-mpi\nVerifica:\nwhich rb-mpi\nrb-mpi --version\n\n\n\n\n\nEjemplo de ejecución:\ncd /ruta/al/proyecto/Clade_001/input\nmodule load revbayes/1.2.5-mpi\nrb-mpi-np 8 Clade_001.rev\n\n\nVer módulos cargados\nmodule list\n\n\nDescargar un módulo\nmodule unload samtools/1.19\n\n\nLimpiar el entorno (recomendado si cambias de proyecto)\nmodule purge\n\n\nConsejos para evitar conflictos\n\nInicia con module purge si vienes de otra sesión/proyecto.\nSi algo “no corre”, revisa primero module list y confirma versiones.\nSi necesitas otra versión, pide al administrador que la agregue como módulo.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+    ]
+  },
+  {
+    "objectID": "module.html#micromamba-ambientes-administrados",
+    "href": "module.html#micromamba-ambientes-administrados",
+    "title": "Software en MAGINOT",
+    "section": "Micromamba (ambientes administrados)",
+    "text": "Micromamba (ambientes administrados)\nMicromamba se usa para mantener ambientes controlados y reproducibles, pero en MAGINOT:\n✅ Solo el administrador puede:\n\ncrear nuevos ambientes\ninstalar/actualizar paquetes dentro de los ambientes\n\n👥 Los usuarios no crean ambientes ni instalan paquetes.\nSi necesitas un programa por esta vía, solicítalo al administrador.\nCuando esté disponible, se te indicará cómo usarlo.\nVer ambientes disponibles\nmicromamba env list\nActivar (cargar) un ambiente\nmicromamba activate NOMBRE_DEL_AMBIENTE\nVerifica que el programa ya esté disponible:\nwhich programa\nprograma --version\nVer paquetes instalados en el ambiente\nmicromamba list\nSalir del ambiente\nmicromamba deactivate",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+    ]
+  },
+  {
+    "objectID": "module.html#apptainer-contenedores",
+    "href": "module.html#apptainer-contenedores",
+    "title": "Software en MAGINOT",
+    "section": "Apptainer (contenedores)",
+    "text": "Apptainer (contenedores)\nApptainer es una herramienta de contenedores diseñada para entornos Linux multiusuario (común en HPC).\nPermite ejecutar software empaquetado en una imagen (por ejemplo .sif) de forma reproducible, sin tener que instalar dependencias en tu cuenta, y sin requerir privilegios de administrador para correrlo.\nEn MAGINOT, Apptainer ya está instalado y puede usarse para correr herramientas bioinformáticas dentro de contenedores (propios o institucionales), siempre que tengas permisos de lectura sobre la imagen.\nEjemplos:\napptainer exec imagen.sif comando --help\nMontar tu carpeta de trabajo dentro del contenedor:\napptainer exec -B \"$PWD\":/work --pwd /work imagen.sif comando\n📌 Si necesitas una guía más completa sobre Apptainer, consulta mi tutorial:\nhttps://cristoichkov.github.io/biocontainers/",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Referencias",
+    "section": "",
+    "text": "Documentación y recursos oficiales\nEsta página reúne enlaces y recursos citados o recomendados a lo largo del manual.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Referencias</span>"
+    ]
+  },
+  {
+    "objectID": "references.html#documentación-y-recursos-oficiales",
+    "href": "references.html#documentación-y-recursos-oficiales",
+    "title": "Referencias",
+    "section": "",
+    "text": "WireGuard — Sitio oficial: https://www.wireguard.com/\nOpenSSH (cliente SSH): https://www.openssh.com/\nRStudio Server (Posit): https://posit.co/products/open-source/rstudio-server/\nLmod (Environment Modules): https://lmod.readthedocs.io/\nApptainer (documentación): https://apptainer.org/docs/\nMicromamba: https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Referencias</span>"
+    ]
+  },
+  {
+    "objectID": "references.html#tutoriales-recomendados",
+    "href": "references.html#tutoriales-recomendados",
+    "title": "Referencias",
+    "section": "Tutoriales recomendados",
+    "text": "Tutoriales recomendados\n\nBiocontainers / Apptainer (tutorial): https://cristoichkov.github.io/biocontainers/",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Referencias</span>"
+    ]
+  },
+  {
+    "objectID": "references.html#créditos",
+    "href": "references.html#créditos",
+    "title": "Referencias",
+    "section": "Créditos",
+    "text": "Créditos\nEste manual fue elaborado para apoyar el uso responsable del servidor MAGINOT.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Referencias</span>"
     ]
   }
 ]
