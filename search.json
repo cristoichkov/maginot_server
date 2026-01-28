@@ -314,7 +314,7 @@
     "href": "services.html#cómo-conectarte",
     "title": "Servicios: RStudio Server",
     "section": "2) Cómo conectarte",
-    "text": "2) Cómo conectarte\n\nConéctate a la VPN.\nAbre tu navegador (Chrome/Firefox/Safari).\nEn la barra de direcciones escribe:\n\nEjemplo:\nIP: 192.168.50.25\nPuerto: 7272\nhttp://192.168.50.25:7272\n\nInicia sesión con tu usuario y contraseña de MAGINOT.",
+    "text": "2) Cómo conectarte\n\nConéctate a la VPN.\nAbre tu navegador (Chrome/Firefox/Safari).\nEn la barra de direcciones escribe:\n\n10.8.0.1:8787\nIP: 10.8.0.1\nPuerto: 8787\n\nInicia sesión con tu usuario y contraseña de MAGINOT.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Servicios: RStudio Server</span>"
     ]
@@ -334,7 +334,7 @@
     "href": "services.html#problemas-comunes",
     "title": "Servicios: RStudio Server",
     "section": "4) Problemas comunes",
-    "text": "4) Problemas comunes\n\nNo carga la página\n\nVerifica que la VPN esté activa.\nConfirma que estás usando la IP correcta y el puerto correcto.\nPrueba conectividad:\n\nping -c 3 192.168.50.25\n\n\n“Connection refused” o “No se puede establecer conexión”\n\nEl servicio puede estar detenido o el puerto cambió.\nContacta al administrador.\n\n\n\nLogin incorrecto\n\nAsegúrate de usar tu usuario de MAGINOT.\nSi tu contraseña expiró, entra primero por SSH para cambiarla y vuelve a intentar.",
+    "text": "4) Problemas comunes\n\nNo carga la página\n\nVerifica que la VPN esté activa.\nConfirma que estás usando la IP correcta y el puerto correcto.\nPrueba conectividad:\n\nping -c 3 10.8.0.1\n\n\n“Connection refused” o “No se puede establecer conexión”\n\nEl servicio puede estar detenido o el puerto cambió.\nContacta al administrador.\n\n\n\nLogin incorrecto\n\nAsegúrate de usar tu usuario de MAGINOT.\nSi tu contraseña expiró, entra primero por SSH para cambiarla y vuelve a intentar.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Servicios: RStudio Server</span>"
     ]
