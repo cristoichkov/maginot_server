@@ -17,3 +17,6 @@ _book/
 *.out
 *.toc
 *.synctex.gz
+
+/.quarto/
+**/*.quarto_ipynb

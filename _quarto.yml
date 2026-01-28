@@ -23,6 +23,7 @@ book:
     - requirements.qmd
     - commands.qmd
     - module.qmd
+    - services.qmd
     - references.qmd
 
 format:

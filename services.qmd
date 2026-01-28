@@ -2,7 +2,7 @@
 title: "Servicios: RStudio Server"
 ---
 
-## RStudio Server 
+## RStudio Server
 
 MAGINOT puede ofrecer **RStudio Server** como servicio web para trabajar en R desde el navegador.\
 Como el acceso es por **VPN (WireGuard)**, normalmente **no es necesario usar port forwarding**: basta con conectarte a la IP interna asignada y el puerto del servicio.

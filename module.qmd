@@ -63,7 +63,7 @@ En este momento (ejemplo real en MAGINOT) aparecen módulos como:
 
 **Buscar información de un módulo**
 
-```         
+``` bash
 module spider samtools
 ```
 
@@ -129,13 +129,13 @@ rb-mpi-np 8 Clade_001.rev
 
 ### Ver módulos cargados
 
-```         
+``` bash
 module list
 ```
 
 ### Descargar un módulo
 
-```         
+``` bash
 module unload samtools/1.19
 ```
 
@@ -177,26 +177,26 @@ micromamba env list
 
 **Activar (cargar) un ambiente**
 
-```         
+``` bash
 micromamba activate NOMBRE_DEL_AMBIENTE
 ```
 
 **Verifica que el programa ya esté disponible:**
 
-```         
+``` bash
 which programa
 programa --version
 ```
 
 **Ver paquetes instalados en el ambiente**
 
-```         
+``` bash
 micromamba list
 ```
 
 **Salir del ambiente**
 
-```         
+``` .bash
 micromamba deactivate
 ```
 
@@ -215,7 +215,7 @@ apptainer exec imagen.sif comando --help
 
 **Montar tu carpeta de trabajo dentro del contenedor:**
 
-```         
+``` bash
 apptainer exec -B "$PWD":/work --pwd /work imagen.sif comando
 ```
 
