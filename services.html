@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Summary – Maginot Server</title>
+<title>Servicios: RStudio Server – Servidor MAGINOT</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./references.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./module.html" rel="prev">
 <link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <meta name="description" content="Guía rápida de acceso y uso del servidor MAGINOT">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Summary – Maginot Server">
+<meta property="og:title" content="Servicios: RStudio Server – Servidor MAGINOT">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://cristoichkov.github.io/maginot_server/images/logo.png">
 <meta property="og:type" content="website">
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./summary.html"><span class="chapter-title">Summary</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./services.html"><span class="chapter-title">Servicios: RStudio Server</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -147,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <img src="./images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Maginot Server</a> 
+      <a href="./">Servidor MAGINOT</a> 
         <div class="sidebar-tools-main">
     <a href="https://cristoichkov.github.io/maginot_server/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
 </div>
@@ -162,24 +162,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">MAGINOT — Manual de usuario</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction</span></a>
+  <a href="./requirements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conexión: VPN, SSH y transferencia de archivos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Summary</span></a>
+  <a href="./commands.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Uso básico de Linux</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./module.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Software en MAGINOT</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./services.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Servicios: RStudio Server</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Referencias</span></a>
   </div>
 </li>
     </ul>
@@ -187,15 +195,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#rstudio-server" id="toc-rstudio-server" class="nav-link active" data-scroll-target="#rstudio-server">RStudio Server</a></li>
+  <li><a href="#requisitos" id="toc-requisitos" class="nav-link" data-scroll-target="#requisitos">1) Requisitos</a></li>
+  <li><a href="#cómo-conectarte" id="toc-cómo-conectarte" class="nav-link" data-scroll-target="#cómo-conectarte">2) Cómo conectarte</a></li>
+  <li><a href="#recomendaciones-de-uso" id="toc-recomendaciones-de-uso" class="nav-link" data-scroll-target="#recomendaciones-de-uso">3) Recomendaciones de uso</a></li>
+  <li><a href="#problemas-comunes" id="toc-problemas-comunes" class="nav-link" data-scroll-target="#problemas-comunes">4) Problemas comunes</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/services.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Summary</span></h1>
+<h1 class="title"><span class="chapter-title">Servicios: RStudio Server</span></h1>
 </div>
 
 
@@ -212,15 +230,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In summary, this book has no content whatsoever.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
+<section id="rstudio-server" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-server">RStudio Server</h2>
+<p>MAGINOT puede ofrecer <strong>RStudio Server</strong> como servicio web para trabajar en R desde el navegador.<br>
+Como el acceso es por <strong>VPN (WireGuard)</strong>, normalmente <strong>no es necesario usar port forwarding</strong>: basta con conectarte a la IP interna asignada y el puerto del servicio.</p>
+<hr>
+</section>
+<section id="requisitos" class="level2">
+<h2 class="anchored" data-anchor-id="requisitos">1) Requisitos</h2>
+<ul>
+<li>VPN (WireGuard) <strong>activa</strong></li>
+<li>IP o dominio interno del servidor (proporcionado por el administrador)</li>
+<li><strong>Puerto de RStudio Server</strong> (proporcionado por el administrador)</li>
+<li>Credenciales de tu cuenta de MAGINOT (usuario/contraseña)</li>
+</ul>
+<hr>
+</section>
+<section id="cómo-conectarte" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-conectarte">2) Cómo conectarte</h2>
+<ol type="1">
+<li>Conéctate a la <strong>VPN</strong>.</li>
+<li>Abre tu navegador (Chrome/Firefox/Safari).</li>
+<li>En la barra de direcciones escribe:</li>
+</ol>
+<p>Ejemplo:</p>
+<p>IP: <code>192.168.50.25</code></p>
+<p>Puerto: 7272</p>
+<p><a href="http://IP_DEL_SERVIDOR:PUERTO">http://192.168.50.25:7272</a></p>
+<ol start="4" type="1">
+<li>Inicia sesión con tu <strong>usuario y contraseña</strong> de MAGINOT.</li>
+</ol>
+<hr>
+</section>
+<section id="recomendaciones-de-uso" class="level2">
+<h2 class="anchored" data-anchor-id="recomendaciones-de-uso">3) Recomendaciones de uso</h2>
+<ul>
+<li><p>Usa RStudio para análisis interactivos, edición de scripts y revisión de resultados.</p></li>
+<li><p>Para análisis largos o pesados, sigue las reglas del servidor (por ejemplo, ejecutarlos de forma controlada y guardando logs).</p></li>
+<li><p>Mantén tus proyectos organizados (por ejemplo <code>data/</code>, <code>scripts/</code>, <code>results/</code>, <code>logs/</code>).</p></li>
+</ul>
+<hr>
+</section>
+<section id="problemas-comunes" class="level2">
+<h2 class="anchored" data-anchor-id="problemas-comunes">4) Problemas comunes</h2>
+<section id="no-carga-la-página" class="level3">
+<h3 class="anchored" data-anchor-id="no-carga-la-página">No carga la página</h3>
+<ul>
+<li><p>Verifica que la VPN esté activa.</p></li>
+<li><p>Confirma que estás usando la <strong>IP correcta</strong> y el <strong>puerto correcto</strong>.</p></li>
+<li><p>Prueba conectividad:</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ping</span> <span class="at">-c</span> 3 192.168.50.25</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="connection-refused-o-no-se-puede-establecer-conexión" class="level3">
+<h3 class="anchored" data-anchor-id="connection-refused-o-no-se-puede-establecer-conexión">“Connection refused” o “No se puede establecer conexión”</h3>
+<ul>
+<li><p>El servicio puede estar detenido o el puerto cambió.</p></li>
+<li><p>Contacta al administrador.</p></li>
+</ul>
+</section>
+<section id="login-incorrecto" class="level3">
+<h3 class="anchored" data-anchor-id="login-incorrecto">Login incorrecto</h3>
+<ul>
+<li><p>Asegúrate de usar tu usuario de MAGINOT.</p></li>
+<li><p>Si tu contraseña expiró, entra primero por SSH para cambiarla y vuelve a intentar.</p></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -625,13 +703,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Introduction</span></span>
+      <a href="./module.html" class="pagination-link" aria-label="Software en MAGINOT">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Software en MAGINOT</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="Referencias">
+        <span class="nav-page-text"><span class="chapter-title">Referencias</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -640,4 +718,4 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/summary.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/services.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

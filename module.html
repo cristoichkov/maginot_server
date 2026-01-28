@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./services.html" rel="next">
 <link href="./commands.html" rel="prev">
 <link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -182,6 +182,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./services.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Servicios: RStudio Server</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Referencias</span></a>
   </div>
 </li>
@@ -276,7 +281,7 @@ Al cargar un módulo, se ajustan variables de entorno (por ejemplo <code>PATH</c
 <section id="cargar-un-módulo-micromamba" class="level3">
 <h3 class="anchored" data-anchor-id="cargar-un-módulo-micromamba">Cargar un módulo (micromamba)</h3>
 <p><strong>Buscar información de un módulo</strong></p>
-<pre><code>module spider samtools</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> spider samtools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/software/pic4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="450"></p>
@@ -327,11 +332,11 @@ Ejecuta RevBayes usando <code>mpirun -np N</code> (multinúcleo) en el directori
 </section>
 <section id="ver-módulos-cargados" class="level3">
 <h3 class="anchored" data-anchor-id="ver-módulos-cargados">Ver módulos cargados</h3>
-<pre><code>module list</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="descargar-un-módulo" class="level3">
 <h3 class="anchored" data-anchor-id="descargar-un-módulo">Descargar un módulo</h3>
-<pre><code>module unload samtools/1.19</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> unload samtools/1.19</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="limpiar-el-entorno-recomendado-si-cambias-de-proyecto" class="level3">
 <h3 class="anchored" data-anchor-id="limpiar-el-entorno-recomendado-si-cambias-de-proyecto">Limpiar el entorno (recomendado si cambias de proyecto)</h3>
@@ -361,14 +366,14 @@ Cuando esté disponible, se te indicará cómo usarlo.</p>
 <p><strong>Ver ambientes disponibles</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> env list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Activar (cargar) un ambiente</strong></p>
-<pre><code>micromamba activate NOMBRE_DEL_AMBIENTE</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> activate NOMBRE_DEL_AMBIENTE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Verifica que el programa ya esté disponible:</strong></p>
-<pre><code>which programa
-programa --version</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> programa</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">programa</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Ver paquetes instalados en el ambiente</strong></p>
-<pre><code>micromamba list</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Salir del ambiente</strong></p>
-<pre><code>micromamba deactivate</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> deactivate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="apptainer-contenedores" class="level2">
 <h2 class="anchored" data-anchor-id="apptainer-contenedores">Apptainer (contenedores)</h2>
@@ -378,7 +383,7 @@ Permite ejecutar software empaquetado en una imagen (por ejemplo <code>.sif</cod
 <p><strong>Ejemplos:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec imagen.sif comando <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Montar tu carpeta de trabajo dentro del contenedor:</strong></p>
-<pre><code>apptainer exec -B "$PWD":/work --pwd /work imagen.sif comando</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">-B</span> <span class="st">"</span><span class="va">$PWD</span><span class="st">"</span>:/work <span class="at">--pwd</span> /work imagen.sif comando</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>📌 Si necesitas una guía más completa sobre <strong>Apptainer</strong>, consulta mi tutorial:<br>
 <a href="https://cristoichkov.github.io/biocontainers/" class="uri">https://cristoichkov.github.io/biocontainers/</a></p>
 
@@ -793,8 +798,8 @@ Permite ejecutar software empaquetado en una imagen (por ejemplo <code>.sif</cod
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="Referencias">
-        <span class="nav-page-text"><span class="chapter-title">Referencias</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./services.html" class="pagination-link" aria-label="Servicios: RStudio Server">
+        <span class="nav-page-text"><span class="chapter-title">Servicios: RStudio Server</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

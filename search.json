@@ -290,13 +290,63 @@
     ]
   },
   {
+    "objectID": "services.html",
+    "href": "services.html",
+    "title": "Servicios: RStudio Server",
+    "section": "",
+    "text": "RStudio Server\nMAGINOT puede ofrecer RStudio Server como servicio web para trabajar en R desde el navegador.\nComo el acceso es por VPN (WireGuard), normalmente no es necesario usar port forwarding: basta con conectarte a la IP interna asignada y el puerto del servicio.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Servicios: RStudio Server</span>"
+    ]
+  },
+  {
+    "objectID": "services.html#requisitos",
+    "href": "services.html#requisitos",
+    "title": "Servicios: RStudio Server",
+    "section": "1) Requisitos",
+    "text": "1) Requisitos\n\nVPN (WireGuard) activa\nIP o dominio interno del servidor (proporcionado por el administrador)\nPuerto de RStudio Server (proporcionado por el administrador)\nCredenciales de tu cuenta de MAGINOT (usuario/contraseña)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Servicios: RStudio Server</span>"
+    ]
+  },
+  {
+    "objectID": "services.html#cómo-conectarte",
+    "href": "services.html#cómo-conectarte",
+    "title": "Servicios: RStudio Server",
+    "section": "2) Cómo conectarte",
+    "text": "2) Cómo conectarte\n\nConéctate a la VPN.\nAbre tu navegador (Chrome/Firefox/Safari).\nEn la barra de direcciones escribe:\n\nEjemplo:\nIP: 192.168.50.25\nPuerto: 7272\nhttp://192.168.50.25:7272\n\nInicia sesión con tu usuario y contraseña de MAGINOT.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Servicios: RStudio Server</span>"
+    ]
+  },
+  {
+    "objectID": "services.html#recomendaciones-de-uso",
+    "href": "services.html#recomendaciones-de-uso",
+    "title": "Servicios: RStudio Server",
+    "section": "3) Recomendaciones de uso",
+    "text": "3) Recomendaciones de uso\n\nUsa RStudio para análisis interactivos, edición de scripts y revisión de resultados.\nPara análisis largos o pesados, sigue las reglas del servidor (por ejemplo, ejecutarlos de forma controlada y guardando logs).\nMantén tus proyectos organizados (por ejemplo data/, scripts/, results/, logs/).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Servicios: RStudio Server</span>"
+    ]
+  },
+  {
+    "objectID": "services.html#problemas-comunes",
+    "href": "services.html#problemas-comunes",
+    "title": "Servicios: RStudio Server",
+    "section": "4) Problemas comunes",
+    "text": "4) Problemas comunes\n\nNo carga la página\n\nVerifica que la VPN esté activa.\nConfirma que estás usando la IP correcta y el puerto correcto.\nPrueba conectividad:\n\nping -c 3 192.168.50.25\n\n\n“Connection refused” o “No se puede establecer conexión”\n\nEl servicio puede estar detenido o el puerto cambió.\nContacta al administrador.\n\n\n\nLogin incorrecto\n\nAsegúrate de usar tu usuario de MAGINOT.\nSi tu contraseña expiró, entra primero por SSH para cambiarla y vuelve a intentar.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Servicios: RStudio Server</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "Referencias",
     "section": "",
     "text": "Documentación y recursos oficiales\nEsta página reúne enlaces y recursos citados o recomendados a lo largo del manual.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Referencias</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Referencias</span>"
     ]
   },
   {
@@ -306,7 +356,7 @@
     "section": "",
     "text": "WireGuard — Sitio oficial: https://www.wireguard.com/\nOpenSSH (cliente SSH): https://www.openssh.com/\nRStudio Server (Posit): https://posit.co/products/open-source/rstudio-server/\nLmod (Environment Modules): https://lmod.readthedocs.io/\nApptainer (documentación): https://apptainer.org/docs/\nMicromamba: https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Referencias</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Referencias</span>"
     ]
   },
   {
@@ -316,7 +366,7 @@
     "section": "Tutoriales recomendados",
     "text": "Tutoriales recomendados\n\nBiocontainers / Apptainer (tutorial): https://cristoichkov.github.io/biocontainers/",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Referencias</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Referencias</span>"
     ]
   },
   {
@@ -326,7 +376,7 @@
     "section": "Créditos",
     "text": "Créditos\nEste manual fue elaborado para apoyar el uso responsable del servidor MAGINOT.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Referencias</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Referencias</span>"
     ]
   }
 ]
