@@ -196,7 +196,7 @@ micromamba list
 
 **Salir del ambiente**
 
-``` .bash
+``` bash
 micromamba deactivate
 ```
 

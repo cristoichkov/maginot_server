@@ -24,13 +24,12 @@ Como el acceso es por **VPN (WireGuard)**, normalmente **no es necesario usar po
 2.  Abre tu navegador (Chrome/Firefox/Safari).
 3.  En la barra de direcciones escribe:
 
-Ejemplo:
+`10.8.0.1:8787`
 
-IP: `192.168.50.25`
+IP: `10.8.0.1`
 
-Puerto: 7272
+Puerto: `8787`
 
-[http://192.168.50.25:7272](http://IP_DEL_SERVIDOR:PUERTO)
 
 4.  Inicia sesión con tu **usuario y contraseña** de MAGINOT.
 
@@ -57,7 +56,7 @@ Puerto: 7272
 -   Prueba conectividad:
 
 ``` bash
-ping -c 3 192.168.50.25
+ping -c 3 10.8.0.1
 ```
 
 ### “Connection refused” o “No se puede establecer conexión”
