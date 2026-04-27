@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introducción – Servidor MAGINOT - Anexo I</title>
+<title>Servicios: RStudio Server – Servidor MAGINOT - Anexo II</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./disk.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./slurm.html" rel="next">
+<link href="./module.html" rel="prev">
 <link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -71,6 +106,14 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<meta name="description" content="Guía rápida de acceso y uso del servidor MAGINOT">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Servicios: RStudio Server – Servidor MAGINOT - Anexo II">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://cristoichkov.github.io/maginot_server/images/logo.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://cristoichkov.github.io/maginot_server/">
 
 
 <link rel="stylesheet" href="styles/styles.css">
@@ -85,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-title">Introducción</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./services.html"><span class="chapter-title">Servicios: RStudio Server</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -104,7 +147,10 @@ ul.task-list li input[type="checkbox"] {
       <img src="./images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Servidor MAGINOT - Anexo I</a> 
+      <a href="./">Servidor MAGINOT - Anexo II</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://cristoichkov.github.io/maginot_server/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -116,48 +162,37 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">MAGINOT — Manual de usuario</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introducción</span></a>
+  <a href="./requirements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conexión: VPN, SSH y transferencia de archivos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./disk.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Validación y configuración de discos</span></a>
+  <a href="./commands.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Uso básico de Linux</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vpn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">VPN con WireGuard</span></a>
+  <a href="./module.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Software en MAGINOT</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pass_sec.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fortalecimiento de Acceso y Autenticación</span></a>
+  <a href="./services.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Servicios: RStudio Server</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./containers.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Contenedores y Entornos Reproducibles</span></a>
+  <a href="./slurm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Software en MAGINOT</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./samba.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Servidor de archivos con Samba</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./monitor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Monitoreo y Observabilidad</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./slurm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Instalación de Slurm para una sola máquina</span></a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Referencias</span></a>
   </div>
 </li>
     </ul>
@@ -170,17 +205,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#objetivo-principal" id="toc-objetivo-principal" class="nav-link active" data-scroll-target="#objetivo-principal">Objetivo principal</a></li>
-  <li><a href="#objetivos-específicos" id="toc-objetivos-específicos" class="nav-link" data-scroll-target="#objetivos-específicos">Objetivos específicos</a></li>
+  <li><a href="#rstudio-server" id="toc-rstudio-server" class="nav-link active" data-scroll-target="#rstudio-server">RStudio Server</a></li>
+  <li><a href="#requisitos" id="toc-requisitos" class="nav-link" data-scroll-target="#requisitos">1) Requisitos</a></li>
+  <li><a href="#cómo-conectarte" id="toc-cómo-conectarte" class="nav-link" data-scroll-target="#cómo-conectarte">2) Cómo conectarte</a></li>
+  <li><a href="#recomendaciones-de-uso" id="toc-recomendaciones-de-uso" class="nav-link" data-scroll-target="#recomendaciones-de-uso">3) Recomendaciones de uso</a></li>
+  <li><a href="#problemas-comunes" id="toc-problemas-comunes" class="nav-link" data-scroll-target="#problemas-comunes">4) Problemas comunes</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/services.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Introducción</span></h1>
+<h1 class="title"><span class="chapter-title">Servicios: RStudio Server</span></h1>
 </div>
 
 
@@ -197,26 +235,73 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>La <strong>Unidad de Síntesis en Sistemática y Evolución (UniSSE)</strong> del Instituto de Biología (IB-UNAM) se concibe como un espacio especializado para <strong>plantear, desarrollar, fomentar y brindar apoyo</strong> a investigaciones orientadas a entender los <strong>procesos evolutivos</strong> que <strong>originan, mantienen y estructuran</strong> la biota en distintas dimensiones (p.&nbsp;ej., riqueza de especies, diversidad genética, distribución geográfica) y a diferentes escalas (p.&nbsp;ej., macroevolución, biogeografía). Estas investigaciones se sostienen en la <strong>síntesis de datos</strong> provenientes de colecciones biológicas, inventarios, bases de datos cibernéticas y datos aportados por especialistas, integrados mediante enfoques analíticos y transversales dentro del IB.</p>
-<p>En este marco, mi papel como <strong>técnico académico responsable de los análisis</strong> en la UniSSE se centra en <strong>habilitar y mantener la infraestructura informática</strong> que permite gestionar datos genómicos, implementar y optimizar software de bioinformática y filogenética comparativa, y acompañar a la comunidad académica y estudiantil del IB en la ejecución reproducible de análisis. Esta función requiere plataformas estables, seguras y escalables, capaces de sostener flujos de trabajo exigentes y diversos, con demandas crecientes de procesamiento, almacenamiento y trazabilidad.</p>
-<p>Por ello, el <strong>servidor “Maginot”</strong> se plantea como una pieza de infraestructura estratégica para la UniSSE: un sistema GNU/Linux diseñado para ofrecer <strong>servicio multiusuario confiable</strong>, facilitar la <strong>reproducibilidad</strong>, asegurar el <strong>uso ordenado y justo de recursos</strong>, y permitir <strong>observabilidad</strong> y mantenimiento continuo para garantizar la continuidad operativa de los análisis en los que apoya la Unidad.</p>
-<section id="objetivo-principal" class="level2">
-<h2 class="anchored" data-anchor-id="objetivo-principal">Objetivo principal</h2>
-<p>Diseñar e implementar un servidor GNU/Linux multiusuario, seguro y observable que permita la ejecución rápida y reproducible de pipelines bioinformáticos mediante contenedores y control de recursos, con almacenamiento confiable y cuotas, para dar un servicio estable.</p>
+<section id="rstudio-server" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-server">RStudio Server</h2>
+<p>MAGINOT puede ofrecer <strong>RStudio Server</strong> como servicio web para trabajar en R desde el navegador.<br>
+Como el acceso es por <strong>VPN (WireGuard)</strong>, normalmente <strong>no es necesario usar port forwarding</strong>: basta con conectarte a la IP interna asignada y el puerto del servicio.</p>
+<hr>
 </section>
-<section id="objetivos-específicos" class="level2">
-<h2 class="anchored" data-anchor-id="objetivos-específicos">Objetivos específicos</h2>
+<section id="requisitos" class="level2">
+<h2 class="anchored" data-anchor-id="requisitos">1) Requisitos</h2>
 <ul>
-<li><p><strong>Multiusuario y control de acceso:</strong> cuentas, grupos, permisos, políticas de autenticación y buenas prácticas de uso.</p></li>
-<li><p><strong>Ejecución reproducible:</strong> estandarizar la ejecución de pipelines con contenedores (p.&nbsp;ej., Apptainer/Podman) para minimizar variaciones por dependencias.</p></li>
-<li><p><strong>Control y asignación de recursos:</strong> lineamientos y herramientas para limitar/administrar CPU, RAM y tiempos de ejecución (p.&nbsp;ej., colas o políticas de prioridad según el diseño del servicio).</p></li>
-<li><p><strong>Almacenamiento confiable:</strong> estructura de directorios de trabajo, respaldos, y <strong>cuotas</strong> por usuario/proyecto para sostener operación a largo plazo.</p></li>
-<li><p><strong>Seguridad operativa:</strong> endurecimiento básico del sistema, registro de eventos y medidas contra accesos no autorizados.</p></li>
-<li><p><strong>Observabilidad y mantenimiento:</strong> monitoreo de rendimiento/uso (CPU, RAM, disco, red), alertas y bitácoras para diagnóstico y continuidad del servicio.</p></li>
-<li><p><strong>Documentación y soporte:</strong> guías mínimas para usuarios (acceso, ejecución, buenas prácticas) y registro técnico para mantenimiento y auditoría.</p></li>
+<li>VPN (WireGuard) <strong>activa</strong></li>
+<li>IP o dominio interno del servidor (proporcionado por el administrador)</li>
+<li><strong>Puerto de RStudio Server</strong> (proporcionado por el administrador)</li>
+<li>Credenciales de tu cuenta de MAGINOT (usuario/contraseña)</li>
+</ul>
+<hr>
+</section>
+<section id="cómo-conectarte" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-conectarte">2) Cómo conectarte</h2>
+<ol type="1">
+<li>Conéctate a la <strong>VPN</strong>.</li>
+<li>Abre tu navegador (Chrome/Firefox/Safari).</li>
+<li>En la barra de direcciones escribe:</li>
+</ol>
+<p><code>10.8.0.1:8787</code></p>
+<p>IP: <code>10.8.0.1</code></p>
+<p>Puerto: <code>8787</code></p>
+<ol start="4" type="1">
+<li>Inicia sesión con tu <strong>usuario y contraseña</strong> de MAGINOT.</li>
+</ol>
+<hr>
+</section>
+<section id="recomendaciones-de-uso" class="level2">
+<h2 class="anchored" data-anchor-id="recomendaciones-de-uso">3) Recomendaciones de uso</h2>
+<ul>
+<li><p>Usa RStudio para análisis interactivos, edición de scripts y revisión de resultados.</p></li>
+<li><p>Para análisis largos o pesados, sigue las reglas del servidor (por ejemplo, ejecutarlos de forma controlada y guardando logs).</p></li>
+<li><p>Mantén tus proyectos organizados (por ejemplo <code>data/</code>, <code>scripts/</code>, <code>results/</code>, <code>logs/</code>).</p></li>
+</ul>
+<hr>
+</section>
+<section id="problemas-comunes" class="level2">
+<h2 class="anchored" data-anchor-id="problemas-comunes">4) Problemas comunes</h2>
+<section id="no-carga-la-página" class="level3">
+<h3 class="anchored" data-anchor-id="no-carga-la-página">No carga la página</h3>
+<ul>
+<li><p>Verifica que la VPN esté activa.</p></li>
+<li><p>Confirma que estás usando la <strong>IP correcta</strong> y el <strong>puerto correcto</strong>.</p></li>
+<li><p>Prueba conectividad:</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ping</span> <span class="at">-c</span> 3 10.8.0.1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="connection-refused-o-no-se-puede-establecer-conexión" class="level3">
+<h3 class="anchored" data-anchor-id="connection-refused-o-no-se-puede-establecer-conexión">“Connection refused” o “No se puede establecer conexión”</h3>
+<ul>
+<li><p>El servicio puede estar detenido o el puerto cambió.</p></li>
+<li><p>Contacta al administrador.</p></li>
+</ul>
+</section>
+<section id="login-incorrecto" class="level3">
+<h3 class="anchored" data-anchor-id="login-incorrecto">Login incorrecto</h3>
+<ul>
+<li><p>Asegúrate de usar tu usuario de MAGINOT.</p></li>
+<li><p>Si tu contraseña expiró, entra primero por SSH para cambiarla y vuelve a intentar.</p></li>
 </ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -622,13 +707,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./module.html" class="pagination-link" aria-label="Software en MAGINOT">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Software en MAGINOT</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./disk.html" class="pagination-link" aria-label="Validación y configuración de discos">
-        <span class="nav-page-text"><span class="chapter-title">Validación y configuración de discos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./slurm.html" class="pagination-link" aria-label="Software en MAGINOT">
+        <span class="nav-page-text"><span class="chapter-title">Software en MAGINOT</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -637,4 +722,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/services.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

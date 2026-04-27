@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;Cristian Cervantes">
-<meta name="dcterms.date" content="2026-04-26">
 
-<title>Servidor MAGINOT - Anexo II</title>
+<title>Referencias – Servidor MAGINOT - Anexo II</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./requirements.html" rel="next">
+<link href="./slurm.html" rel="prev">
 <link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -74,8 +72,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <meta name="description" content="Guía rápida de acceso y uso del servidor MAGINOT">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Servidor MAGINOT - Anexo II">
-<meta property="og:description" content="Guía para acceder, trabajar y ejecutar análisis en el servidor">
+<meta property="og:title" content="Referencias – Servidor MAGINOT - Anexo II">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://cristoichkov.github.io/maginot_server/images/logo.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -94,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">MAGINOT — Manual de usuario</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html"><span class="chapter-title">Referencias</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">MAGINOT — Manual de usuario</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">MAGINOT — Manual de usuario</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -158,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Referencias</span></a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Referencias</span></a>
   </div>
 </li>
     </ul>
@@ -171,42 +169,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#qué-es-maginot" id="toc-qué-es-maginot" class="nav-link active" data-scroll-target="#qué-es-maginot">¿Qué es MAGINOT?</a></li>
-  <li><a href="#objetivo-del-servidor" id="toc-objetivo-del-servidor" class="nav-link" data-scroll-target="#objetivo-del-servidor">Objetivo del servidor</a></li>
-  <li><a href="#a-quién-está-dirigido" id="toc-a-quién-está-dirigido" class="nav-link" data-scroll-target="#a-quién-está-dirigido">¿A quién está dirigido?</a></li>
-  <li><a href="#alcances-del-manual" id="toc-alcances-del-manual" class="nav-link" data-scroll-target="#alcances-del-manual">Alcances del manual</a></li>
-  <li><a href="#reglas-rápidas-uso-responsable" id="toc-reglas-rápidas-uso-responsable" class="nav-link" data-scroll-target="#reglas-rápidas-uso-responsable">Reglas rápidas (uso responsable)</a></li>
-  <li><a href="#buenas-prácticas-recomendadas" id="toc-buenas-prácticas-recomendadas" class="nav-link" data-scroll-target="#buenas-prácticas-recomendadas">Buenas prácticas recomendadas</a></li>
-  <li><a href="#ruta-rápida-para-usuarios-con-prisa" id="toc-ruta-rápida-para-usuarios-con-prisa" class="nav-link" data-scroll-target="#ruta-rápida-para-usuarios-con-prisa">Ruta rápida (para usuarios con prisa)</a></li>
+  <li><a href="#documentación-y-recursos-oficiales" id="toc-documentación-y-recursos-oficiales" class="nav-link active" data-scroll-target="#documentación-y-recursos-oficiales">Documentación y recursos oficiales</a></li>
+  <li><a href="#tutoriales-recomendados" id="toc-tutoriales-recomendados" class="nav-link" data-scroll-target="#tutoriales-recomendados">Tutoriales recomendados</a></li>
+  <li><a href="#créditos" id="toc-créditos" class="nav-link" data-scroll-target="#créditos">Créditos</a></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/references.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Servidor MAGINOT - Anexo II</h1>
-<p class="subtitle lead">Guía para acceder, trabajar y ejecutar análisis en el servidor</p>
+<h1 class="title"><span class="chapter-title">Referencias</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dr.&nbsp;Cristian Cervantes </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 26, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -216,53 +197,27 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="qué-es-maginot" class="level2">
-<h2 class="anchored" data-anchor-id="qué-es-maginot">¿Qué es MAGINOT?</h2>
-<p>MAGINOT es un servidor GNU/Linux multiusuario orientado a la ejecución rápida y reproducible de pipelines bioinformáticos, con acceso seguro, almacenamiento organizado y control responsable de recursos.</p>
-</section>
-<section id="objetivo-del-servidor" class="level2">
-<h2 class="anchored" data-anchor-id="objetivo-del-servidor">Objetivo del servidor</h2>
-<p>Diseñar e implementar un servidor GNU/Linux multiusuario, seguro y observable que permita la ejecución rápida y reproducible de pipelines bioinformáticos mediante contenedores y control de recursos, con almacenamiento confiable y cuotas, para dar un servicio estable.</p>
-</section>
-<section id="a-quién-está-dirigido" class="level2">
-<h2 class="anchored" data-anchor-id="a-quién-está-dirigido">¿A quién está dirigido?</h2>
-<p>A estudiantes, técnicos y personal académico que requieran ejecutar análisis bioinformáticos en un entorno compartido, siguiendo buenas prácticas de seguridad, organización y uso responsable de recursos.</p>
-</section>
-<section id="alcances-del-manual" class="level2">
-<h2 class="anchored" data-anchor-id="alcances-del-manual">Alcances del manual</h2>
-<p><strong>Incluye</strong> - Acceso (VPN/SSH) - Navegación y organización de proyectos - Transferencia de archivos (SFTP/SCP/rsync) - Uso de software (módulos/ambientes/contenedores) - Ejecución y monitoreo básico de análisis</p>
-<p><strong>No incluye</strong> - Cursos completos de Linux o bioinformática - Desarrollo de pipelines desde cero - Instalación libre de software sin solicitud previa al administrador</p>
-</section>
-<section id="reglas-rápidas-uso-responsable" class="level2">
-<h2 class="anchored" data-anchor-id="reglas-rápidas-uso-responsable">Reglas rápidas (uso responsable)</h2>
+<p>Esta página reúne enlaces y recursos citados o recomendados a lo largo del manual.</p>
+<section id="documentación-y-recursos-oficiales" class="level2">
+<h2 class="anchored" data-anchor-id="documentación-y-recursos-oficiales">Documentación y recursos oficiales</h2>
 <ul>
-<li>La cuenta es personal e intransferible.</li>
-<li>No compartas contraseñas.</li>
-<li>Mantén tus proyectos ordenados y limpia datos temporales.</li>
-<li>Reporta incidentes o problemas al administrador.</li>
+<li><strong>WireGuard — Sitio oficial:</strong> https://www.wireguard.com/</li>
+<li><strong>OpenSSH (cliente SSH):</strong> https://www.openssh.com/</li>
+<li><strong>RStudio Server (Posit):</strong> https://posit.co/products/open-source/rstudio-server/</li>
+<li><strong>Lmod (Environment Modules):</strong> https://lmod.readthedocs.io/</li>
+<li><strong>Apptainer (documentación):</strong> https://apptainer.org/docs/</li>
+<li><strong>Micromamba:</strong> https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html</li>
 </ul>
 </section>
-<section id="buenas-prácticas-recomendadas" class="level2">
-<h2 class="anchored" data-anchor-id="buenas-prácticas-recomendadas">Buenas prácticas recomendadas</h2>
+<section id="tutoriales-recomendados" class="level2">
+<h2 class="anchored" data-anchor-id="tutoriales-recomendados">Tutoriales recomendados</h2>
 <ul>
-<li><strong>Organiza tus proyectos:</strong> usa una estructura consistente (por ejemplo <code>data/</code>, <code>scripts/</code>, <code>results/</code>, <code>logs/</code>, <code>metadata/</code>).</li>
-<li><strong>Reproducibilidad:</strong> registra versiones, parámetros y comandos (idealmente en scripts).</li>
-<li><strong>Logs:</strong> guarda salida estándar y errores; te ahorran tiempo para depurar.</li>
-<li><strong>Almacenamiento responsable:</strong> comprime resultados grandes y elimina temporales cuando ya no se requieran.</li>
-<li><strong>Seguridad:</strong> usa contraseñas fuertes.</li>
+<li><strong>Biocontainers / Apptainer (tutorial):</strong> https://cristoichkov.github.io/biocontainers/</li>
 </ul>
 </section>
-<section id="ruta-rápida-para-usuarios-con-prisa" class="level2">
-<h2 class="anchored" data-anchor-id="ruta-rápida-para-usuarios-con-prisa">Ruta rápida (para usuarios con prisa)</h2>
-<ol type="1">
-<li>Conéctate a la VPN (WireGuard).</li>
-<li>Entra por SSH al servidor.</li>
-<li>Ubica o crea tu carpeta de proyecto.</li>
-<li>Sube tus datos (SFTP/rsync/scp).</li>
-<li>Carga software (modules/conda) o usa contenedores (Apptainer).</li>
-<li>Ejecuta tu análisis siguiendo las reglas de recursos.</li>
-<li>Monitorea y guarda logs/resultados.</li>
-</ol>
+<section id="créditos" class="level2">
+<h2 class="anchored" data-anchor-id="créditos">Créditos</h2>
+<p>Este manual fue elaborado para apoyar el uso responsable del servidor MAGINOT.</p>
 
 
 </section>
@@ -670,11 +625,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./slurm.html" class="pagination-link" aria-label="Software en MAGINOT">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Software en MAGINOT</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./requirements.html" class="pagination-link" aria-label="Conexión: VPN, SSH y transferencia de archivos">
-        <span class="nav-page-text"><span class="chapter-title">Conexión: VPN, SSH y transferencia de archivos</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -682,4 +637,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/references.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

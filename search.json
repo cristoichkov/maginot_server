@@ -2,761 +2,511 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Servidor MAGINOT - Anexo I",
+    "title": "Servidor MAGINOT - Anexo II",
     "section": "",
-    "text": "Preface\nEl servidor MAGINOT es un equipo de cómputo orientado principalmente a flujos de trabajo bioinformáticos, diseñado con énfasis en reproducibilidad, seguridad y mantenibilidad. Su objetivo es centralizar recursos (CPU, GPU, almacenamiento y software) y ofrecer un esquema de acceso remoto controlado para usuarios autorizados.\nEste documento funciona como una bitácora técnica: registra decisiones de configuración, comandos, rutas, servicios y cambios relevantes realizados en MAGINOT. La intención es que sirva como evidencia (anexo) y como guía operativa para mantenimiento, respaldo y futuras ampliaciones, facilitando la continuidad del servicio y la trazabilidad de las configuraciones.",
+    "text": "¿Qué es MAGINOT?\nMAGINOT es un servidor GNU/Linux multiusuario orientado a la ejecución rápida y reproducible de pipelines bioinformáticos, con acceso seguro, almacenamiento organizado y control responsable de recursos.",
     "crumbs": [
-      "Preface"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
     ]
   },
   {
-    "objectID": "index.html#ficha-técnica-del-servidor-maginot",
-    "href": "index.html#ficha-técnica-del-servidor-maginot",
-    "title": "Servidor MAGINOT - Anexo I",
-    "section": "Ficha técnica del servidor MAGINOT",
-    "text": "Ficha técnica del servidor MAGINOT\n\nNombre del host: maginot\nSistema operativo: Rocky Linux 10.1 (Red Quartz)\nKernel: Linux 6.12.0-124.21.1.el10_1.x86_64\nArquitectura: x86_64\nPlataforma/board: MACHINIST E5-D8-MAX (Firmware 5.11, 2023-04-19)\n\n\nCPU\n\nModelo: Intel® Xeon® E5-2695 v4 @ 2.10 GHz\nSockets: 2\nCores por socket: 18\nHilos por core: 2\nTotal: 36 cores / 72 hilos\nFrecuencia máx.: 3.30 GHz (según lscpu)\n\n\n\nMemoria RAM\n\nTotal usable: ~251 GiB (según free -h)\nConfiguración física: 8 × 32 GB = 256 GB\nTipo: DDR4 ECC (ancho 72 bits)\nVelocidad configurada: 2400 MT/s\n\n\nNota: la diferencia entre 256 GB físicos y ~251 GiB visibles es normal por conversión GB/GiB y reserva del sistema.\n\n\n\nGPU\n\nModelo: NVIDIA GeForce RTX 3070 (8 GB VRAM)\nDriver: 590.48.01\nCUDA: 13.1 (según nvidia-smi)\n\n\n\nAlmacenamiento y puntos de montaje (XFS)\nDisco NVMe (sistema):\n\nNVMe: Predator SSD GM7 M.2 2TB (1.9T)\n\n/ (root): 70G (LVM)\n/home: 1.8T (LVM)\n/boot y /boot/efi\n\n\nDiscos SATA (datos en /srv):\n\n/srv/call (CALL) — 4 TB (WDC WD40EZAX)\n/srv/ash (ASH) — 4 TB (WDC WD40EZRZ)\n/srv/david (DAVID) — 6 TB (WDC WD60EFRX)\n/srv/walter(WALTER) — 6 TB (WDC WD60EFRX)\n/srv/bishop(BISHOP) — 6 TB (WDC WD60PURX)\n\n\nNota: Todos los volúmenes de datos están formateados en XFS y montados de forma persistente bajo /srv.\n\n\n\nRed (resumen)\n\nInterfaz LAN: enp6s0\nIP LAN: 192.168.50.211/24\nGateway: 192.168.50.1\nVPN WireGuard: wg0 → 10.8.0.1/24\nOverlay adicional: tailscale0 (100.105.117.111/32)\nDNS (según resolv.conf): 100.100.100.100 (Tailscale)",
+    "objectID": "index.html#objetivo-del-servidor",
+    "href": "index.html#objetivo-del-servidor",
+    "title": "Servidor MAGINOT - Anexo II",
+    "section": "Objetivo del servidor",
+    "text": "Objetivo del servidor\nDiseñar e implementar un servidor GNU/Linux multiusuario, seguro y observable que permita la ejecución rápida y reproducible de pipelines bioinformáticos mediante contenedores y control de recursos, con almacenamiento confiable y cuotas, para dar un servicio estable.",
     "crumbs": [
-      "Preface"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
     ]
   },
   {
-    "objectID": "index.html#arquitectura-de-red-y-acceso",
-    "href": "index.html#arquitectura-de-red-y-acceso",
-    "title": "Servidor MAGINOT - Anexo I",
-    "section": "Arquitectura de red y acceso",
-    "text": "Arquitectura de red y acceso\nMAGINOT se integra a la red mediante un esquema perimetral donde el enlace de Internet de Telmex delega conectividad hacia una DMZ, y el control de seguridad queda a cargo del ASUS RT-AX86U Pro, que opera como gateway/firewall y servidor de servicios de red (DHCP). En este diseño:\n\nEl equipo Telmex entrega conectividad hacia el ASUS mediante DMZ.\nEl ASUS funciona como gateway principal y firewall (NAT/políticas).\nEl servicio de VPN (WireGuard) está hospedado en MAGINOT; el ASUS únicamente expone/redirige el puerto de la VPN hacia el servidor.\nAcceso interno (LAN): sin restricciones adicionales.\nEl servidor MAGINOT no expone puertos directamente a Internet; el único punto de entrada remoto es el puerto de VPN publicado por el gateway.",
+    "objectID": "index.html#a-quién-está-dirigido",
+    "href": "index.html#a-quién-está-dirigido",
+    "title": "Servidor MAGINOT - Anexo II",
+    "section": "¿A quién está dirigido?",
+    "text": "¿A quién está dirigido?\nA estudiantes, técnicos y personal académico que requieran ejecutar análisis bioinformáticos en un entorno compartido, siguiendo buenas prácticas de seguridad, organización y uso responsable de recursos.",
     "crumbs": [
-      "Preface"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
     ]
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "Introducción",
+    "objectID": "index.html#alcances-del-manual",
+    "href": "index.html#alcances-del-manual",
+    "title": "Servidor MAGINOT - Anexo II",
+    "section": "Alcances del manual",
+    "text": "Alcances del manual\nIncluye - Acceso (VPN/SSH) - Navegación y organización de proyectos - Transferencia de archivos (SFTP/SCP/rsync) - Uso de software (módulos/ambientes/contenedores) - Ejecución y monitoreo básico de análisis\nNo incluye - Cursos completos de Linux o bioinformática - Desarrollo de pipelines desde cero - Instalación libre de software sin solicitud previa al administrador",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#reglas-rápidas-uso-responsable",
+    "href": "index.html#reglas-rápidas-uso-responsable",
+    "title": "Servidor MAGINOT - Anexo II",
+    "section": "Reglas rápidas (uso responsable)",
+    "text": "Reglas rápidas (uso responsable)\n\nLa cuenta es personal e intransferible.\nNo compartas contraseñas.\nMantén tus proyectos ordenados y limpia datos temporales.\nReporta incidentes o problemas al administrador.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#buenas-prácticas-recomendadas",
+    "href": "index.html#buenas-prácticas-recomendadas",
+    "title": "Servidor MAGINOT - Anexo II",
+    "section": "Buenas prácticas recomendadas",
+    "text": "Buenas prácticas recomendadas\n\nOrganiza tus proyectos: usa una estructura consistente (por ejemplo data/, scripts/, results/, logs/, metadata/).\nReproducibilidad: registra versiones, parámetros y comandos (idealmente en scripts).\nLogs: guarda salida estándar y errores; te ahorran tiempo para depurar.\nAlmacenamiento responsable: comprime resultados grandes y elimina temporales cuando ya no se requieran.\nSeguridad: usa contraseñas fuertes.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#ruta-rápida-para-usuarios-con-prisa",
+    "href": "index.html#ruta-rápida-para-usuarios-con-prisa",
+    "title": "Servidor MAGINOT - Anexo II",
+    "section": "Ruta rápida (para usuarios con prisa)",
+    "text": "Ruta rápida (para usuarios con prisa)\n\nConéctate a la VPN (WireGuard).\nEntra por SSH al servidor.\nUbica o crea tu carpeta de proyecto.\nSube tus datos (SFTP/rsync/scp).\nCarga software (modules/conda) o usa contenedores (Apptainer).\nEjecuta tu análisis siguiendo las reglas de recursos.\nMonitorea y guarda logs/resultados.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>MAGINOT — Manual de usuario</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html",
+    "href": "requirements.html",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
     "section": "",
-    "text": "Objetivo principal\nLa Unidad de Síntesis en Sistemática y Evolución (UniSSE) del Instituto de Biología (IB-UNAM) se concibe como un espacio especializado para plantear, desarrollar, fomentar y brindar apoyo a investigaciones orientadas a entender los procesos evolutivos que originan, mantienen y estructuran la biota en distintas dimensiones (p. ej., riqueza de especies, diversidad genética, distribución geográfica) y a diferentes escalas (p. ej., macroevolución, biogeografía). Estas investigaciones se sostienen en la síntesis de datos provenientes de colecciones biológicas, inventarios, bases de datos cibernéticas y datos aportados por especialistas, integrados mediante enfoques analíticos y transversales dentro del IB.\nEn este marco, mi papel como técnico académico responsable de los análisis en la UniSSE se centra en habilitar y mantener la infraestructura informática que permite gestionar datos genómicos, implementar y optimizar software de bioinformática y filogenética comparativa, y acompañar a la comunidad académica y estudiantil del IB en la ejecución reproducible de análisis. Esta función requiere plataformas estables, seguras y escalables, capaces de sostener flujos de trabajo exigentes y diversos, con demandas crecientes de procesamiento, almacenamiento y trazabilidad.\nPor ello, el servidor “Maginot” se plantea como una pieza de infraestructura estratégica para la UniSSE: un sistema GNU/Linux diseñado para ofrecer servicio multiusuario confiable, facilitar la reproducibilidad, asegurar el uso ordenado y justo de recursos, y permitir observabilidad y mantenimiento continuo para garantizar la continuidad operativa de los análisis en los que apoya la Unidad.\nDiseñar e implementar un servidor GNU/Linux multiusuario, seguro y observable que permita la ejecución rápida y reproducible de pipelines bioinformáticos mediante contenedores y control de recursos, con almacenamiento confiable y cuotas, para dar un servicio estable.",
+    "text": "Objetivo\nEsta sección describe lo necesario para conectarte a MAGINOT desde tu sistema operativo: VPN (WireGuard) + SSH, y (opcional) SFTP para transferir archivos.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
     ]
   },
   {
-    "objectID": "intro.html#objetivos-específicos",
-    "href": "intro.html#objetivos-específicos",
-    "title": "Introducción",
-    "section": "Objetivos específicos",
-    "text": "Objetivos específicos\n\nMultiusuario y control de acceso: cuentas, grupos, permisos, políticas de autenticación y buenas prácticas de uso.\nEjecución reproducible: estandarizar la ejecución de pipelines con contenedores (p. ej., Apptainer/Podman) para minimizar variaciones por dependencias.\nControl y asignación de recursos: lineamientos y herramientas para limitar/administrar CPU, RAM y tiempos de ejecución (p. ej., colas o políticas de prioridad según el diseño del servicio).\nAlmacenamiento confiable: estructura de directorios de trabajo, respaldos, y cuotas por usuario/proyecto para sostener operación a largo plazo.\nSeguridad operativa: endurecimiento básico del sistema, registro de eventos y medidas contra accesos no autorizados.\nObservabilidad y mantenimiento: monitoreo de rendimiento/uso (CPU, RAM, disco, red), alertas y bitácoras para diagnóstico y continuidad del servicio.\nDocumentación y soporte: guías mínimas para usuarios (acceso, ejecución, buenas prácticas) y registro técnico para mantenimiento y auditoría.",
+    "objectID": "requirements.html#lo-que-necesitas-antes-de-empezar",
+    "href": "requirements.html#lo-que-necesitas-antes-de-empezar",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "Lo que necesitas (antes de empezar)",
+    "text": "Lo que necesitas (antes de empezar)\nDebes contar con:\n\n✅ Usuario en MAGINOT\n✅ Acceso VPN: archivo WireGuard .conf\n✅ Datos de conexión SSH\n\nHost (IP)\nPuerto\nUsuario\n\n✅ Conexión a internet\n\n\nImportante: normalmente MAGINOT solo es accesible después de conectarte a la VPN.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
     ]
   },
   {
-    "objectID": "disk.html",
-    "href": "disk.html",
-    "title": "Validación y configuración de discos",
+    "objectID": "requirements.html#vpn-wireguard-obligatorio",
+    "href": "requirements.html#vpn-wireguard-obligatorio",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "1) VPN — WireGuard (obligatorio)",
+    "text": "1) VPN — WireGuard (obligatorio)\n\nWindows\n\nInstala WireGuard (Windows).\nAbre WireGuard → Add Tunnel → Import tunnel(s) from file.\nSelecciona tu archivo usuario.conf.\nActiva el túnel (Activate).\n\n\n\nmacOS\n\nInstala WireGuard desde la App Store.\nAbre WireGuard → Import tunnel(s) from file (o “Add Tunnel”).\nSelecciona tu usuario.conf.\nActiva el túnel.\n\n\n\nLinux\nDependiendo de la distribución:\n\nCliente CLI: wireguard-tools\nCliente GUI: WireGuard app / NetworkManager plugin (si aplica)\n\nFlujo general: 1. Importa tu configuración .conf en la herramienta que uses (GUI o CLI). 2. Levanta el túnel.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html#verificar-que-la-vpn-está-funcionando-recomendado",
+    "href": "requirements.html#verificar-que-la-vpn-está-funcionando-recomendado",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "2) Verificar que la VPN está funcionando (recomendado)",
+    "text": "2) Verificar que la VPN está funcionando (recomendado)\nCon el túnel activo, valida conectividad con la IP que te indique el administrador.\nEjemplo:\nIP: 192.168.50.211\nping -c 3 192.168.50.211\nSi el ping falla:\n\nrevisa que el túnel esté activo\nrevisa que importaste el .conf correcto\ncontacta al administrador si persiste",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html#acceso-por-ssh",
+    "href": "requirements.html#acceso-por-ssh",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "3) Acceso por SSH",
+    "text": "3) Acceso por SSH\n\nNota: La IP y el puerto es la que te indique el administrador.\n\n\nOpción A — Terminal (OpenSSH) recomendado\nmacOS / Linux\nEjemplo:\nIP: 192.168.50.25\nPuerto: 14232\nssh -p 14232 usuario@192.168.50.25\nWindows 10/11 (PowerShell o Windows Terminal)\nssh -p 14232 usuario@192.168.50.25\nLa primera vez, te pedirá confirmar la llave del servidor:\n\nescribe yes y Enter",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html#contraseña-y-primer-cambio",
+    "href": "requirements.html#contraseña-y-primer-cambio",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "4) Contraseña y primer cambio",
+    "text": "4) Contraseña y primer cambio\nTu cuenta se crea con una contraseña temporal.\n✅ En tu primer inicio de sesión, el sistema te pedirá cambiarla automáticamente (no podrás continuar sin hacerlo).\nSi por alguna razón no te aparece el cambio automático, puedes forzarlo manualmente con:\npasswd usuario\n\nReglas de contraseña (obligatorias)\n\nMínimo 10 caracteres\nDebe incluir al menos:\n\n1 letra minúscula\n1 letra mayúscula\n1 número\n1 símbolo\n\nNo compartir credenciales (la cuenta es personal e intransferible)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html#transferencia-de-archivos-con-scp",
+    "href": "requirements.html#transferencia-de-archivos-con-scp",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "5) Transferencia de archivos con scp",
+    "text": "5) Transferencia de archivos con scp\nscp (Secure Copy) permite copiar archivos y carpetas de forma segura usando SSH.\nFunciona en macOS, Linux y también en Windows (PowerShell/Windows Terminal).\n\nRequisito: debes estar conectado a la VPN (WireGuard) y tener acceso por SSH.\n\n\nSintaxis básica (Linux y macOS)\nIP: 192.168.50.25\nPuerto: 14232\nCopiar archivo local → servidor:\nscp -P 14232 archivo.ext USUARIO@192.168.50.25:/ruta/destino/\nCopiar archivo servidor → local:\nscp -P 14232 USUARIO@192.168.50.25:/ruta/archivo.ext /ruta/local/\nCopiar carpetas (recursivo)\nPara subir una carpeta completa usa -r:\nscp -r -P 14232 carpeta_proyecto/ USUARIO@192.168.50.25:/ruta/destino/\nPara bajar una carpeta del servidor:\nscp -r -P 14232 USUARIO@192.168.50.25:/ruta/carpeta_en_servidor/ ./\n\n\nWindows (PowerShell / Windows Terminal)\nEn Windows 10/11, scp suele venir incluido. Los comandos son iguales:\nscp -P 14232 archivo.ext USUARIO@192.168.50.25:~/\nTip de rutas en Windows: usa comillas si hay espacios:\nscp -P 14232 \"C:\\Users\\TuUsuario\\Desktop\\archivo.ext\" USUARIO@192.168.50.25:~/\n\n\nErrores comunes\nPermission denied\n\nNo tienes permisos de escritura en esa ruta.\nSolución: copia primero a tu HOME y luego mueve dentro del servidor (si tienes permisos), o pide acceso.\n\nNo such file or directory\n\nLa ruta remota no existe o está mal escrita.\nVerifica con ls en SSH.\n\nSe corta la transferencia\n\nPara archivos grandes, considera rsync (más robusto).\n\n\n\nBuenas prácticas\n\nUsa rutas claras y estructura de proyecto (data/, results/, logs/).\nPara archivos grandes, comprime antes de transferir (tar.gz) o usa rsync.\nEvita copiar datos sensibles sin autorización.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "requirements.html#clientes-gráficos-recomendado-termius",
+    "href": "requirements.html#clientes-gráficos-recomendado-termius",
+    "title": "Conexión: VPN, SSH y transferencia de archivos",
+    "section": "6) Clientes gráficos (recomendado): Termius",
+    "text": "6) Clientes gráficos (recomendado): Termius\nAdemás de la terminal (OpenSSH) y scp, existen clientes gráficos que facilitan mucho el trabajo diario: guardan tus hosts, simplifican la autenticación, integran SFTP para transferencia de archivos y permiten port forwarding con asistentes.\nUna opción que recomiendo es Termius, un cliente moderno de SSH disponible para Windows, macOS, Linux, iOS, iPadOS y Android. Incluye funciones como “hosts”, SFTP integrado y port forwarding con un asistente paso a paso.\n\n¿Por qué Termius?\n\nMultiplataforma (desktop y móvil).\nOrganización de accesos: guardas hosts (IP/dominio, puerto, usuario) para conectar con un clic.\nSFTP integrado: transferencia de archivos sin salir de la app.\nPort forwarding guiado: ideal para acceder a servicios como RStudio Server u otros puertos internos (cuando esté permitido).\n\n\nNota: Termius tiene planes gratuitos y de pago; algunas funciones avanzadas dependen del plan.\n\nBuenas prácticas de seguridad (muy importante)\n\nEvita guardar contraseñas en equipos compartidos.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conexión: VPN, SSH y transferencia de archivos</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html",
+    "href": "commands.html",
+    "title": "Uso básico de Linux",
     "section": "",
-    "text": "Contexto y objetivo\nEste servidor integra discos de almacenamiento adicionales como volúmenes independientes (sin RAID) para ampliar la capacidad y alojar archivos no críticos (material temporal, descargas, datos replicables, etc.). A diferencia de un volumen redundante, estos discos no cuentan con tolerancia a fallas, por lo que su uso se limita a información prescindible o respaldada en otro sitio.",
+    "text": "Objetivo\nEsta sección te ayuda a moverte con seguridad dentro de MAGINOT: entender la estructura de carpetas, usar comandos básicos, revisar almacenamiento y recursos (CPU/RAM), y monitorear/detener procesos propios.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Validación y configuración de discos</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
     ]
   },
   {
-    "objectID": "disk.html#contexto-y-objetivo",
-    "href": "disk.html#contexto-y-objetivo",
-    "title": "Validación y configuración de discos",
+    "objectID": "commands.html#comandos-esenciales-para-moverte",
+    "href": "commands.html#comandos-esenciales-para-moverte",
+    "title": "Uso básico de Linux",
+    "section": "2) Comandos esenciales para moverte",
+    "text": "2) Comandos esenciales para moverte\n\n¿Dónde estoy?\npwd\n\n\nListar archivos\nls\nls -lh\nls -lah\n\n\nCambiar de carpeta\ncd /ruta\ncd ~\ncd ..\n\n\nCrear carpetas\nmkdir proyecto\nmkdir -p proyecto/{data,scripts,results,logs,metadata}\n\n\nCopiar, mover y borrar (con cuidado)\ncp archivoA archivoB\ncp -r carpetaA carpetaB\n\nmv viejo.txt nuevo.txt\nmv carpeta /otra/ruta/\n\nrm archivo.txt\nrm -r carpeta/\n\n⚠️ rm borra (no hay papelera). Antes de borrar, confirma con ls.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#revisar-almacenamiento-disco-y-tamaño-de-datos",
+    "href": "commands.html#revisar-almacenamiento-disco-y-tamaño-de-datos",
+    "title": "Uso básico de Linux",
+    "section": "3) Revisar almacenamiento (disco) y tamaño de datos",
+    "text": "3) Revisar almacenamiento (disco) y tamaño de datos\n\nEspacio libre por partición\ndf -h\n\n\nTamaño de una carpeta (resumen)\ndu -sh carpeta/\ndu -sh *\n\n\nEncontrar lo que más pesa (rápido)\ndu -sh * | sort -h\n\nBuen hábito: revisa tu uso de disco antes de lanzar análisis grandes.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#revisar-recursos-disponibles-cpu-y-ram",
+    "href": "commands.html#revisar-recursos-disponibles-cpu-y-ram",
+    "title": "Uso básico de Linux",
+    "section": "4) Revisar recursos disponibles (CPU y RAM)",
+    "text": "4) Revisar recursos disponibles (CPU y RAM)\n\nCPU (modelo, núcleos, hilos)\nlscpu\n\n\nRAM (memoria)\nfree -h\n\n\nVer procesos en tiempo real\ntop\nO htop es más cómodo:\nhtop",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#monitoreo-básico-ver-tus-procesos-pid-y-cómo-detenerlos",
+    "href": "commands.html#monitoreo-básico-ver-tus-procesos-pid-y-cómo-detenerlos",
+    "title": "Uso básico de Linux",
+    "section": "5) Monitoreo básico: ver tus procesos, PID y cómo detenerlos",
+    "text": "5) Monitoreo básico: ver tus procesos, PID y cómo detenerlos\n\nVer procesos de tu usuario\nps -u $USER\nMás legible:\nps -u $USER -o pid,ppid,cmd,%cpu,%mem,etime --sort=-%cpu | head -n 20\n\n\nBuscar un proceso por nombre\npgrep -a nombre_programa\nEjemplo:\npgrep -a mafft\n\n\nVer el PID de un proceso específico\npidof nombre_programa\n\n\nDetener un proceso (solo tus procesos)\nPrimero intenta un “apagado limpio”:\nkill PID\nSi no se detiene, fuerza:\nkill -9 PID\n\nRecomendación: usa kill normal primero. kill -9 es el último recurso.\n\n\n\nDetener varios procesos por nombre (con cuidado)\npkill nombre_programa\nVerifica antes con:\npgrep -a nombre_programa",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#sesiones-persistentes-recomendado-tmux",
+    "href": "commands.html#sesiones-persistentes-recomendado-tmux",
+    "title": "Uso básico de Linux",
+    "section": "6) Sesiones persistentes (recomendado): tmux",
+    "text": "6) Sesiones persistentes (recomendado): tmux\nSi tu conexión se corta, una sesión persistente evita perder tu trabajo.\nCrear una sesión:\ntmux new -s mi_sesion\nSalir sin cerrar la sesión:\n\nPresiona Ctrl+b y luego d\n\nVolver a entrar:\ntmux attach -t mi_sesion\nListar sesiones:\ntmux ls",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#permisos-y-propiedad-solo-lo-necesario",
+    "href": "commands.html#permisos-y-propiedad-solo-lo-necesario",
+    "title": "Uso básico de Linux",
+    "section": "7) Permisos y propiedad (solo lo necesario)",
+    "text": "7) Permisos y propiedad (solo lo necesario)\n\nVer permisos\nls -l\n\n\nCambiar permisos (ejemplos típicos)\nDar permiso de ejecución a un script:\nchmod +x script.sh\nPermisos comunes:\n\n644 archivos (lectura para todos, escritura solo dueño)\n755 ejecutables o carpetas (dueño escribe, otros leen/entran)\n\nEjemplos:\nchmod 644 archivo.txt\nchmod 755 carpeta/",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#edición-rápida-de-archivos-nano-y-opcional-vim",
+    "href": "commands.html#edición-rápida-de-archivos-nano-y-opcional-vim",
+    "title": "Uso básico de Linux",
+    "section": "8) Edición rápida de archivos: nano (y opcional vim)",
+    "text": "8) Edición rápida de archivos: nano (y opcional vim)\nAbrir un archivo:\nnano archivo.txt\nAtajos útiles:\n\nGuardar: Ctrl+O (Enter)\nSalir: Ctrl+X\nBuscar: Ctrl+W",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "commands.html#compresión-y-empaquetado",
+    "href": "commands.html#compresión-y-empaquetado",
+    "title": "Uso básico de Linux",
+    "section": "9) Compresión y empaquetado",
+    "text": "9) Compresión y empaquetado\n\nCrear un .tar.gz (carpeta completa)\ntar -czvf proyecto.tar.gz proyecto/\n\n\nExtraer un .tar.gz\ntar -xzvf proyecto.tar.gz\n\n\nComprimir un archivo con gzip\ngzip archivo.txt\ngunzip archivo.txt.gz\n\n\nCompresión paralela (si está instalado): pigz\npigz es como gzip pero usa varios núcleos.\nComprimir:\npigz archivo_grande.fastq\nDescomprimir:\nunpigz archivo_grande.fastq.gz",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Uso básico de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "module.html",
+    "href": "module.html",
+    "title": "Software en MAGINOT",
     "section": "",
-    "text": "Aclaración sobre el cambio de estrategia (RAID1 → volúmenes individuales)\nEn la planeación inicial se consideró implementar RAID1 (espejo) para contar con redundancia. Sin embargo, durante la implementación se decidió no continuar con RAID1, ya que este esquema reduce la capacidad útil al 50% (duplica la información en ambos discos).\nDado que en esta etapa el objetivo operativo es maximizar el espacio disponible, se optó por integrar los discos como volúmenes individuales. En consecuencia, estos volúmenes se destinan a datos no críticos, temporales o replicables, o a información que cuenta con respaldo externo.\n\nNota: En esta estrategia, la protección se gestiona mediante copias de seguridad y/o replicación externa, no mediante redundancia local.",
+    "text": "Objetivo\nEn MAGINOT el software se ofrece de forma controlada para mantener un entorno **estable, seguro y reproducible**.\nEsta sección explica cómo usar el sistema de módulos (Lmod) y, al final, cómo se gestionan herramientas vía Micromamba y Apptainer.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Validación y configuración de discos</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "disk.html#inventario-y-detección-de-dispositivos",
-    "href": "disk.html#inventario-y-detección-de-dispositivos",
-    "title": "Validación y configuración de discos",
-    "section": "Inventario y detección de dispositivos",
-    "text": "Inventario y detección de dispositivos\nPara identificar discos, particiones y sistemas de archivos:\nlsblk -o NAME,SIZE,FSTYPE,LABEL,UUID,MOUNTPOINTS\nlsblk -d -o NAME,SIZE,MODEL,SERIAL,WWN,TRAN,ROTA\n\n\n\n\n\n\nSobre los nombres /dev/sdX\nLos nombres sda, sdb, sdc, etc. pueden cambiar entre reinicios por el orden de detección del kernel (puertos SATA, tiempos de inicialización, etc.). Para evitar confusiones al seleccionar discos, se recomienda usar rutas estables como:\n\n/dev/disk/by-id/... (muy estable, incluye modelo/serial)\nUUID= o LABEL= para montaje en /etc/fstab (estable para montar)\n\nEjemplo:\nls -l /dev/disk/by-id/ | head\nreadlink -f /dev/disk/by-id/ata-XXXX",
+    "objectID": "module.html#si-necesitas-un-programa-nuevo-importante",
+    "href": "module.html#si-necesitas-un-programa-nuevo-importante",
+    "title": "Software en MAGINOT",
+    "section": "Si necesitas un programa nuevo (importante)",
+    "text": "Si necesitas un programa nuevo (importante)\nSi el software que necesitas no está disponible como módulo o contenedor, no intentes instalarlo por tu cuenta.\n✅ En MAGINOT, la instalación de software que requiere permisos (y la creación/actualización de ambientes) se realiza solo por el administrador.\n\n¿Cómo solicitar software al administrador?\nIncluye en tu solicitud:\n\nNombre del software\nVersión (si aplica)\nUso (curso/proyecto)\nEnlace oficial (GitHub/docs) o referencia de instalación (conda/bioconda, contenedor, etc.)\nRequerimientos especiales: MPI, GPU, bases de datos externas, etc.\n\nCuando el software esté disponible, el administrador te avisará y te indicará si se usa como:\n- módulo,\n- contenedor Apptainer,\n- o dentro de un ambiente Micromamba.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Validación y configuración de discos</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "disk.html#estado-actual-volúmenes-individuales-integrados",
-    "href": "disk.html#estado-actual-volúmenes-individuales-integrados",
-    "title": "Validación y configuración de discos",
-    "section": "Estado actual (volúmenes individuales integrados)",
-    "text": "Estado actual (volúmenes individuales integrados)\nLos discos de datos quedaron integrados como XFS y montados bajo /srv/*:\n\nBISHOP → /srv/bishop\nDAVID → /srv/david\nWALTER → /srv/walter\nASH → /srv/ash\nCALL → /srv/call\n\nComprobación rápida:\ndf -hT /srv/bishop /srv/david /srv/walter /srv/ash /srv/call",
+    "objectID": "module.html#módulos-lmod-qué-son-y-cómo-se-usan",
+    "href": "module.html#módulos-lmod-qué-son-y-cómo-se-usan",
+    "title": "Software en MAGINOT",
+    "section": "Módulos (Lmod): qué son y cómo se usan",
+    "text": "Módulos (Lmod): qué son y cómo se usan\nLos módulos permiten activar software instalado en el servidor sin instalar nada en tu cuenta.\nAl cargar un módulo, se ajustan variables de entorno (por ejemplo PATH) para que el comando quede disponible.\n\nVer el catálogo de módulos disponibles\nmodule spider\n\n\n\n\n\nEn este momento (ejemplo real en MAGINOT) aparecen módulos como:\n\nedta/2.0.1\nrepeatmasker/4.2.2\nrepeatmodeler/2.0.7\nrevbayes/1.2.5-mpi\nsamtools/1.19\n\n\n\nCargar un módulo (micromamba)\nBuscar información de un módulo\nmodule spider samtools\n\n\n\n\n\nCargar un módulo\nmodule load samtools/1.19\nVerifica:\nwhich samtools\nsamtools --version\n\n\n\n\n\n\n\nCargar un módulo (apptainer)\nBuscar información de un módulo\nmodule spider revbayes\n\n\n\n\n\nEl módulo revbayes/1.2.5-mpi proporciona RevBayes 1.2.5 con soporte MPI, ejecutándose dentro de un contenedor Apptainer, pero tú lo usas como un módulo normal.\nEste módulo expone dos comandos principales:\n\nrb-mpi\nEjecuta RevBayes (1 proceso) en el directorio actual.\nrb-mpi-np N\nEjecuta RevBayes usando mpirun -np N (multinúcleo) en el directorio actual.\n\nCargar un módulo\nmodule load revbayes/1.2.5-mpi\nVerifica:\nwhich rb-mpi\nrb-mpi --version\n\n\n\n\n\nEjemplo de ejecución:\ncd /ruta/al/proyecto/Clade_001/input\nmodule load revbayes/1.2.5-mpi\nrb-mpi-np 8 Clade_001.rev\n\n\nVer módulos cargados\nmodule list\n\n\nDescargar un módulo\nmodule unload samtools/1.19\n\n\nLimpiar el entorno (recomendado si cambias de proyecto)\nmodule purge\n\n\nConsejos para evitar conflictos\n\nInicia con module purge si vienes de otra sesión/proyecto.\nSi algo “no corre”, revisa primero module list y confirma versiones.\nSi necesitas otra versión, pide al administrador que la agregue como módulo.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Validación y configuración de discos</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "disk.html#procedimiento-estándar-molde-para-agregar-discos-nuevos-sin-raid",
-    "href": "disk.html#procedimiento-estándar-molde-para-agregar-discos-nuevos-sin-raid",
-    "title": "Validación y configuración de discos",
-    "section": "Procedimiento estándar (molde) para agregar discos nuevos sin RAID",
-    "text": "Procedimiento estándar (molde) para agregar discos nuevos sin RAID\n⚠️ Este procedimiento es destructivo: borra particiones y firmas del disco seleccionado.\n\nIdentificar el disco por MODEL/SERIAL y/o by-id\nlsblk -d -o NAME,SIZE,MODEL,SERIAL\nls -l /dev/disk/by-id/ | egrep 'WDC|ata-' | head\nDefinir una variable (recomendado) para evitar equivocaciones:\nDISK=\"/dev/disk/by-id/ata-XXXXXXXXXXXX\"   # &lt;- reemplaza por el correcto\nreadlink -f \"$DISK\"\n\n\nDesmontar si estaba montado\nsudo umount -R /srv/&lt;montaje&gt; 2&gt;/dev/null || true\n\n\nBorrar firmas y tabla de particiones\nsudo wipefs -a \"$DISK\"\nsudo sgdisk --zap-all \"$DISK\"\nsudo partprobe \"$DISK\" || true\n\n\nCrear GPT + 1 partición (100%)\nsudo parted -s \"$DISK\" mklabel gpt\nsudo parted -s \"$DISK\" mkpart primary xfs 1MiB 100%\nsudo partprobe \"$DISK\"\nDetectar la partición creada:\nlsblk \"$DISK\"\nSi usas by-id, la partición suele verse como ...-part1:\nPART=\"${DISK}-part1\"\nreadlink -f \"$PART\"\n\n\nFormatear a XFS con etiqueta\nLABEL=\"NOMBRE\"     # ej. BISHOP / DAVID / WALTER / ASH / CALL\nsudo mkfs.xfs -f -L \"$LABEL\" \"$PART\"\nsudo blkid \"$PART\"\n\n\nCrear punto de montaje y montar\nMP=\"/srv/${LABEL,,}\"     # convierte a minúsculas (bash)\nsudo mkdir -p \"$MP\"\nsudo mount \"$PART\" \"$MP\"\nfindmnt \"$MP\"\n\n\nAgregar a /etc/fstab y probar\ngrep -n \" $MP \" /etc/fstab || true\necho \"LABEL=$LABEL  $MP  xfs  defaults,noatime,nofail,x-systemd.device-timeout=10  0  0\" | sudo tee -a /etc/fstab\n\nsudo systemctl daemon-reload\nsudo umount \"$MP\"\nsudo mount -a\nfindmnt \"$MP\"\ndf -hT \"$MP\"\n\n\nVerificación final (rápida)\nlsblk -o NAME,SIZE,FSTYPE,LABEL,UUID,MOUNTPOINTS\nsudo blkid | egrep 'BISHOP|DAVID|WALTER|ASH|CALL' || true",
+    "objectID": "module.html#micromamba-ambientes-administrados",
+    "href": "module.html#micromamba-ambientes-administrados",
+    "title": "Software en MAGINOT",
+    "section": "Micromamba (ambientes administrados)",
+    "text": "Micromamba (ambientes administrados)\nMicromamba se usa para mantener ambientes controlados y reproducibles, pero en MAGINOT:\n✅ Solo el administrador puede:\n\ncrear nuevos ambientes\ninstalar/actualizar paquetes dentro de los ambientes\n\n👥 Los usuarios no crean ambientes ni instalan paquetes.\nSi necesitas un programa por esta vía, solicítalo al administrador.\nCuando esté disponible, se te indicará cómo usarlo.\nVer ambientes disponibles\nmicromamba env list\nActivar (cargar) un ambiente\nmicromamba activate NOMBRE_DEL_AMBIENTE\nVerifica que el programa ya esté disponible:\nwhich programa\nprograma --version\nVer paquetes instalados en el ambiente\nmicromamba list\nSalir del ambiente\nmicromamba deactivate",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Validación y configuración de discos</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "vpn.html",
-    "href": "vpn.html",
-    "title": "VPN con WireGuard",
+    "objectID": "module.html#apptainer-contenedores",
+    "href": "module.html#apptainer-contenedores",
+    "title": "Software en MAGINOT",
+    "section": "Apptainer (contenedores)",
+    "text": "Apptainer (contenedores)\nApptainer es una herramienta de contenedores diseñada para entornos Linux multiusuario (común en HPC).\nPermite ejecutar software empaquetado en una imagen (por ejemplo .sif) de forma reproducible, sin tener que instalar dependencias en tu cuenta, y sin requerir privilegios de administrador para correrlo.\nEn MAGINOT, Apptainer ya está instalado y puede usarse para correr herramientas bioinformáticas dentro de contenedores (propios o institucionales), siempre que tengas permisos de lectura sobre la imagen.\nEjemplos:\napptainer exec imagen.sif comando --help\nMontar tu carpeta de trabajo dentro del contenedor:\napptainer exec -B \"$PWD\":/work --pwd /work imagen.sif comando\n📌 Si necesitas una guía más completa sobre Apptainer, consulta mi tutorial:\nhttps://cristoichkov.github.io/biocontainers/",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+    ]
+  },
+  {
+    "objectID": "services.html",
+    "href": "services.html",
+    "title": "Servicios: RStudio Server",
     "section": "",
-    "text": "Instalación de WireGuard\nContexto y objetivo\nPor razones de seguridad, el servidor MAGINOT no debe ser accesible directamente desde Internet (por ejemplo, evitando publicar SSH, paneles web o puertos de servicios hacia el exterior). En su lugar, el acceso remoto se realiza exclusivamente a través de una VPN, de modo que solo equipos autenticados puedan entrar a la red privada del servidor y consumir servicios internos como si estuvieran en la red local.\nPor ello, se implementó WireGuard como VPN en Rocky Linux, configurado para escuchar en el puerto 13420/UDP, con el fin de que toda administración y acceso remoto a MAGINOT (SSH, RStudio, Grafana, etc.) ocurra únicamente a través del túnel VPN, reduciendo la exposición pública de servicios y centralizando el control de acceso.",
+    "text": "RStudio Server\nMAGINOT puede ofrecer RStudio Server como servicio web para trabajar en R desde el navegador.\nComo el acceso es por VPN (WireGuard), normalmente no es necesario usar port forwarding: basta con conectarte a la IP interna asignada y el puerto del servicio.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Servicios: RStudio Server</span>"
     ]
   },
   {
-    "objectID": "vpn.html#instalación-de-wireguard",
-    "href": "vpn.html#instalación-de-wireguard",
-    "title": "VPN con WireGuard",
-    "section": "",
-    "text": "sudo dnf -y update\nsudo dnf -y install epel-release\nsudo dnf -y install wireguard-tools",
+    "objectID": "services.html#requisitos",
+    "href": "services.html#requisitos",
+    "title": "Servicios: RStudio Server",
+    "section": "1) Requisitos",
+    "text": "1) Requisitos\n\nVPN (WireGuard) activa\nIP o dominio interno del servidor (proporcionado por el administrador)\nPuerto de RStudio Server (proporcionado por el administrador)\nCredenciales de tu cuenta de MAGINOT (usuario/contraseña)",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Servicios: RStudio Server</span>"
     ]
   },
   {
-    "objectID": "vpn.html#cargar-el-módulo-del-kernel-y-verificar",
-    "href": "vpn.html#cargar-el-módulo-del-kernel-y-verificar",
-    "title": "VPN con WireGuard",
-    "section": "Cargar el módulo del kernel y verificar",
-    "text": "Cargar el módulo del kernel y verificar\nsudo modprobe wireguard\nlsmod | grep wireguard || true\n\n\n\n\n\nLa presencia del módulo wireguard en lsmod confirma que el kernel puede crear interfaces WireGuard (por ejemplo, wg0). Los módulos udp_tunnel e ip6_udp_tunnel son dependencias relacionadas con encapsulamiento UDP.",
+    "objectID": "services.html#cómo-conectarte",
+    "href": "services.html#cómo-conectarte",
+    "title": "Servicios: RStudio Server",
+    "section": "2) Cómo conectarte",
+    "text": "2) Cómo conectarte\n\nConéctate a la VPN.\nAbre tu navegador (Chrome/Firefox/Safari).\nEn la barra de direcciones escribe:\n\n10.8.0.1:8787\nIP: 10.8.0.1\nPuerto: 8787\n\nInicia sesión con tu usuario y contraseña de MAGINOT.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Servicios: RStudio Server</span>"
     ]
   },
   {
-    "objectID": "vpn.html#identificar-la-interfaz-de-salida-nat",
-    "href": "vpn.html#identificar-la-interfaz-de-salida-nat",
-    "title": "VPN con WireGuard",
-    "section": "Identificar la interfaz de salida (NAT)",
-    "text": "Identificar la interfaz de salida (NAT)\nWireGuard requiere conocer la interfaz por la que sale el tráfico para configurar NAT.\nIFACE=$(ip route get 1.1.1.1 | awk '{print $5; exit}')\necho \"Interfaz de salida: $IFACE\"\nSalida esperada:\nInterfaz de salida: enp6s0",
+    "objectID": "services.html#recomendaciones-de-uso",
+    "href": "services.html#recomendaciones-de-uso",
+    "title": "Servicios: RStudio Server",
+    "section": "3) Recomendaciones de uso",
+    "text": "3) Recomendaciones de uso\n\nUsa RStudio para análisis interactivos, edición de scripts y revisión de resultados.\nPara análisis largos o pesados, sigue las reglas del servidor (por ejemplo, ejecutarlos de forma controlada y guardando logs).\nMantén tus proyectos organizados (por ejemplo data/, scripts/, results/, logs/).",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Servicios: RStudio Server</span>"
     ]
   },
   {
-    "objectID": "vpn.html#crear-llaves-del-servidor",
-    "href": "vpn.html#crear-llaves-del-servidor",
-    "title": "VPN con WireGuard",
-    "section": "Crear llaves del servidor",
-    "text": "Crear llaves del servidor\nCambiar a modo root\nmkdir -p /etc/wireguard\ncd /etc/wireguard\numask 077\n\nwg genkey | sudo tee server.key &gt;/dev/null\ncat server.key | sudo wg pubkey | sudo tee server.pub &gt;/dev/null\n\necho \"Server public key:\"\nsudo cat /etc/wireguard/server.pub\nLa public key del servidor (server.pub) se utiliza para configurar clientes.",
+    "objectID": "services.html#problemas-comunes",
+    "href": "services.html#problemas-comunes",
+    "title": "Servicios: RStudio Server",
+    "section": "4) Problemas comunes",
+    "text": "4) Problemas comunes\n\nNo carga la página\n\nVerifica que la VPN esté activa.\nConfirma que estás usando la IP correcta y el puerto correcto.\nPrueba conectividad:\n\nping -c 3 10.8.0.1\n\n\n“Connection refused” o “No se puede establecer conexión”\n\nEl servicio puede estar detenido o el puerto cambió.\nContacta al administrador.\n\n\n\nLogin incorrecto\n\nAsegúrate de usar tu usuario de MAGINOT.\nSi tu contraseña expiró, entra primero por SSH para cambiarla y vuelve a intentar.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
-    ]
-  },
-  {
-    "objectID": "vpn.html#crear-la-interfaz-wg0-configuración-del-servidor",
-    "href": "vpn.html#crear-la-interfaz-wg0-configuración-del-servidor",
-    "title": "VPN con WireGuard",
-    "section": "Crear la interfaz wg0 (configuración del servidor)",
-    "text": "Crear la interfaz wg0 (configuración del servidor)\nSe utilizará la red VPN 10.8.0.0/24:\n\nServidor VPN: 10.8.0.1\nPuerto: 13420/UDP\nNAT saliendo por: enp6s0\n\nCrear /etc/wireguard/wg0.conf:\nSERVER_PRIV=$(sudo cat /etc/wireguard/server.key)\n\nsudo tee /etc/wireguard/wg0.conf &gt;/dev/null &lt;&lt;EOF\n[Interface]\nAddress = 10.8.0.1/24\nListenPort = 13420\nPrivateKey = ${SERVER_PRIV}\n\n# NAT + forwarding\nPostUp   = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o enp6s0 -j MASQUERADE\nPostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o enp6s0 -j MASQUERADE\nEOF\n\nsudo chmod 600 /etc/wireguard/wg0.conf /etc/wireguard/server.key",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
-    ]
-  },
-  {
-    "objectID": "vpn.html#habilitar-ip-forwarding",
-    "href": "vpn.html#habilitar-ip-forwarding",
-    "title": "VPN con WireGuard",
-    "section": "Habilitar IP forwarding",
-    "text": "Habilitar IP forwarding\necho 'net.ipv4.ip_forward = 1' | sudo tee /etc/sysctl.d/99-wireguard.conf\nsysctl --system | grep -i ip_forward || true\nSalida esperada :\nnet.ipv4.ip_forward = 1",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
-    ]
-  },
-  {
-    "objectID": "vpn.html#abrir-el-puerto-13420udp-en-firewalld",
-    "href": "vpn.html#abrir-el-puerto-13420udp-en-firewalld",
-    "title": "VPN con WireGuard",
-    "section": "Abrir el puerto 13420/udp en firewalld",
-    "text": "Abrir el puerto 13420/udp en firewalld\nfirewall-cmd --permanent --add-port=13420/udp\nfirewall-cmd --reload\nfirewall-cmd --list-ports | tr ' ' '\\n' | grep 13420 || true",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
-    ]
-  },
-  {
-    "objectID": "vpn.html#activar-wireguard-wg-quickwg0",
-    "href": "vpn.html#activar-wireguard-wg-quickwg0",
-    "title": "VPN con WireGuard",
-    "section": "Activar WireGuard (wg-quick@wg0)",
-    "text": "Activar WireGuard (wg-quick@wg0)\nsudo systemctl enable --now wg-quick@wg0\nsudo systemctl status wg-quick@wg0 --no-pager -l",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
-    ]
-  },
-  {
-    "objectID": "vpn.html#estado-de-wireguard",
-    "href": "vpn.html#estado-de-wireguard",
-    "title": "VPN con WireGuard",
-    "section": "Estado de WireGuard",
-    "text": "Estado de WireGuard\nwg show\nss -lunp | grep 13420 || true\nip -br a | grep wg0 || true\nResultado: WireGuard quedó habilitado en MAGINOT: interfaz wg0 activa, IP asignada y puerto 13420/UDP en escucha.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
-    ]
-  },
-  {
-    "objectID": "vpn.html#crear-clientes-por-nombre",
-    "href": "vpn.html#crear-clientes-por-nombre",
-    "title": "VPN con WireGuard",
-    "section": "Crear clientes por nombre",
-    "text": "Crear clientes por nombre\n\nScript de alta: wg-add-client (crea peer + archivo NOMBRE.conf)\nEste script:\n\nasigna automáticamente la siguiente IP libre en 10.8.0.0/24,\ngenera llaves del cliente,\ncrea el archivo NOMBRE.conf (full-tunnel),\nagrega el peer a wg0.conf con comentario,\nreinicia wg-quick@wg0.\n\n\n\nInstalar el script\nsudo tee /usr/local/sbin/wg-add-client &gt;/dev/null &lt;&lt;'EOF'\n#!/usr/bin/env bash\nset -euo pipefail\n\nNAME=\"${1:-}\"\nENDPOINT_HOST=\"${2:-}\"\nPORT=\"${3:-13420}\"\n\nif [[ -z \"$NAME\" || -z \"$ENDPOINT_HOST\" ]]; then\n  echo \"Uso: sudo wg-add-client NOMBRE ENDPOINT_HOST [PUERTO]\"\n  echo \"Ejemplo: sudo wg-add-client karen stoichsse.ddns.net 13420\"\n  exit 1\nfi\n\nNAME=\"$(echo \"$NAME\" | tr ' ' '_' | tr -cd '[:alnum:]_-')\"\n\nWGDIR=\"/etc/wireguard\"\nWGIF=\"wg0\"\nNET=\"10.8.0\"\nCLIENT_DIR=\"${WGDIR}/clients\"\n\n# checks mínimos\n[[ -r \"${WGDIR}/server.pub\" ]] || { echo \"ERROR: falta ${WGDIR}/server.pub\"; exit 1; }\n[[ -r \"${WGDIR}/${WGIF}.conf\" ]] || { echo \"ERROR: falta ${WGDIR}/${WGIF}.conf\"; exit 1; }\n\nmkdir -p \"$CLIENT_DIR\"\nchmod 700 \"$CLIENT_DIR\"\n\ncd \"$WGDIR\"\numask 077\n\n# Encontrar IPs ya usadas (si no hay matches, no fallar)\nUSED=$(\n  { grep -oE 'AllowedIPs = 10\\.8\\.0\\.[0-9]+/32' \"${WGDIR}/${WGIF}.conf\" 2&gt;/dev/null || true; } \\\n  | awk -F'[./]' '{print $4}' | sort -n | uniq\n)\n\nIP=2\nwhile echo \"$USED\" | grep -qx \"$IP\"; do IP=$((IP+1)); done\n[[ $IP -le 254 ]] || { echo \"ERROR: No hay IPs libres en ${NET}.0/24\"; exit 1; }\n\n# Evitar duplicados por nombre\nif [[ -e \"${CLIENT_DIR}/${NAME}.conf\" ]]; then\n  echo \"ERROR: ya existe ${CLIENT_DIR}/${NAME}.conf\"\n  exit 1\nfi\n\n# Generar llaves del cliente\nwg genkey | tee \"${CLIENT_DIR}/${NAME}.key\" &gt;/dev/null\ncat \"${CLIENT_DIR}/${NAME}.key\" | wg pubkey &gt; \"${CLIENT_DIR}/${NAME}.pub\"\n\n# Crear config full-tunnel (Internet por VPN)\ncat &gt; \"${CLIENT_DIR}/${NAME}.conf\" &lt;&lt;CFG\n[Interface]\nPrivateKey = $(cat \"${CLIENT_DIR}/${NAME}.key\")\nAddress = ${NET}.${IP}/24\nDNS = 1.1.1.1\n\n[Peer]\nPublicKey = $(cat \"${WGDIR}/server.pub\")\nEndpoint = ${ENDPOINT_HOST}:${PORT}\nAllowedIPs = 0.0.0.0/0\nPersistentKeepalive = 25\nCFG\n\nchmod 600 \"${CLIENT_DIR}/${NAME}.conf\" \"${CLIENT_DIR}/${NAME}.key\" \"${CLIENT_DIR}/${NAME}.pub\"\n\n# Agregar peer al servidor (persistente)\ncat &gt;&gt; \"${WGDIR}/${WGIF}.conf\" &lt;&lt;PEER\n\n# ${NAME}\n[Peer]\nPublicKey = $(cat \"${CLIENT_DIR}/${NAME}.pub\")\nAllowedIPs = ${NET}.${IP}/32\nPEER\n\nsystemctl restart \"wg-quick@${WGIF}\"\n\necho \"OK: ${CLIENT_DIR}/${NAME}.conf\"\necho \"IP asignada: ${NET}.${IP}\"\necho \"PublicKey cliente: $(cat \"${CLIENT_DIR}/${NAME}.pub\")\"\nEOF\n\nsudo chmod +x /usr/local/sbin/wg-add-client\n\n\nCrear un cliente (por nombre)\nEjemplo:\nsudo /usr/local/sbin/wg-add-client stoich stoichsse.ddns.net 13420\n\n\n\n\n\nEl archivo quedará en:\n/etc/wireguard/clients/stoich.conf\nListar clientes:\nls -lh /etc/wireguard/clients/\nConfirmar que el peer quedó cargado:\nsudo wg show",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
-    ]
-  },
-  {
-    "objectID": "vpn.html#copiar-el-.conf-a-un-home-para-transferencia-a-teléfonopc",
-    "href": "vpn.html#copiar-el-.conf-a-un-home-para-transferencia-a-teléfonopc",
-    "title": "VPN con WireGuard",
-    "section": "Copiar el .conf a un home (para transferencia a teléfono/PC)",
-    "text": "Copiar el .conf a un home (para transferencia a teléfono/PC)\nsudo cp /etc/wireguard/clients/stoich.conf /home/stoich/\nsudo chown stoich:stoich /home/stoich/stoich.conf\nchmod 600 /home/stoich/stoich.conf\nls -lh /home/stoich/stoich.conf",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
-    ]
-  },
-  {
-    "objectID": "vpn.html#revocar-un-cliente-baja",
-    "href": "vpn.html#revocar-un-cliente-baja",
-    "title": "VPN con WireGuard",
-    "section": "Revocar un cliente (baja)",
-    "text": "Revocar un cliente (baja)\n\nEliminar archivos del cliente:\n\nsudo rm -f /etc/wireguard/clients/stoich.{conf,key,pub}\n\nEliminar el bloque del peer en el servidor:\n\nBuscar # stoich en /etc/wireguard/wg0.conf y borrar ese bloque completo [Peer].\n\nReiniciar WireGuard y verificar:\n\nsudo systemctl restart wg-quick@wg0\nsudo wg show",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VPN con WireGuard</span>"
-    ]
-  },
-  {
-    "objectID": "pass_sec.html",
-    "href": "pass_sec.html",
-    "title": "Fortalecimiento de Acceso y Autenticación",
-    "section": "",
-    "text": "Contraseñas",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Fortalecimiento de Acceso y Autenticación</span>"
-    ]
-  },
-  {
-    "objectID": "pass_sec.html#contraseñas",
-    "href": "pass_sec.html#contraseñas",
-    "title": "Fortalecimiento de Acceso y Autenticación",
-    "section": "",
-    "text": "Contexto y objetivo\nMAGINOT es un servidor multiusuario orientado a análisis bioinformáticos y administración de datos de investigación. En este contexto, el acceso a cuentas es un punto crítico de seguridad: una contraseña débil o compartida puede comprometer no solo la cuenta individual, sino también recursos, datos y servicios del sistema.\nPor ello, se implementó una política mínima de contraseñas con dos principios:\n\nResponsabilidad individual: cada usuario es responsable de la seguridad de su contraseña.\n\n-    No está permitido compartir contraseñas (ni con colegas, estudiantes o terceros).\n\n-    Toda actividad realizada desde una cuenta se atribuye al titular de esa cuenta.\n\nArranque seguro de cuentas nuevas: el administrador asigna una contraseña temporal inicial durante la creación de la cuenta.\n\n-    En el **primer inicio de sesión**, la contraseña temporal debe cambiarse por una nueva, personal e intransferible.\n\n-    El cambio inicial se acompaña de un mensaje con requisitos mínimos para evitar contraseñas triviales.\n\n\nRequisitos mínimos de contraseña\n\nLongitud mínima: 10 caracteres\nDebe incluir al menos:\n\n-    **1 minúscula**\n\n-    **1 mayúscula**\n\n-    **1 número**\n\n-    **1 símbolo** (carácter especial)",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Fortalecimiento de Acceso y Autenticación</span>"
-    ]
-  },
-  {
-    "objectID": "pass_sec.html#definir-la-política-en-etcsecuritypwquality.conf",
-    "href": "pass_sec.html#definir-la-política-en-etcsecuritypwquality.conf",
-    "title": "Fortalecimiento de Acceso y Autenticación",
-    "section": "Definir la política en /etc/security/pwquality.conf",
-    "text": "Definir la política en /etc/security/pwquality.conf\nEste archivo aplica y audita la política de complejidad a nivel sistema; lo utilizan passwd y pam_pwquality.so.\nEditar el archivo:\nsudo nano /etc/security/pwquality.conf\nAjustar (o asegurar) los siguientes parámetros:\n# Longitud mínima de la contraseña\nminlen  = 10\n\n# Mínimo 1 letra minúscula\nlcredit = -1\n\n# Mínimo 1 letra mayúscula\nucredit = -1\n\n# Mínimo 1 dígito\ndcredit = -1\n\n# Mínimo 1 símbolo\nocredit = -1\n\nVerificación inmediata (para confirmar que ya aplica)\nPara validar que la política se encuentra activa, se ejecutó:\npasswd usuario\nSe probó una contraseña que no cumpliera (por ejemplo, sin símbolo o con menos de 10 caracteres) y el sistema la rechazó. Posteriormente, se probó una contraseña que sí cumpliera, verificando que el cambio se completara correctamente.\n\n\nCrear el script /usr/local/sbin/maginot-add-user\nCon el fin de estandarizar el alta de cuentas, se creó un script administrativo para:\n\ncrear usuario y directorio home,\nasignar una contraseña temporal robusta,\nforzar cambio en el primer inicio de sesión,\n(opcional) asignar grupos.\n\nCrear el archivo:\nsudo tee /usr/local/sbin/maginot-add-user &gt;/dev/null &lt;&lt;'EOF'\n#!/usr/bin/env bash\nset -euo pipefail\nexport LC_ALL=C\n\nusage() {\n  cat &lt;&lt;'USAGE'\nUso:\n  sudo maginot-add-user [opciones] usuario\n\nOpciones:\n  -g  Grupos separados por coma (ej: mamba,docker)\n  -s  Shell (default: /bin/bash)\n  -c  Comentario/GECOS (nombre completo)\n  -b  Directorio base para homes (default: /home) -&gt; home será: BASE/usuario\n  -d  Home directory explícito (sobrescribe -b), ej: /mnt/fury/home/usuario\n  -l  Longitud de contraseña temporal (default: 18; mínimo efectivo 10)\nUSAGE\n}\n\nGROUPS=\"\"\nSHELL=\"/bin/bash\"\nCOMMENT=\"\"\nHOME_BASE=\"/home\"\nHOME_DIR=\"\"\nPASS_LEN=\"18\"\n\nwhile getopts \":g:s:c:b:d:l:h\" opt; do\n  case \"$opt\" in\n    g) GROUPS=\"$OPTARG\" ;;\n    s) SHELL=\"$OPTARG\" ;;\n    c) COMMENT=\"$OPTARG\" ;;\n    b) HOME_BASE=\"$OPTARG\" ;;\n    d) HOME_DIR=\"$OPTARG\" ;;\n    l) PASS_LEN=\"$OPTARG\" ;;\n    h) usage; exit 0 ;;\n    \\?) echo \"Opción inválida: -$OPTARG\" &gt;&2; usage; exit 2 ;;\n    :) echo \"Falta argumento para -$OPTARG\" &gt;&2; usage; exit 2 ;;\n  esac\ndone\nshift $((OPTIND - 1))\n\nUSER=\"${1:-}\"\nif [[ -z \"${USER}\" ]]; then\n  echo \"Error: Debes indicar un usuario.\" &gt;&2\n  usage\n  exit 2\nfi\n\nif [[ \"$(id -u)\" -ne 0 ]]; then\n  echo \"Error: Ejecuta como root (usa sudo).\" &gt;&2\n  exit 1\nfi\n\n# Normaliza a minúsculas (recomendado)\nUSER=\"${USER,,}\"\n\n# Validación de username (minúsculas, números, _ o -)\nif ! [[ \"$USER\" =~ ^[a-z_][a-z0-9_-]*$ ]]; then\n  echo \"Error: username inválido '$USER' (usa minúsculas, números, _ o -; no empieces con número).\" &gt;&2\n  exit 2\nfi\n\nif id \"$USER\" &&gt;/dev/null; then\n  echo \"Error: El usuario '$USER' ya existe.\" &gt;&2\n  exit 1\nfi\n\n# Home dir: si no se dio -d, se construye con -b\nif [[ -z \"$HOME_DIR\" ]]; then\n  HOME_DIR=\"${HOME_BASE%/}/$USER\"\nfi\n\n# Asegura que el directorio padre exista\nBASE_DIR=\"$(dirname \"$HOME_DIR\")\"\nif [[ ! -d \"$BASE_DIR\" ]]; then\n  mkdir -p \"$BASE_DIR\"\n  chmod 755 \"$BASE_DIR\"\nfi\n\n# --- Generador de contraseña temporal (sin pipes) ---\n# Símbolos permitidos (evitamos ':' y espacios)\nSYMBOLS='@#%+=_!^*?-'\n\nif command -v python3 &gt;/dev/null 2&gt;&1; then\n  PASS=\"$(PASS_LEN=\"$PASS_LEN\" SYMBOLS=\"$SYMBOLS\" python3 - &lt;&lt;'PY'\nimport os, secrets, string\nlength = int(os.environ.get(\"PASS_LEN\", \"18\"))\nsymbols = os.environ.get(\"SYMBOLS\", \"@#%+=_!^*?-\")\nalphabet = string.ascii_letters + string.digits + symbols\n\nwhile True:\n    pw = ''.join(secrets.choice(alphabet) for _ in range(length))\n    if len(pw) &gt;= 10 \\\n       and any(c.islower() for c in pw) \\\n       and any(c.isupper() for c in pw) \\\n       and any(c.isdigit() for c in pw) \\\n       and any(c in symbols for c in pw):\n        print(pw)\n        break\nPY\n)\"\nelse\n  echo \"Error: python3 no está disponible (instálalo o ajusta el generador).\" &gt;&2\n  exit 1\nfi\n\n# --- Crear usuario (con home en ruta personalizada) ---\nif [[ -n \"$COMMENT\" ]]; then\n  useradd -m -d \"$HOME_DIR\" -k /etc/skel -s \"$SHELL\" -c \"$COMMENT\" \"$USER\"\nelse\n  useradd -m -d \"$HOME_DIR\" -k /etc/skel -s \"$SHELL\" \"$USER\"\nfi\n\n# Por si acaso: si no se creó home, créalo\nif [[ ! -d \"$HOME_DIR\" ]]; then\n  mkdir -p \"$HOME_DIR\"\n  chown \"$USER:$USER\" \"$HOME_DIR\"\n  chmod 700 \"$HOME_DIR\"\nfi\n\n# Asignar contraseña temporal\necho \"${USER}:${PASS}\" | chpasswd\n\n# Forzar cambio en primer login\nchage -d 0 \"$USER\"\n\n# Agregar a grupos (opcional)\nif [[ -n \"$GROUPS\" ]]; then\n  usermod -aG \"${GROUPS//,/ }\" \"$USER\"\nfi\n\necho \"Usuario creado: $USER\"\necho \"Home: $HOME_DIR\"\necho \"Contraseña temporal: $PASS\"\necho \"Acción: Se forzó cambio de contraseña al primer login (chage -d 0).\"\nEOF\nAsignar permisos correctos:\nsudo tee /usr/bin/maginot-add-user &gt;/dev/null &lt;&lt;'EOF'\n#!/usr/bin/env bash\nexec /usr/local/sbin/maginot-add-user \"$@\"\nEOF\n\nsudo chmod 750 /usr/local/sbin/maginot-add-user\nsudo chown root:root /usr/local/sbin/maginot-add-user\n\nNota de seguridad: el script imprime la contraseña temporal en pantalla. Se recomienda compartirla una sola vez y por un canal seguro.\n\n\n\nUso del script (alta de usuarios)\nEjemplo simple:\nsudo maginot-add-user usuario_nuevo\nCon grupos:\nsudo maginot-add-user -g mamba,docker usuario_nuevo\nCon nombre completo:\nsudo maginot-add-user -c \"Juan Pérez\" usuario_nuevo\nCómo crear el home en otra ruta:\nsudo maginot-add-user -b /srv/fury/home usuario1\n\n\nMensajes de política (una sola vez)\nMensaje antes del login SSH (opcional): /etc/issue.net + Banner\nsudo tee /etc/issue.net &gt;/dev/null &lt;&lt;'EOF'\nServidor MAGINOT - Aviso de seguridad\nNo compartas tu password.\nEOF\nActiva Banner en SSH:\nsudo grep -n '^Banner' /etc/ssh/sshd_config || true\nSi no aparece, agrega:\necho 'Banner /etc/issue.net' | sudo tee -a /etc/ssh/sshd_config\nsudo systemctl restart sshd",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Fortalecimiento de Acceso y Autenticación</span>"
-    ]
-  },
-  {
-    "objectID": "pass_sec.html#configuración-de-ssh",
-    "href": "pass_sec.html#configuración-de-ssh",
-    "title": "Fortalecimiento de Acceso y Autenticación",
-    "section": "Configuración de SSH",
-    "text": "Configuración de SSH\n\nContexto y objetivo\nSSH es el punto de entrada principal para administración remota. Para reducir la superficie de ataque y mitigar intentos de fuerza bruta, se endureció la configuración del demonio sshd con medidas básicas: deshabilitar acceso directo de root, mover el puerto por defecto, limitar intentos de autenticación, prohibir contraseñas vacías y reducir el tiempo permitido para completar el inicio de sesión.\n\n\nCambios en /etc/ssh/sshd_config\nRespaldar el archivo:\nsudo cp -a /etc/ssh/sshd_config /etc/ssh/sshd_config.bak.$(date +%F_%H%M)\nEditar configuración:\nsudo nano /etc/ssh/sshd_config\nAsegurar estas directivas (pueden colocarse al final para que prevalezcan):\n# --- MAGINOT: Hardening SSH ---\n\n# Cambiar puerto (ejemplo: 14420)\nPort 14420\n\n# No permitir login directo de root\nPermitRootLogin no\n\n# No permitir contraseñas vacías\nPermitEmptyPasswords no\n\n# Limitar intentos de autenticación por conexión\nMaxAuthTries 6\n\n# Reducir el tiempo para completar el login \nLoginGraceTime 2m\nValidar sintaxis y recargar:\nsudo sshd -t\nsudo systemctl reload sshd",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Fortalecimiento de Acceso y Autenticación</span>"
-    ]
-  },
-  {
-    "objectID": "pass_sec.html#activar-fail2ban",
-    "href": "pass_sec.html#activar-fail2ban",
-    "title": "Fortalecimiento de Acceso y Autenticación",
-    "section": "Activar Fail2Ban",
-    "text": "Activar Fail2Ban\nInstalar:\nsudo dnf install -y fail2ban\nHabilitar y arrancar:\nsudo systemctl enable --now fail2ban\nsudo systemctl status fail2ban --no-pager -l\nCrear un archivo dedicado:\nsudo tee /etc/fail2ban/jail.d/sshd.local &gt;/dev/null &lt;&lt;'EOF'\n[sshd]\nenabled = true\n\n# Tu puerto SSH (ajústalo si usas otro)\nport = 14420\n\n# En Rocky, lo más robusto suele ser leer del journal\nbackend = systemd\n\n# Política: 3 intentos en 10 minutos =&gt; ban 1 hora\nmaxretry = 3\nfindtime = 10m\nbantime  = 1h\n\n# No te bloquees a ti mismo (agrega aquí tu(s) IP(s) de confianza)\nignoreip = 127.0.0.1/8 ::1 132.248.13.8/32\n\n# Acción usando firewalld (recomendado en Rocky)\nbanaction = firewallcmd-ipset\nEOF\nRecargar y verificar:\nsudo fail2ban-client reload\nsudo fail2ban-client status\nsudo fail2ban-client status sshd\nRevisar eventos:\nsudo journalctl -u sshd -n 200 --no-pager\nsudo tail -n 200 /var/log/fail2ban.log\nDesbanear una IP (si aplica):\nsudo fail2ban-client set sshd unbanip X.X.X.X",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Fortalecimiento de Acceso y Autenticación</span>"
-    ]
-  },
-  {
-    "objectID": "containers.html",
-    "href": "containers.html",
-    "title": "Contenedores y Entornos Reproducibles",
-    "section": "",
-    "text": "Contexto y objetivo\nEn bioinformática es común que distintos proyectos (o incluso distintas etapas de un mismo pipeline) requieran conjuntos de herramientas diferentes y, con frecuencia, versiones distintas del mismo software. Esto puede deberse a cambios en dependencias, parámetros, formatos, actualizaciones de algoritmos o, simplemente, a la necesidad de repetir exactamente un análisis ya utilizado en una publicación, tesis o reporte técnico. En un servidor multiusuario, instalar software “a nivel sistema” suele ser insuficiente y puede provocar conflictos (librerías incompatibles, rutas mezcladas, ejecutables duplicados), además de aumentar el costo de mantenimiento.\nPor ello, el objetivo de esta sección es implementar y documentar una estrategia de gestión de software que habilite la ejecución rápida, multiversión y reproducible de pipelines bioinformáticos, manteniendo un sistema base estable y facilitando la trazabilidad de versiones. Para lograrlo se combinan herramientas complementarias:\nLa idea central es que Lmod no instala software: únicamente configura el ambiente (PATH y variables) para apuntar a una versión específica de manera controlada y consistente, mientras que Micromamba y los contenedores proporcionan el software y sus dependencias. Este enfoque reduce conflictos entre proyectos, facilita el mantenimiento y fortalece la reproducibilidad científica.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contenedores y Entornos Reproducibles</span>"
-    ]
-  },
-  {
-    "objectID": "containers.html#contexto-y-objetivo",
-    "href": "containers.html#contexto-y-objetivo",
-    "title": "Contenedores y Entornos Reproducibles",
-    "section": "",
-    "text": "Contenedores (Docker, Podman, Apptainer) para encapsular aplicaciones y dependencias en imágenes ejecutables de forma consistente, favoreciendo portabilidad y aislamiento.\nEntornos con Micromamba para crear entornos ligeros por proyecto con versiones específicas de herramientas (p. ej. desde conda-forge/bioconda) sin modificar el sistema base.\nLmod (Environment Modules) como una capa de “menú” para seleccionar versiones con comandos simples (module load, module swap), sin que los usuarios tengan que aprender rutas internas ni activar entornos manualmente. En este servidor, Lmod se utiliza para exponer versiones que internamente pueden provenir de:\n\nMicromamba (entornos versionados): ideal para herramientas de uso común y rápida instalación.\nApptainer (imágenes .sif): ideal para pipelines complejos reproducibles o dependencias difíciles.\n(Opcional) instalaciones nativas en /opt para software compilado a mano cuando aplique.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contenedores y Entornos Reproducibles</span>"
-    ]
-  },
-  {
-    "objectID": "containers.html#estado-actual-docker-y-podman-instalados.",
-    "href": "containers.html#estado-actual-docker-y-podman-instalados.",
-    "title": "Contenedores y Entornos Reproducibles",
-    "section": "Estado actual: Docker y Podman instalados.",
-    "text": "Estado actual: Docker y Podman instalados.\n\nDocker se utilizará principalmente para servicios administrados (p. ej. herramientas internas, dashboards, servicios web).\nPodman se utilizará como alternativa rootless para ejecutar contenedores sin daemon, cuando se requiera un modelo más seguro o aislado.\n\n\nVersiones y verificación\ndocker --version\npodman --version\n\n\n\n\n\n\n\nDocker (prueba rápida, sin construir)\ndocker run --rm alpine:latest cat /etc/os-release\n\n\n\n\n\n\n\nPodman (prueba rápida, sin construir)\npodman run --rm docker.io/library/alpine:latest cat /etc/os-release",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contenedores y Entornos Reproducibles</span>"
-    ]
-  },
-  {
-    "objectID": "containers.html#apptainer-fakeroot",
-    "href": "containers.html#apptainer-fakeroot",
-    "title": "Contenedores y Entornos Reproducibles",
-    "section": "Apptainer (+ fakeroot)",
-    "text": "Apptainer (+ fakeroot)\nInstalación:\nsudo dnf install -y apptainer fakeroot fakeroot-libs\n\nVerifica que ya existe el comando\napptainer --version\nwhich apptainer\nrpm -q apptainer fakeroot\n\n\n\n\n\n\n\nPrueba rápida (sin construir nada)\napptainer exec docker://alpine:latest cat /etc/os-release",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contenedores y Entornos Reproducibles</span>"
-    ]
-  },
-  {
-    "objectID": "containers.html#micromamba",
-    "href": "containers.html#micromamba",
-    "title": "Contenedores y Entornos Reproducibles",
-    "section": "Micromamba",
-    "text": "Micromamba\n\nDescargar el binario e instalarlo en /usr/local/bin:\nsudo mkdir -p /usr/local/lib/micromamba\ncd /tmp\n\ncurl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \\\n  | tar -xvj bin/micromamba\n\nsudo mv bin/micromamba /usr/local/lib/micromamba/micromamba\nsudo ln -sf /usr/local/lib/micromamba/micromamba /usr/local/bin/micromamba\nsudo chmod 755 /usr/local/lib/micromamba/micromamba\n\n\nVerificación\nmicromamba --version\nwhich micromamba\n\n\nPrefijo global (ambientes compartidos) y permisos “solo root escribe”\nsudo mkdir -p /opt/micromamba/{envs,pkgs}\nsudo chown -R root:root /opt/micromamba\nsudo chmod -R 755 /opt/micromamba\nCon esto:\n\nusuarios pueden leer/usar ambientes en /opt/micromamba\nusuarios no pueden crear/modificar ambientes ahí\n\n\n\nConfiguración global (canales y prioridades)\nsudo mkdir -p /etc/micromamba\n\nsudo tee /etc/micromamba/condarc &gt;/dev/null &lt;&lt;'EOF'\nchannels:\n  - conda-forge\n  - bioconda\n  - defaults\nchannel_priority: strict\nauto_activate_base: false\nEOF\n\nsudo chmod 644 /etc/micromamba/condarc\n\n\nHabilitar para todos los usuarios (activate/run) vía /etc/profile.d\nsudo tee /etc/profile.d/micromamba.sh &gt;/dev/null &lt;&lt;'EOF'\n# Micromamba global (servidor)\nexport MAMBA_ROOT_PREFIX=/opt/micromamba\nexport CONDARC=/etc/micromamba/condarc\nexport MAMBA_EXE=/usr/local/bin/micromamba\n\n# Habilita: micromamba activate / deactivate\neval \"$(\"$MAMBA_EXE\" shell hook -s bash)\"\nEOF\n\nsudo chmod 644 /etc/profile.d/micromamba.sh\n\n\nAplicar en sesión actual (o cerrar sesión y re-entrar)\nsource /etc/profile.d/micromamba.sh\n\n\nCrear ambientes e instalar paquetes (solo como root)\nEjemplo de creación:\nmicromamba create -n bioinfo -y \\\n  samtools=1.19.* mafft fastqc\nListar:\nsudo micromamba env list\nsudo micromamba list -n bioinfo\nInstalar algo adicional:\nmicromamba activate bioinfo\nsudo micromamba install -n bioinfo -y iqtree\n\n\nUsar el ambiente desde un script\n#!/usr/bin/env bash\nset -euo pipefail\n\n# Asegura variables globales aunque el script corra sin login shell\nsource /etc/profile.d/micromamba.sh\n\nmicromamba run -n bioinfo -- samtools --version\nmicromamba run -n bioinfo -- mafft --version\n\n\nReproducibilidad (lock del ambiente)\nExport exacto (lista explícita de paquetes):\nsudo micromamba env export -n bioinfo --explicit &gt; bioinfo-linux-64.lock\nRecrear idéntico desde lock:\nsudo micromamba create -n bioinfo_v2 --file bioinfo-linux-64.lock -y",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contenedores y Entornos Reproducibles</span>"
-    ]
-  },
-  {
-    "objectID": "containers.html#multiversión-de-software-lmod-environment-modules",
-    "href": "containers.html#multiversión-de-software-lmod-environment-modules",
-    "title": "Contenedores y Entornos Reproducibles",
-    "section": "Multiversión de software (Lmod / Environment Modules)",
-    "text": "Multiversión de software (Lmod / Environment Modules)\n\nInstalar Lmod en Rocky (EPEL + CRB)\nsudo dnf install -y Lmod\nVerificación:\nrpm -q Lmod\nbash -lc 'module --version || ml --version'\n\n\n\n\n\n\n\nAsegurar que module funcione para todos (login y no-login)\nEl paquete de Lmod instala scripts de inicialización en /etc/profile.d/ (p. ej. z00_lmod.sh) que cargan el init de Lmod.\nPrueba en una sesión nueva (login shell):\nmodule avail | head\n\n\n\n\n\n\n\nÁrbol local de modulefiles y permisos\nSe creó un árbol de modulefiles local en /opt/modulefiles:\nsudo mkdir -p /opt/modulefiles/{bio,pipelines,core}\nsudo chown -R root:root /opt/modulefiles\nsudo chmod -R 755 /opt/modulefiles\nPermisos recomendados:\n\ndirectorios: 755 (todos pueden listar/entrar)\narchivos .lua: 644 (todos pueden leer; solo root escribe)\n\n\n\nHacer que Lmod siempre vea /opt/modulefiles\nCrear un script que corra al inicio de sesión y agregue ese path al MODULEPATH:\nsudo tee /etc/profile.d/z10_modulepath.sh &gt;/dev/null &lt;&lt;'EOF'\n# Site modulefiles (Lmod)\nif type module &gt;/dev/null 2&gt;&1; then\n  module use --append /opt/modulefiles/bio\n  module use --append /opt/modulefiles/pipelines\n  module use --append /opt/modulefiles/core\nfi\nEOF\nsudo chmod 644 /etc/profile.d/z10_modulepath.sh\nNota: abre una nueva sesión SSH (o recarga con source /etc/profile.d/z10_modulepath.sh) para que aplique.\n\n\nPublicar “programas” a usuarios mediante módulos\nMicromamba (envs versionados) + Lmod\nEjemplo: si existe un env en:\n\n/opt/micromamba/envs/samtools-1.19\n\nCrear el modulefile:\nsudo mkdir -p /opt/modulefiles/bio/samtools\nsudo tee /opt/modulefiles/bio/samtools/1.19.lua &gt;/dev/null &lt;&lt;'EOF'\nhelp([[\nSamtools 1.19 (Micromamba env)\n]])\nwhatis(\"Samtools 1.19 via Micromamba\")\nconflict(\"samtools\")\n\nlocal envdir = \"/opt/micromamba/envs/samtools-1.19\"\nprepend_path(\"PATH\",            pathJoin(envdir, \"bin\"))\nprepend_path(\"LD_LIBRARY_PATH\", pathJoin(envdir, \"lib\"))\nsetenv(\"SAMTOOLS_ROOT\", envdir)\nEOF\nsudo chmod 644 /opt/modulefiles/bio/samtools/1.19.lua\nUso por parte del usuario:\nmodule load samtools/1.19\nsamtools --version\n\n\nApptainer (.sif) + Lmod (envolver comando)\nDirectorio de contenedores:\nsudo mkdir -p /opt/containers\nsudo chown -R root:root /opt/containers\nsudo find /opt/containers -type d -exec chmod 755 {} \\;\nsudo find /opt/containers -type f -name \"*.sif\" -exec chmod 644 {} \\;\nEjemplo: imagen en:\n\n/opt/containers/revbayes/rb_v125_mpi/revbayes_v125_mpi.sif\n\nCrear modulefile:\nsudo mkdir -p /opt/modulefiles/pipelines/revbayes\n\nsudo tee /opt/modulefiles/pipelines/revbayes/1.2.5-mpi.lua &gt;/dev/null &lt;&lt;'EOF'\nhelp([[\nRevBayes 1.2.5 (MPI) via Apptainer.\n\nEste módulo expone:\n- rb-mpi        : ejecuta rb-mpi (1 proceso) en el directorio actual.\n- rb-mpi-np N   : ejecuta rb-mpi con mpirun -np N (multinúcleo) en el directorio actual.\n\nEjemplo típico:\n  cd /ruta/al/proyecto/Clade_001/input\n  module load revbayes/1.2.5-mpi\n  rb-mpi-np 8 Clade_001.rev\n\nBinds extra (por ejemplo /srv):\n  export APPTAINER_BINDPATH=\"/srv:/srv\"\n]])\nwhatis(\"RevBayes 1.2.5 MPI (Apptainer)\")\nconflict(\"revbayes\")\n\nlocal img = \"/opt/containers/revbayes/rb_v125_mpi/revbayes_v125_mpi.sif\"\nsetenv(\"REVBAYES_SIF\", img)\n\n-- 1) Wrapper mínimo (1 proceso), ejecuta en /work (= $PWD del host)\nset_shell_function(\"rb-mpi\",\n  \"apptainer exec --cleanenv --bind \\\"$PWD\\\":/work --pwd /work \" .. img .. \" rb-mpi \\\"$@\\\"\",\n  \"true\")\n\n-- 2) Wrapper multinúcleo: primer argumento = N procesos\nset_shell_function(\"rb-mpi-np\",\n  \"N=${1:-1}; shift; apptainer exec --cleanenv --bind \\\"$PWD\\\":/work --pwd /work \" .. img .. \" mpirun -np $N rb-mpi \\\"$@\\\"\",\n  \"true\")\nEOF\n\nsudo chmod 644 /opt/modulefiles/pipelines/revbayes/1.2.5-mpi.lua\nUso por parte del usuario:\nmodule load revbayes/1.2.5-mpi\nrb-mpi --help | head\n\n\nNota importante: evita conflictos con environment-modules\nEn Rocky puede coexistir environment-modules y Lmod; sin embargo, si ambos están instalados, el comando module puede apuntar al “equivocado” (alternatives). Para evitar confusiones, se recomienda estandarizar el uso de Lmod (y evitar instalar environment-modules si no es necesario).",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contenedores y Entornos Reproducibles</span>"
-    ]
-  },
-  {
-    "objectID": "containers.html#buenas-prácticas-de-reproducibilidad",
-    "href": "containers.html#buenas-prácticas-de-reproducibilidad",
-    "title": "Contenedores y Entornos Reproducibles",
-    "section": "Buenas prácticas de reproducibilidad",
-    "text": "Buenas prácticas de reproducibilidad\n\nRegistrar el estado del ambiente en salidas y bitácoras (module list, micromamba env list).\nPara entornos con Micromamba, conservar archivos --explicit (*.lock) para recreación idéntica.\nPara contenedores, registrar ruta exacta, versión y/o hash de la imagen .sif.\nEvitar instalaciones globales “ad-hoc” sin documentación (preferir módulos, envs o contenedores versionados).\n\n\nChecklist final (uso por usuarios)\nComo administrador (verificación básica):\nsudo -i  \nbash -lc 'module avail | head'\n\n\n\n\n\nComo usuario (sesión nueva):\nmodule spider samtools\nmodule avail | head\nmodule spider samtools\n\n\n\n\n\nmodule spider es útil para localizar módulos cuando el árbol crece en número de versiones.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Contenedores y Entornos Reproducibles</span>"
-    ]
-  },
-  {
-    "objectID": "samba.html",
-    "href": "samba.html",
-    "title": "Servidor de archivos con Samba",
-    "section": "",
-    "text": "Contexto y objetivo\nCon el fin de contar con un servidor de archivos compatible con macOS, se configuró en MAGINOT un recurso compartido mediante Samba (SMB) sobre Rocky Linux 10.1.\nLa elección de Samba se debe a que macOS se conecta de forma nativa mediante smb://, lo que permite acceder fácilmente a carpetas compartidas desde Finder.\nEn este caso, se configuró la carpeta:\ncomo un recurso privado para el usuario stoich.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Servidor de archivos con Samba</span>"
-    ]
-  },
-  {
-    "objectID": "samba.html#contexto-y-objetivo",
-    "href": "samba.html#contexto-y-objetivo",
-    "title": "Servidor de archivos con Samba",
-    "section": "",
-    "text": "/srv/bishop",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Servidor de archivos con Samba</span>"
-    ]
-  },
-  {
-    "objectID": "samba.html#alcance-de-la-configuración",
-    "href": "samba.html#alcance-de-la-configuración",
-    "title": "Servidor de archivos con Samba",
-    "section": "Alcance de la configuración",
-    "text": "Alcance de la configuración\n\nSistema operativo del servidor: Rocky Linux 10.1\nProtocolo de compartición: SMB/Samba\nCarpeta compartida: /srv/bishop\nUsuario autorizado: stoich\nCliente principal: macOS\nAcceso previsto: red local o mediante mecanismos internos de red",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Servidor de archivos con Samba</span>"
-    ]
-  },
-  {
-    "objectID": "samba.html#preparación-de-la-carpeta-compartida",
-    "href": "samba.html#preparación-de-la-carpeta-compartida",
-    "title": "Servidor de archivos con Samba",
-    "section": "Preparación de la carpeta compartida",
-    "text": "Preparación de la carpeta compartida\nPrimero se verificó que la carpeta existiera dentro de /srv/ y se definió como propiedad exclusiva del usuario stoich.\n\nEstablecer propietario\nsudo chown -R stoich:stoich /srv/bishop\n\n\nRestringir permisos\nPara evitar acceso de otros usuarios del sistema, se dejaron permisos privados:\nsudo chmod 700 /srv/bishop sudo find /srv/bishop -type d -exec chmod 700 {} \\; sudo find /srv/bishop -type f -exec chmod 600 {} \\;\nCon ello:\n\nlos directorios quedan con permisos 700\nlos archivos quedan con permisos 600\n\n\n\nInstalación de Samba\nSe instaló Samba y las utilerías de cliente:\nsudo dnf install -y samba samba-client",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Servidor de archivos con Samba</span>"
-    ]
-  },
-  {
-    "objectID": "samba.html#configuración-de-selinux",
-    "href": "samba.html#configuración-de-selinux",
-    "title": "Servidor de archivos con Samba",
-    "section": "Configuración de SELinux",
-    "text": "Configuración de SELinux\nDado que Rocky Linux utiliza SELinux, fue necesario etiquetar la carpeta compartida con el contexto apropiado para Samba.\n\nInstalar semanage si es necesario\nsudo dnf install -y policycoreutils-python-utils\n\n\nAsignar contexto SELinux\nsudo semanage fcontext -a -t samba_share_t \"/srv/bishop(/.*)?\" sudo restorecon -Rv /srv/bishop\nEsto permite que Samba pueda acceder a la carpeta sin desactivar SELinux.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Servidor de archivos con Samba</span>"
-    ]
-  },
-  {
-    "objectID": "samba.html#configuración-del-usuario-samba",
-    "href": "samba.html#configuración-del-usuario-samba",
-    "title": "Servidor de archivos con Samba",
-    "section": "Configuración del usuario Samba",
-    "text": "Configuración del usuario Samba\nAunque el usuario stoich ya existía en Linux, Samba requiere registrar su propia contraseña.\nsudo smbpasswd -a stoich sudo smbpasswd -e stoich",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Servidor de archivos con Samba</span>"
-    ]
-  },
-  {
-    "objectID": "samba.html#configuración-de-etcsambasmb.conf",
-    "href": "samba.html#configuración-de-etcsambasmb.conf",
-    "title": "Servidor de archivos con Samba",
-    "section": "Configuración de /etc/samba/smb.conf",
-    "text": "Configuración de /etc/samba/smb.conf\nSe utilizó el archivo de configuración por defecto de Rocky Linux y se añadieron únicamente los ajustes necesarios para compatibilidad con macOS y para exponer el recurso bishop.\n\nArchivo de configuración\n[global]\n        workgroup = SAMBA\n        security = user\n        vfs objects = fruit streams_xattr\n\n        passdb backend = tdbsam\n\n        printing = cups\n        printcap name = cups\n        load printers = yes\n        cups options = raw\n\n        # Install samba-usershares package for support\n        include = /etc/samba/usershares.conf\n\n[homes]\n        comment = Home Directories\n        valid users = %S, %D%w%S\n        browseable = No\n        read only = No\n        inherit acls = Yes\n\n[printers]\n        comment = All Printers\n        path = /var/tmp\n        printable = Yes\n        create mask = 0600\n        browseable = No\n\n[print$]\n        comment = Printer Drivers\n        path = /var/lib/samba/drivers\n        write list = printadmin root\n        force group = printadmin\n        create mask = 0664\n        directory mask = 0775\n\n[bishop]\n        path = /srv/bishop\n        browseable = yes\n        read only = no\n        guest ok = no\n        valid users = stoich\n        force user = stoich\n        create mask = 0600\n        directory mask = 0700\n\n\nNotas sobre esta configuración\n\nvfs objects = fruit streams_xattr mejora la compatibilidad con clientes macOS\nguest ok = no evita accesos anónimos\nvalid users = stoich restringe el acceso solo al usuario autorizado\nforce user = stoich asegura que las operaciones dentro del recurso se realicen como ese usuario",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Servidor de archivos con Samba</span>"
-    ]
-  },
-  {
-    "objectID": "samba.html#validación-de-la-configuración",
-    "href": "samba.html#validación-de-la-configuración",
-    "title": "Servidor de archivos con Samba",
-    "section": "Validación de la configuración",
-    "text": "Validación de la configuración\nAntes de iniciar el servicio, se verificó que el archivo no tuviera errores de sintaxis:\nsudo testparm\nUna salida exitosa indica que la configuración es válida.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Servidor de archivos con Samba</span>"
-    ]
-  },
-  {
-    "objectID": "samba.html#apertura-del-servicio-en-el-firewall",
-    "href": "samba.html#apertura-del-servicio-en-el-firewall",
-    "title": "Servidor de archivos con Samba",
-    "section": "Apertura del servicio en el firewall",
-    "text": "Apertura del servicio en el firewall\nPara permitir conexiones SMB dentro de la red, se habilitó el servicio Samba en firewalld:\nsudo firewall-cmd --permanent --add-service=samba sudo firewall-cmd --reload",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Servidor de archivos con Samba</span>"
-    ]
-  },
-  {
-    "objectID": "samba.html#activación-de-los-servicios",
-    "href": "samba.html#activación-de-los-servicios",
-    "title": "Servidor de archivos con Samba",
-    "section": "Activación de los servicios",
-    "text": "Activación de los servicios\nSe habilitaron e iniciaron los demonios de Samba:\nsudo systemctl enable --now smb nmb\n\nVerificación de estado\nsystemctl status smb nmb\nLa salida esperada debe mostrar ambos servicios como:\nactive (running)",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Servidor de archivos con Samba</span>"
-    ]
-  },
-  {
-    "objectID": "samba.html#prueba-local-en-el-servidor",
-    "href": "samba.html#prueba-local-en-el-servidor",
-    "title": "Servidor de archivos con Samba",
-    "section": "Prueba local en el servidor",
-    "text": "Prueba local en el servidor\nPara verificar que el recurso estuviera disponible correctamente, se listaron los recursos Samba desde el propio servidor:\nsmbclient -L localhost -U stoich\nCon ello debe aparecer el recurso compartido bishop.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Servidor de archivos con Samba</span>"
-    ]
-  },
-  {
-    "objectID": "samba.html#conexión-desde-macos",
-    "href": "samba.html#conexión-desde-macos",
-    "title": "Servidor de archivos con Samba",
-    "section": "Conexión desde macOS",
-    "text": "Conexión desde macOS\nDesde Finder, el recurso se puede montar mediante:\nIr → Conectarse al servidor\ny utilizar una de las siguientes rutas:\nsmb://IP_DE_MAGINOT/bishop\no bien:\nsmb://maginot/bishop\nDespués se autentica con:\n\nusuario: stoich\ncontraseña: la definida con smbpasswd",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Servidor de archivos con Samba</span>"
-    ]
-  },
-  {
-    "objectID": "monitor.html",
-    "href": "monitor.html",
-    "title": "Monitoreo y Observabilidad",
-    "section": "",
-    "text": "Contexto y objetivo\nEste servidor Rocky Linux incluye Cockpit (Web Console) como interfaz web de administración. Además, se desea montar un stack de monitoreo clásico basado en:\nObjetivo: habilitar un sistema de monitoreo y observabilidad local (en el mismo servidor), manteniendo Cockpit como herramienta adicional de administración/diagnóstico, y configurando los puertos sin colisiones, con buenas prácticas de seguridad.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Monitoreo y Observabilidad</span>"
-    ]
-  },
-  {
-    "objectID": "monitor.html#contexto-y-objetivo",
-    "href": "monitor.html#contexto-y-objetivo",
-    "title": "Monitoreo y Observabilidad",
-    "section": "",
-    "text": "Node Exporter: expone métricas del sistema (CPU, RAM, disco, red, etc.) vía HTTP.\nPrometheus: recolecta métricas periódicamente, las almacena en una base de datos de series de tiempo (TSDB) y permite consultas con PromQL.\nGrafana: consume Prometheus como fuente de datos y permite crear tableros (dashboards) y alertas.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Monitoreo y Observabilidad</span>"
-    ]
-  },
-  {
-    "objectID": "monitor.html#node-exporter-métricas-del-host-en-9100",
-    "href": "monitor.html#node-exporter-métricas-del-host-en-9100",
-    "title": "Monitoreo y Observabilidad",
-    "section": "Node Exporter (métricas del host) en :9100",
-    "text": "Node Exporter (métricas del host) en :9100\n\nCrear usuario y directorios\nsudo useradd --no-create-home --shell /sbin/nologin node_exporter 2&gt;/dev/null || true\nsudo mkdir -p /var/lib/node_exporter/textfile_collector\nsudo chown -R node_exporter:node_exporter /var/lib/node_exporter\n\n\nDescargar e instalar el binario\ncd /tmp\nNE_VER=\"1.10.2\"\nNE_FILE=\"node_exporter-${NE_VER}.linux-amd64.tar.gz\"\n\nwget -O \"${NE_FILE}\" \"https://github.com/prometheus/node_exporter/releases/download/v${NE_VER}/${NE_FILE}\"\n\ntar -xzf \"${NE_FILE}\"\nsudo install -m 0755 \"node_exporter-${NE_VER}.linux-amd64/node_exporter\" /usr/local/bin/node_exporter\n\n\nCrear servicio systemd\nsudo tee /etc/systemd/system/node_exporter.service &gt;/dev/null &lt;&lt;'EOF'\n[Unit]\nDescription=Prometheus Node Exporter\nWants=network-online.target\nAfter=network-online.target\n\n[Service]\nUser=node_exporter\nGroup=node_exporter\nType=simple\nExecStart=/usr/local/bin/node_exporter \\\n  --web.listen-address=:9100 \\\n  --collector.textfile.directory=/var/lib/node_exporter/textfile_collector\nRestart=on-failure\n\n[Install]\nWantedBy=multi-user.target\nEOF\n\nsudo systemctl daemon-reload\nsudo systemctl enable --now node_exporter\n\n\nPrueba local (métricas):\nsudo systemctl status node_exporter --no-pager -l\ncurl -s http://127.0.0.1:9100/metrics | head",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Monitoreo y Observabilidad</span>"
-    ]
-  },
-  {
-    "objectID": "monitor.html#prometheus-tsdb-ui-en-9095",
-    "href": "monitor.html#prometheus-tsdb-ui-en-9095",
-    "title": "Monitoreo y Observabilidad",
-    "section": "Prometheus (TSDB + UI) en :9095",
-    "text": "Prometheus (TSDB + UI) en :9095\n\nCrear usuario y directorios\nsudo useradd --no-create-home --shell /sbin/nologin prometheus 2&gt;/dev/null || true\nsudo mkdir -p /etc/prometheus /var/lib/prometheus\nsudo chown -R prometheus:prometheus /etc/prometheus /var/lib/prometheus\n\n\nDescargar e instalar Prometheus\ncd /tmp\nP_VER=\"3.9.1\"\nP_FILE=\"prometheus-${P_VER}.linux-amd64.tar.gz\"\n\nwget -O \"${P_FILE}\" \"https://github.com/prometheus/prometheus/releases/download/v${P_VER}/${P_FILE}\"\ntar -xzf \"${P_FILE}\"\n\nsudo install -m 0755 \"prometheus-${P_VER}.linux-amd64/prometheus\" /usr/local/bin/prometheus\nsudo install -m 0755 \"prometheus-${P_VER}.linux-amd64/promtool\"    /usr/local/bin/promtool\n\n\nConfiguración prometheus.yml\nsudo tee /etc/prometheus/prometheus.yml &gt;/dev/null &lt;&lt;'EOF'\nglobal:\n  scrape_interval: 15s\n  evaluation_interval: 15s\n\nscrape_configs:\n  - job_name: \"prometheus\"\n    static_configs:\n      - targets: [\"127.0.0.1:9095\"]\n\n  - job_name: \"node\"\n    static_configs:\n      - targets: [\"127.0.0.1:9100\"]\nEOF\n\nsudo chown prometheus:prometheus /etc/prometheus/prometheus.yml\nsudo -u prometheus /usr/local/bin/promtool check config /etc/prometheus/prometheus.yml\n\n\nServicio systemd (Prometheus en 9095)\n\nSe omiten --web.console.templates y --web.console.libraries para evitar referencias a rutas no utilizadas.\n\nsudo tee /etc/systemd/system/prometheus.service &gt;/dev/null &lt;&lt;'EOF'\n[Unit]\nDescription=Prometheus\nWants=network-online.target\nAfter=network-online.target\n\n[Service]\nUser=prometheus\nGroup=prometheus\nType=simple\nExecStart=/usr/local/bin/prometheus \\\n  --config.file=/etc/prometheus/prometheus.yml \\\n  --storage.tsdb.path=/var/lib/prometheus \\\n  --web.listen-address=:9095 \\\n  --web.console.templates=/etc/prometheus/consoles \\\n  --web.console.libraries=/etc/prometheus/console_libraries\nRestart=on-failure\n\n[Install]\nWantedBy=multi-user.target\nEOF\n\nsudo systemctl daemon-reload\nsudo systemctl enable --now prometheus\n\n\nPrueba local\ncurl -s http://127.0.0.1:9095/-/ready && echo\nAbrir en navegador:\n\nhttp://127.0.0.1:9095 → Prometheus\nhttp://127.0.0.1:9095/targets (o “Status → Targets”) debe mostrar prometheus y node en UP.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Monitoreo y Observabilidad</span>"
-    ]
-  },
-  {
-    "objectID": "monitor.html#grafana-dashboards",
-    "href": "monitor.html#grafana-dashboards",
-    "title": "Monitoreo y Observabilidad",
-    "section": "Grafana (dashboards)",
-    "text": "Grafana (dashboards)\n\nAgregar repositorio e instalar (repo oficial RPM)\nwget -q -O gpg.key https://rpm.grafana.com/gpg.key\nsudo rpm --import gpg.key\n\nsudo tee /etc/yum.repos.d/grafana.repo &gt;/dev/null &lt;&lt;'EOF'\n[grafana]\nname=grafana\nbaseurl=https://rpm.grafana.com\nrepo_gpgcheck=1\nenabled=1\ngpgcheck=1\ngpgkey=https://rpm.grafana.com/gpg.key\nsslverify=1\nsslcacert=/etc/pki/tls/certs/ca-bundle.crt\nEOF\n\nsudo dnf -y install grafana\nsudo systemctl enable --now grafana-server\n\n\nConectar Grafana a Prometheus\n\nEntrar a http://127.0.0.1:3000\nData Source: Prometheus\n\nURL: http://127.0.0.1:9095\nSave & test\n\n\n\n\n\n\n\n\n\nDashboards y paneles implementados\nEn Grafana se importó un tablero base tipo “Node Exporter Full” como referencia y se añadieron paneles específicos para MAGINOT (por recursos y puntos de montaje relevantes).\n\nRow 1: RAM / CPU\nRAM disponible (GiB):\nnode_memory_MemAvailable_bytes / (1024*1024*1024)\nCPU en uso (%):\n100 - (avg by(instance) (rate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)\n\n\n\n\n\n\n\nRow 2: Almacenamiento\nUso (%) por volúmenes en /srv/&lt;volumen&gt;:\n100 * (1 - (\n  node_filesystem_avail_bytes{mountpoint=~\"^/srv/[^/]+$\", fstype!~\"tmpfs|overlay|squashfs|devtmpfs\"}\n/\n  node_filesystem_size_bytes{mountpoint=~\"^/srv/[^/]+$\", fstype!~\"tmpfs|overlay|squashfs|devtmpfs\"}\n))\nDisponible (GiB) en /home:\nnode_filesystem_avail_bytes{mountpoint=\"/home\", fstype!~\"tmpfs|overlay|squashfs|devtmpfs\"} / (1024*1024*1024)\n\n\n\n\n\n\n\nRow 3: Red\nSalida (Tx, Mbps):\n8 * rate(node_network_transmit_bytes_total{device=\"enp6s0\"}[5m]) / 1e6\nEntrada (Rx, Mbps):\n8 * rate(node_network_receive_bytes_total{device=\"enp6s0\"}[5m]) / 1e6\n\n\n\n\n\n\nNota: Los paneles se configuraron con unidades (GiB, %, Mbps) y umbrales para visualizar estados de alerta (p. ej. uso de disco &gt; 80%).\n\n\n\n\nFirewall (abre sólo lo necesario)\nsudo firewall-cmd --permanent --add-port=3000/tcp\nsudo firewall-cmd --permanent --add-port=9095/tcp\nsudo firewall-cmd --permanent --add-port=9100/tcp\nsudo firewall-cmd --reload",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Monitoreo y Observabilidad</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Servicios: RStudio Server</span>"
     ]
   },
   {
     "objectID": "slurm.html",
     "href": "slurm.html",
-    "title": "Instalación de Slurm para una sola máquina",
+    "title": "Software en MAGINOT",
     "section": "",
-    "text": "Configuración de un nodo local con partición ripley, MUNGE y registros en /srv/bishop\nSlurm, acrónimo de Simple Linux Utility for Resource Management, es un sistema de administración de trabajos utilizado en servidores de cómputo y clústeres de alto rendimiento.\nSu función principal es organizar el uso de los recursos computacionales, como CPUs, memoria y nodos de cómputo. En lugar de que los usuarios ejecuten procesos directamente en el servidor, envían trabajos a una cola. Slurm decide cuándo ejecutarlos, cuántos recursos asignarles y registra información básica sobre su ejecución.\nEn un clúster grande, Slurm puede administrar muchos nodos. Sin embargo, también puede utilizarse en una sola máquina. Esto es útil cuando se desea controlar el uso de recursos, evitar que un usuario sature el servidor y enseñar buenas prácticas de cómputo reproducible.",
+    "text": "¿Qué es Slurm?\nSlurm es un sistema de administración de trabajos para servidores de cómputo. Su función es organizar el uso de los recursos del servidor, como CPUs, memoria y tiempo de ejecución.\nEn lugar de ejecutar análisis directamente en la terminal, los usuarios envían sus trabajos a una cola. Slurm decide cuándo correrlos de acuerdo con los recursos disponibles.\nEsto ayuda a:",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#objetivo",
-    "href": "slurm.html#objetivo",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Objetivo",
-    "text": "Objetivo\nEl objetivo de este tutorial es instalar y configurar Slurm en un servidor con Rocky Linux 10.1 usando una sola máquina como controlador y nodo de cómputo.\nLa partición de Slurm se llamará:\nripley\nAdemás, para evitar llenar la partición raíz /, los archivos persistentes de Slurm se almacenarán en:\n/srv/bishop/slurm",
+    "objectID": "slurm.html#qué-es-slurm",
+    "href": "slurm.html#qué-es-slurm",
+    "title": "Software en MAGINOT",
+    "section": "",
+    "text": "evitar que una sola persona sature el servidor;\nordenar los análisis de varios usuarios;\nasignar CPUs de manera controlada;\ndejar registro de los trabajos ejecutados;\nmejorar la reproducibilidad de los análisis.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#esquema-general",
-    "href": "slurm.html#esquema-general",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Esquema general",
-    "text": "Esquema general\nLa instalación tendrá los siguientes componentes:\n\nmunge: servicio de autenticación usado por Slurm.\nslurmctld: controlador principal de Slurm.\nslurmd: daemon que ejecuta trabajos en el nodo de cómputo.\nslurm.conf: archivo principal de configuración.\ncgroup.conf: configuración para controlar recursos con cgroups v2.\njobcomp/filetxt: registro básico de trabajos terminados.",
+    "objectID": "slurm.html#conceptos-básicos",
+    "href": "slurm.html#conceptos-básicos",
+    "title": "Software en MAGINOT",
+    "section": "Conceptos básicos",
+    "text": "Conceptos básicos\n\nJob\nUn job es un trabajo enviado a Slurm. Puede ser un script de Bash que ejecuta un análisis bioinformático, un programa de R, Python, Apptainer, BLAST, IQ-TREE, MAFFT, etc.\n\n\nCola\nLa cola es la lista de trabajos esperando o ejecutándose.\n\n\nPartición\nUna partición es una sección lógica del servidor. En MAGINOT la partición principal se llama:\nripley\nsignifica:\n“enviar mi trabajo a la cola llamada ripley”\n\n\nRecursos\nCuando envías un trabajo, debes indicar cuántos recursos necesitas. Por ejemplo:\n\nnúmero de CPUs;\nmemoria;\ntiempo máximo;\nnombre del trabajo;\npartición donde se ejecutará.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#información-del-servidor",
-    "href": "slurm.html#información-del-servidor",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Información del servidor",
-    "text": "Información del servidor\nAntes de instalar Slurm, es importante conocer las características del servidor.\nhostname\nhostname -f\ncat /etc/os-release\nnproc\nfree -h\ndf -h\nlsblk\ngetent ahostsv4 maginot\nEn este caso, el servidor reportó:\nHostname: maginot\nSistema operativo: Rocky Linux 10.1\nCPUs: 72\nRAM: 251 GiB\nTambién se decidió usar /srv/bishop para almacenar los archivos persistentes de Slurm, ya que la raíz / tiene poco espacio disponible.",
+    "objectID": "slurm.html#comandos-básicos",
+    "href": "slurm.html#comandos-básicos",
+    "title": "Software en MAGINOT",
+    "section": "Comandos básicos",
+    "text": "Comandos básicos\n\nVer el estado del servidor\nsinfo\nSalida esperada:\nPARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST\nripley*      up   infinite      1   idle maginot\nEstados comunes:\n\n\n\nEstado\nSignificado\n\n\n\n\nidle\nEl nodo está libre\n\n\nalloc\nEl nodo está ocupado\n\n\nmix\nEl nodo tiene algunos recursos ocupados y otros libres\n\n\ndown\nEl nodo no está disponible\n\n\ndrain\nEl nodo no acepta nuevos trabajos\n\n\n\n\n\nVer trabajos en cola\nsqueue\nEjemplo:\nJOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)\n 1234    ripley  analisis   usuario  R       1:23      1 maginot\nEstados comunes de trabajos:\n\n\n\nEstado\nSignificado\n\n\n\n\nR\nRunning, el trabajo está corriendo\n\n\nPD\nPending, el trabajo está esperando\n\n\nCG\nCompleting, el trabajo está terminando\n\n\nCD\nCompleted, el trabajo terminó correctamente\n\n\nF\nFailed, el trabajo falló\n\n\nCA\nCancelled, el trabajo fue cancelado\n\n\n\n\n\nVer solo tus trabajos\nsqueue -u $USER\n\n\nCancelar un trabajo\nscancel JOBID\nEjemplo:\nscancel 1234\n\n\nCancelar todos tus trabajos\nUsar con cuidado:\nscancel -u $USER",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#preparar-repositorios-y-dependencias",
-    "href": "slurm.html#preparar-repositorios-y-dependencias",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Preparar repositorios y dependencias",
-    "text": "Preparar repositorios y dependencias\nEn Rocky Linux 10.1, Slurm no se encuentra directamente disponible en los repositorios base como paquete listo para instalar. Por ello, se construyeron paquetes RPM a partir del código fuente de Slurm.\nPrimero se instalan las dependencias necesarias:\nsudo dnf update -y\nsudo dnf install -y epel-release dnf-plugins-core\nsudo dnf config-manager --set-enabled crb\nDespués:\nsudo dnf install -y \\\n  autoconf automake dbus-devel libbpf-devel make mariadb-devel \\\n  munge munge-libs munge-devel \\\n  pam-devel perl-devel perl-ExtUtils-MakeMaker \\\n  python3 readline-devel rpm-build rpmdevtools wget tar gcc gcc-c++",
+    "objectID": "slurm.html#primer-ejemplo-ejecutar-un-comando-simple",
+    "href": "slurm.html#primer-ejemplo-ejecutar-un-comando-simple",
+    "title": "Software en MAGINOT",
+    "section": "Primer ejemplo: ejecutar un comando simple",
+    "text": "Primer ejemplo: ejecutar un comando simple\nPuedes probar Slurm con:\nsrun -p ripley -N1 -n1 hostname\nLa salida esperada es:\nmaginot\nEsto significa que Slurm ejecutó el comando en el servidor.\n\nEnviar trabajos con sbatch\nLa forma recomendada de usar Slurm es crear un script y enviarlo con:\nsbatch script.sh\nUn script de Slurm es un archivo de Bash con instrucciones especiales que empiezan con:\n#SBATCH\nEstas líneas le dicen a Slurm qué recursos necesitas.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#construcción-de-los-rpms-de-slurm",
-    "href": "slurm.html#construcción-de-los-rpms-de-slurm",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Construcción de los RPMs de Slurm",
-    "text": "Construcción de los RPMs de Slurm\nCrear el árbol de construcción RPM:\nrpmdev-setuptree\nDescargar Slurm:\ncd ~/rpmbuild/SOURCES\nwget https://download.schedmd.com/slurm/slurm-25.05.5.tar.bz2\nConstruir los paquetes:\nrpmbuild -ta ~/rpmbuild/SOURCES/slurm-25.05.5.tar.bz2\nAl finalizar, los RPMs quedan en:\n~/rpmbuild/RPMS/x86_64/\nLos paquetes mínimos necesarios para una instalación de una sola máquina son:\nslurm-25.05.5-1.el10.x86_64.rpm\nslurm-slurmctld-25.05.5-1.el10.x86_64.rpm\nslurm-slurmd-25.05.5-1.el10.x86_64.rpm",
+    "objectID": "slurm.html#script-mínimo-de-ejemplo",
+    "href": "slurm.html#script-mínimo-de-ejemplo",
+    "title": "Software en MAGINOT",
+    "section": "Script mínimo de ejemplo",
+    "text": "Script mínimo de ejemplo\nCrear un archivo llamado prueba_slurm.sh:\nnano prueba_slurm.sh\nContenido:\n#!/bin/bash\n#SBATCH -J prueba\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 2\n#SBATCH --time=00:05:00\n\necho \"Inicio: $(date)\"\necho \"Host: $(hostname)\"\necho \"Job ID: $SLURM_JOB_ID\"\necho \"CPUs asignadas: $SLURM_CPUS_PER_TASK\"\n\nsleep 10\n\necho \"Fin: $(date)\"\nEnviar:\nsbatch prueba_slurm.sh\nSlurm responderá algo como:\nSubmitted batch job 1234\n\nRevisar la salida del trabajo\nPor defecto, Slurm crea un archivo:\nslurm-JOBID.out\nPor ejemplo:\ncat slurm-1234.out\n\n\nPersonalizar el nombre de salida\nEs recomendable guardar las salidas en una carpeta.\nCrear carpeta:\nmkdir -p logs\nEjemplo de script:\n#!/bin/bash\n#SBATCH -J prueba\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 2\n#SBATCH --time=00:05:00\n#SBATCH -o logs/%x_%j.out\n#SBATCH -e logs/%x_%j.err\n\necho \"Inicio: $(date)\"\necho \"Host: $(hostname)\"\necho \"Job ID: $SLURM_JOB_ID\"\necho \"Fin: $(date)\"\nDonde:\n\n\n\nCódigo\nSignificado\n\n\n\n\n%x\nNombre del trabajo\n\n\n%j\nID del trabajo\n\n\n\nAsí se generan archivos como:\nlogs/prueba_1234.out logs/prueba_1234.err",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#instalación-de-slurm",
-    "href": "slurm.html#instalación-de-slurm",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Instalación de Slurm",
-    "text": "Instalación de Slurm\nInstalar los RPMs generados:\nsudo dnf install -y \\\n  ~/rpmbuild/RPMS/x86_64/slurm-25.05.5-1.el10.x86_64.rpm \\\n  ~/rpmbuild/RPMS/x86_64/slurm-slurmctld-25.05.5-1.el10.x86_64.rpm \\\n  ~/rpmbuild/RPMS/x86_64/slurm-slurmd-25.05.5-1.el10.x86_64.rpm",
+    "objectID": "slurm.html#parámetros-principales-de-slurm",
+    "href": "slurm.html#parámetros-principales-de-slurm",
+    "title": "Software en MAGINOT",
+    "section": "Parámetros principales de Slurm",
+    "text": "Parámetros principales de Slurm\n\n\n\nOpción\nSignificado\n\n\n\n\n#SBATCH -J nombre\nNombre del trabajo\n\n\n#SBATCH -p ripley\nPartición donde se ejecuta\n\n\n#SBATCH -N 1\nNúmero de nodos\n\n\n#SBATCH -n 1\nNúmero de tareas\n\n\n#SBATCH -c 4\nCPUs por tarea\n\n\n#SBATCH --mem=16G\nMemoria solicitada\n\n\n#SBATCH --time=01:00:00\nTiempo máximo\n\n\n#SBATCH -o archivo.out\nArchivo de salida estándar\n\n\n#SBATCH -e archivo.err\nArchivo de error",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#crear-usuario-y-grupo-de-slurm",
-    "href": "slurm.html#crear-usuario-y-grupo-de-slurm",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Crear usuario y grupo de Slurm",
-    "text": "Crear usuario y grupo de Slurm\nSlurm debe ejecutarse con un usuario de sistema dedicado.\nsudo groupadd -g 2002 slurm 2&gt;/dev/null || true\n\nsudo useradd -u 2002 -g slurm -c \"SLURM Workload Manager\" \\\n  -d /var/lib/slurm -s /sbin/nologin -m slurm 2&gt;/dev/null || true\nVerificar:\nid slurm",
+    "objectID": "slurm.html#cuántas-cpus-pedir",
+    "href": "slurm.html#cuántas-cpus-pedir",
+    "title": "Software en MAGINOT",
+    "section": "¿Cuántas CPUs pedir?",
+    "text": "¿Cuántas CPUs pedir?\nNo siempre conviene pedir muchas CPUs. Solo deben solicitarse si el programa realmente puede usarlas.\nEjemplos:\n\nPrograma de un solo hilo\n#SBATCH -c 1\n\n\nPrograma con 4 hilos\n#SBATCH -c 4\n\n\nPrograma con 16 hilos\n#SBATCH -c 16\nAdemás, dentro del comando del programa hay que indicar el mismo número de hilos.\nEjemplo con fastp:\nfastp \\\n  -i muestra_R1.fastq.gz \\\n  -I muestra_R2.fastq.gz \\\n  -o limpia_R1.fastq.gz \\\n  -O limpia_R2.fastq.gz \\\n  -w $SLURM_CPUS_PER_TASK\nEjemplo con iqtree2:\niqtree2 -s alineamiento.phy -T $SLURM_CPUS_PER_TASK\nEjemplo con mafft:\nmafft --thread $SLURM_CPUS_PER_TASK entrada.fasta &gt; alineado.fasta\n\n\nEjemplo para un programa bioinformático\n#!/bin/bash\n#SBATCH -J mafft_test\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 8\n#SBATCH --mem=16G\n#SBATCH --time=02:00:00\n#SBATCH -o logs/%x_%j.out\n#SBATCH -e logs/%x_%j.err\n\nmkdir -p logs resultados\n\necho \"Inicio: $(date)\"\necho \"Host: $(hostname)\"\necho \"CPUs: $SLURM_CPUS_PER_TASK\"\n\nmafft --thread $SLURM_CPUS_PER_TASK datos/secuencias.fasta &gt; resultados/secuencias_alineadas.fasta\n\necho \"Fin: $(date)\"\nEnviar:\nsbatch mafft_test.sh\n\n\nEjemplo con Apptainer\nSi el análisis usa un contenedor de Apptainer:\n#!/bin/bash\n#SBATCH -J apptainer_test\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 4\n#SBATCH --mem=8G\n#SBATCH --time=01:00:00\n#SBATCH -o logs/%x_%j.out\n#SBATCH -e logs/%x_%j.err\n\nmkdir -p logs resultados\n\necho \"Inicio: $(date)\"\necho \"Host: $(hostname)\"\n\napptainer exec programa.sif programa --help\n\necho \"Fin: $(date)\"\nEjemplo con carpetas enlazadas:\n#!/bin/bash\n#SBATCH -J apptainer_test\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 4\n#SBATCH --mem=8G\n#SBATCH --time=01:00:00\n#SBATCH -o logs/%x_%j.out\n#SBATCH -e logs/%x_%j.err\n\nmkdir -p logs resultados\n\necho \"Inicio: $(date)\"\necho \"Host: $(hostname)\"\n\napptainer exec \\\n  --bind $PWD:/work \\\n  --pwd /work \\\n  programa.sif \\\n  programa input.fasta output.txt\n\necho \"Fin: $(date)\"",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#configurar-munge",
-    "href": "slurm.html#configurar-munge",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Configurar MUNGE",
-    "text": "Configurar MUNGE\nMUNGE permite autenticar los componentes de Slurm.\nCrear la llave:\nsudo dd if=/dev/urandom bs=1 count=1024 of=/etc/munge/munge.key\nsudo chown munge:munge /etc/munge/munge.key\nsudo chmod 0400 /etc/munge/munge.key\nIniciar el servicio:\nsudo systemctl enable --now munge\nsystemctl status munge --no-pager -l\nProbar MUNGE:\nmunge -n | unmunge | head\nSi el resultado muestra:\nSTATUS: Success (0)\nMUNGE está funcionando correctamente.",
+    "objectID": "slurm.html#variables-útiles-de-slurm",
+    "href": "slurm.html#variables-útiles-de-slurm",
+    "title": "Software en MAGINOT",
+    "section": "Variables útiles de Slurm",
+    "text": "Variables útiles de Slurm\nDentro de un script, Slurm crea variables automáticamente.\n\n\n\nVariable\nSignificado\n\n\n\n\n$SLURM_JOB_ID\nID del trabajo\n\n\n$SLURM_JOB_NAME\nNombre del trabajo\n\n\n$SLURM_CPUS_PER_TASK\nCPUs asignadas\n\n\n$SLURM_SUBMIT_DIR\nCarpeta desde donde se envió el job\n\n\n$SLURM_JOB_NODELIST\nNodo asignado\n\n\n\nEjemplo:\necho \"Job ID: $SLURM_JOB_ID\"\necho \"Nombre: $SLURM_JOB_NAME\"\necho \"CPUs: $SLURM_CPUS_PER_TASK\"\necho \"Directorio de envío: $SLURM_SUBMIT_DIR\"",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#crear-directorios-de-slurm-en-srvbishop",
-    "href": "slurm.html#crear-directorios-de-slurm-en-srvbishop",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Crear directorios de Slurm en /srv/bishop",
-    "text": "Crear directorios de Slurm en /srv/bishop\nPara evitar llenar la partición raíz, los archivos persistentes de Slurm se guardarán en /srv/bishop/slurm.\nsudo mkdir -p /srv/bishop/slurm/{log,state,spool/slurmd}\nsudo chown -R slurm:slurm /srv/bishop/slurm\nsudo chmod -R 755 /srv/bishop/slurm\nTambién crear el directorio de configuración:\nsudo mkdir -p /etc/slurm\nsudo chown slurm:slurm /etc/slurm",
+    "objectID": "slurm.html#buenas-prácticas",
+    "href": "slurm.html#buenas-prácticas",
+    "title": "Software en MAGINOT",
+    "section": "Buenas prácticas",
+    "text": "Buenas prácticas\n\n1. No correr análisis pesados directamente en la terminal\nEvita ejecutar programas pesados así:\niqtree2 -s archivo.phy -T 72\nEn su lugar, crea un script y envíalo con:\nsbatch script.sh\n\n\n2. No pedir más CPUs de las necesarias\nSi un programa solo usa 4 hilos, no pidas 32 CPUs.\nMal:\n#SBATCH -c 32\nBien:\n#SBATCH -c 4\n\n\n3. Siempre usar carpetas organizadas\nEjemplo:\nproyecto/\n├── datos/\n├── scripts/\n├── resultados/\n└── logs/\n\n\n4. Guardar salidas y errores\nUsa:\n#SBATCH -o logs/%x_%j.out\n#SBATCH -e logs/%x_%j.err\n\n\n5. Probar primero con datos pequeños\nAntes de enviar un análisis grande, prueba con un subconjunto.\n\n\n6. Revisar los logs\nSi un trabajo falla, revisa primero:\ncat logs/nombre_JOBID.err\ncat logs/nombre_JOBID.out",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#detectar-recursos-del-servidor",
-    "href": "slurm.html#detectar-recursos-del-servidor",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Detectar recursos del servidor",
-    "text": "Detectar recursos del servidor\nUna vez instalado Slurm, se debe obtener la configuración real del nodo:\nslurmd -C\nEste comando devuelve una línea similar a:\nNodeName=maginot CPUs=72 Boards=1 SocketsPerBoard=... CoresPerSocket=... ThreadsPerCore=... RealMemory=...\nEsta línea debe usarse como base para configurar el nodo en slurm.conf.",
+    "objectID": "slurm.html#revisar-trabajos-completados",
+    "href": "slurm.html#revisar-trabajos-completados",
+    "title": "Software en MAGINOT",
+    "section": "Revisar trabajos completados",
+    "text": "Revisar trabajos completados\nEl servidor guarda un registro básico de trabajos completados en:\n/srv/bishop/slurm/log/job_completions.log\nPuedes revisar los últimos trabajos con:\ntail -n 20 /srv/bishop/slurm/log/job_completions.log",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#crear-slurm.conf",
-    "href": "slurm.html#crear-slurm.conf",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Crear slurm.conf",
-    "text": "Crear slurm.conf\nCrear el archivo principal de configuración:\nsudo tee /etc/slurm/slurm.conf &gt; /dev/null &lt;&lt;'EOF'\nClusterName=maginot\nSlurmctldHost=maginot\nSlurmUser=slurm\nAuthType=auth/munge\n\nStateSaveLocation=/srv/bishop/slurm/state\nSlurmdSpoolDir=/srv/bishop/slurm/spool/slurmd\n\nSlurmctldPidFile=/run/slurmctld.pid\nSlurmdPidFile=/run/slurmd.pid\n\nSlurmctldLogFile=/srv/bishop/slurm/log/slurmctld.log\nSlurmdLogFile=/srv/bishop/slurm/log/slurmd.log\n\nSwitchType=switch/none\nMpiDefault=none\nProctrackType=proctrack/cgroup\nTaskPlugin=task/cgroup,task/affinity\nReturnToService=2\nSchedulerType=sched/backfill\nSelectType=select/cons_tres\nSelectTypeParameters=CR_Core\n\nJobCompType=jobcomp/filetxt\nJobCompLoc=/srv/bishop/slurm/log/job_completions.log\n\nNodeName=maginot CPUs=72 Boards=1 SocketsPerBoard=2 CoresPerSocket=18 ThreadsPerCore=2 RealMemory=257303 State=UNKNOWN\nPartitionName=ripley Nodes=maginot Default=YES MaxTime=INFINITE State=UP\nEOF\nLa línea NodeName debe ajustarse con la salida real de:\nslurmd -C",
+    "objectID": "slurm.html#plantilla-recomendada-para-usuarios",
+    "href": "slurm.html#plantilla-recomendada-para-usuarios",
+    "title": "Software en MAGINOT",
+    "section": "Plantilla recomendada para usuarios",
+    "text": "Plantilla recomendada para usuarios\n#!/bin/bash\n#SBATCH -J nombre_del_analisis\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 4\n#SBATCH --mem=16G\n#SBATCH --time=02:00:00\n#SBATCH -o logs/%x_%j.out\n#SBATCH -e logs/%x_%j.err\n\nset -euo pipefail\n\nmkdir -p logs resultados\n\necho \"====================================\"\necho \"Trabajo: $SLURM_JOB_NAME\"\necho \"Job ID: $SLURM_JOB_ID\"\necho \"Usuario: $USER\"\necho \"Host: $(hostname)\"\necho \"Inicio: $(date)\"\necho \"CPUs asignadas: $SLURM_CPUS_PER_TASK\"\necho \"Directorio: $(pwd)\"\necho \"====================================\"\n\n# Cargar ambiente, módulo o contenedor aquí\n# module load programa\n# micromamba activate ambiente\n# apptainer exec programa.sif programa\n\n# Comando principal\necho \"Aquí va el análisis\"\n\necho \"====================================\"\necho \"Fin: $(date)\"\necho \"====================================\"\n\nResumen de comandos esenciales\n\n\n\n\n\n\n\nAcción\nComando\n\n\n\n\nVer estado del servidor\nsinfo\n\n\nVer cola\nsqueue\n\n\nVer tus trabajos\nsqueue -u $USER\n\n\nEnviar trabajo\nsbatch script.sh\n\n\nCancelar trabajo\nscancel JOBID\n\n\nEjecutar comando simple\nsrun -p ripley -N1 -n1 hostname\n\n\nVer últimos trabajos registrados\ntail -n 20 /srv/bishop/slurm/log/job_completions.log",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#crear-cgroup.conf",
-    "href": "slurm.html#crear-cgroup.conf",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Crear cgroup.conf",
-    "text": "Crear cgroup.conf\nRocky Linux 10 usa cgroups v2, por lo que se crea el archivo:\nsudo tee /etc/slurm/cgroup.conf &gt; /dev/null &lt;&lt;'EOF'\nCgroupPlugin=cgroup/v2\nEnableControllers=yes\nEOF\nAjustar permisos:\nsudo chown slurm:slurm /etc/slurm/slurm.conf /etc/slurm/cgroup.conf\nsudo chmod 644 /etc/slurm/slurm.conf /etc/slurm/cgroup.conf\nsudo setfacl -m u:slurm:x /srv/bishop",
+    "objectID": "slurm.html#recomendación-final",
+    "href": "slurm.html#recomendación-final",
+    "title": "Software en MAGINOT",
+    "section": "Recomendación final",
+    "text": "Recomendación final\nAntes de enviar un análisis grande:\n\nRevisa que tu script funcione con pocos datos.\nPide solo los recursos necesarios.\nGuarda salidas y errores en logs/.\nVerifica la cola con squeue.\nRevisa los archivos .out y .err.\n\nEl uso correcto de Slurm permite que MAGINOT sea utilizado por varias personas de forma ordenada, evitando saturar el servidor y facilitando el seguimiento de los análisis.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
     ]
   },
   {
-    "objectID": "slurm.html#crear-archivos-de-log",
-    "href": "slurm.html#crear-archivos-de-log",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Crear archivos de log",
-    "text": "Crear archivos de log\nsudo touch /srv/bishop/slurm/log/slurmctld.log\nsudo touch /srv/bishop/slurm/log/slurmd.log\nsudo touch /srv/bishop/slurm/log/job_completions.log\n\nsudo chown slurm:slurm /srv/bishop/slurm/log/*.log",
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Referencias",
+    "section": "",
+    "text": "Documentación y recursos oficiales\nEsta página reúne enlaces y recursos citados o recomendados a lo largo del manual.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Referencias</span>"
     ]
   },
   {
-    "objectID": "slurm.html#iniciar-servicios",
-    "href": "slurm.html#iniciar-servicios",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Iniciar servicios",
-    "text": "Iniciar servicios\nsudo systemctl enable --now munge\nsudo systemctl enable --now slurmctld\nsudo systemctl enable --now slurmd\nSi ya estaban iniciados:\nsudo systemctl restart munge\nsudo systemctl restart slurmctld\nsudo systemctl restart slurmd",
+    "objectID": "references.html#documentación-y-recursos-oficiales",
+    "href": "references.html#documentación-y-recursos-oficiales",
+    "title": "Referencias",
+    "section": "",
+    "text": "WireGuard — Sitio oficial: https://www.wireguard.com/\nOpenSSH (cliente SSH): https://www.openssh.com/\nRStudio Server (Posit): https://posit.co/products/open-source/rstudio-server/\nLmod (Environment Modules): https://lmod.readthedocs.io/\nApptainer (documentación): https://apptainer.org/docs/\nMicromamba: https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Referencias</span>"
     ]
   },
   {
-    "objectID": "slurm.html#verificar-instalación",
-    "href": "slurm.html#verificar-instalación",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Verificar instalación",
-    "text": "Verificar instalación\nRevisar el estado de los servicios:\nsystemctl status munge --no-pager -l\nsystemctl status slurmctld --no-pager -l\nsystemctl status slurmd --no-pager -l\nVer la partición:\nsinfo\nLa salida esperada debe mostrar algo similar a:\nPARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST\nripley*      up   infinite      1   idle maginot\nRevisar el nodo:\nscontrol show node maginot",
+    "objectID": "references.html#tutoriales-recomendados",
+    "href": "references.html#tutoriales-recomendados",
+    "title": "Referencias",
+    "section": "Tutoriales recomendados",
+    "text": "Tutoriales recomendados\n\nBiocontainers / Apptainer (tutorial): https://cristoichkov.github.io/biocontainers/",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Referencias</span>"
     ]
   },
   {
-    "objectID": "slurm.html#probar-ejecución-con-srun",
-    "href": "slurm.html#probar-ejecución-con-srun",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Probar ejecución con srun",
-    "text": "Probar ejecución con srun\nsrun -p ripley -N1 -n1 hostname\nLa salida esperada es:\nmaginot",
+    "objectID": "references.html#créditos",
+    "href": "references.html#créditos",
+    "title": "Referencias",
+    "section": "Créditos",
+    "text": "Créditos\nEste manual fue elaborado para apoyar el uso responsable del servidor MAGINOT.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
-    ]
-  },
-  {
-    "objectID": "slurm.html#probar-ejecución-con-sbatch",
-    "href": "slurm.html#probar-ejecución-con-sbatch",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Probar ejecución con sbatch",
-    "text": "Probar ejecución con sbatch\nCrear un script de prueba:\ncat &gt; ~/prueba_slurm.sh &lt;&lt;'EOF'\n#!/bin/bash\n#SBATCH -J prueba\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 2\n\necho \"Inicio: $(date)\"\necho \"Host: $(hostname)\"\necho \"Job ID: $SLURM_JOB_ID\"\necho \"CPUs asignadas: $SLURM_CPUS_PER_TASK\"\n\nsleep 10\n\necho \"Fin: $(date)\"\nEOF\nEnviar el trabajo:\nsbatch ~/prueba_slurm.sh\nVer la cola:\nsqueue\nRevisar la salida:\ncat slurm-*.out",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
-    ]
-  },
-  {
-    "objectID": "slurm.html#probar-encolamiento-de-trabajos",
-    "href": "slurm.html#probar-encolamiento-de-trabajos",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Probar encolamiento de trabajos",
-    "text": "Probar encolamiento de trabajos\nPara verificar que Slurm administra correctamente los recursos, se pueden enviar más trabajos de los que caben simultáneamente.\nCrear script:\ncat &gt; ~/test_cola_maginot.sh &lt;&lt;'EOF'\n#!/bin/bash\n#SBATCH -J cola_maginot\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 8\n#SBATCH --time=00:05:00\n\necho \"JobID: $SLURM_JOB_ID\"\necho \"Host: $(hostname)\"\necho \"Inicio: $(date)\"\necho \"CPUs asignadas: $SLURM_CPUS_PER_TASK\"\n\nsleep 120\n\necho \"Fin: $(date)\"\nEOF\nEnviar 20 trabajos:\nfor i in {1..20}; do\n    sbatch ~/test_cola_maginot.sh\ndone\nVer la cola:\nsqueue\nTambién se puede observar en vivo:\nwatch -n 2 squeue\nSalir de watch con:\nCtrl + C",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
-    ]
-  },
-  {
-    "objectID": "slurm.html#revisar-registros-de-trabajos-completados",
-    "href": "slurm.html#revisar-registros-de-trabajos-completados",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Revisar registros de trabajos completados",
-    "text": "Revisar registros de trabajos completados\nComo se configuró:\nJobCompType=jobcomp/filetxt\nJobCompLoc=/srv/bishop/slurm/log/job_completions.log\nlos trabajos completados pueden revisarse con:\ntail -n 20 /srv/bishop/slurm/log/job_completions.log\nPara seguir el registro en vivo:\nsudo tail -f /srv/bishop/slurm/log/job_completions.log",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
-    ]
-  },
-  {
-    "objectID": "slurm.html#notas-sobre-sacct",
-    "href": "slurm.html#notas-sobre-sacct",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Notas sobre sacct",
-    "text": "Notas sobre sacct\nEn esta instalación no se configuró slurmdbd, por lo que el comando:\nsacct\npuede mostrar:\nSlurm accounting storage is disabled\nEsto no indica un error en la instalación básica. Significa que no se ha configurado el sistema completo de contabilidad de Slurm con base de datos.\nPara una instalación inicial en una sola máquina, el registro con jobcomp/filetxt puede ser suficiente.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
-    ]
-  },
-  {
-    "objectID": "slurm.html#comandos-útiles-para-usuarios",
-    "href": "slurm.html#comandos-útiles-para-usuarios",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Comandos útiles para usuarios",
-    "text": "Comandos útiles para usuarios\nVer particiones disponibles:\nsinfo\nVer trabajos en cola:\nsqueue\nEnviar un trabajo:\nsbatch script.sh\nCancelar un trabajo:\nscancel JOBID\nEjecutar un comando interactivo sencillo:\nsrun -p ripley -N1 -n1 hostname",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
-    ]
-  },
-  {
-    "objectID": "slurm.html#comandos-útiles-para-administración",
-    "href": "slurm.html#comandos-útiles-para-administración",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Comandos útiles para administración",
-    "text": "Comandos útiles para administración\nReiniciar servicios:\nsudo systemctl restart slurmctld\nsudo systemctl restart slurmd\nReleer configuración:\nsudo scontrol reconfigure\nVer estado del nodo:\nscontrol show node maginot\nVer logs del controlador:\nsudo tail -f /srv/bishop/slurm/log/slurmctld.log\nVer logs del nodo:\nsudo tail -f /srv/bishop/slurm/log/slurmd.log\nVer trabajos completados:\nsudo tail -f /srv/bishop/slurm/log/job_completions.log",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
-    ]
-  },
-  {
-    "objectID": "slurm.html#conclusión",
-    "href": "slurm.html#conclusión",
-    "title": "Instalación de Slurm para una sola máquina",
-    "section": "Conclusión",
-    "text": "Conclusión\nCon esta configuración, Slurm queda funcionando en una sola máquina con Rocky Linux 10.1. Aunque no se trata de un clúster multinodo, esta instalación permite controlar el uso de CPUs, organizar trabajos en cola y registrar ejecuciones.\nEste esquema es útil para servidores compartidos de bioinformática, donde distintos usuarios ejecutan análisis que pueden consumir muchos recursos. Al obligar a enviar trabajos mediante Slurm, se reduce el riesgo de saturar el servidor y se promueve una forma más ordenada y reproducible de trabajar.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instalación de Slurm para una sola máquina</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Referencias</span>"
     ]
   }
 ]

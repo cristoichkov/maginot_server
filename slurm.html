@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Instalación de Slurm para una sola máquina – Servidor MAGINOT - Anexo I</title>
+<title>Software en MAGINOT – Servidor MAGINOT - Anexo II</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./monitor.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./services.html" rel="prev">
 <link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -105,6 +106,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta name="description" content="Guía rápida de acceso y uso del servidor MAGINOT">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Software en MAGINOT – Servidor MAGINOT - Anexo II">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://cristoichkov.github.io/maginot_server/images/logo.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://cristoichkov.github.io/maginot_server/">
 
 
 <link rel="stylesheet" href="styles/styles.css">
@@ -119,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./slurm.html"><span class="chapter-title">Instalación de Slurm para una sola máquina</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./slurm.html"><span class="chapter-title">Software en MAGINOT</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -138,7 +147,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <img src="./images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Servidor MAGINOT - Anexo I</a> 
+      <a href="./">Servidor MAGINOT - Anexo II</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://cristoichkov.github.io/maginot_server/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -150,48 +162,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">MAGINOT — Manual de usuario</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción</span></a>
+  <a href="./requirements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conexión: VPN, SSH y transferencia de archivos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./disk.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Validación y configuración de discos</span></a>
+  <a href="./commands.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Uso básico de Linux</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vpn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">VPN con WireGuard</span></a>
+  <a href="./module.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Software en MAGINOT</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pass_sec.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fortalecimiento de Acceso y Autenticación</span></a>
+  <a href="./services.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Servicios: RStudio Server</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./containers.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Contenedores y Entornos Reproducibles</span></a>
+  <a href="./slurm.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Software en MAGINOT</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./samba.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Servidor de archivos con Samba</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./monitor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Monitoreo y Observabilidad</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./slurm.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Instalación de Slurm para una sola máquina</span></a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Referencias</span></a>
   </div>
 </li>
     </ul>
@@ -204,39 +205,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#configuración-de-un-nodo-local-con-partición-ripley-munge-y-registros-en-srvbishop" id="toc-configuración-de-un-nodo-local-con-partición-ripley-munge-y-registros-en-srvbishop" class="nav-link active" data-scroll-target="#configuración-de-un-nodo-local-con-partición-ripley-munge-y-registros-en-srvbishop">Configuración de un nodo local con partición ripley, MUNGE y registros en /srv/bishop</a></li>
-  <li><a href="#objetivo" id="toc-objetivo" class="nav-link" data-scroll-target="#objetivo">Objetivo</a></li>
-  <li><a href="#esquema-general" id="toc-esquema-general" class="nav-link" data-scroll-target="#esquema-general">Esquema general</a></li>
-  <li><a href="#información-del-servidor" id="toc-información-del-servidor" class="nav-link" data-scroll-target="#información-del-servidor">Información del servidor</a></li>
-  <li><a href="#preparar-repositorios-y-dependencias" id="toc-preparar-repositorios-y-dependencias" class="nav-link" data-scroll-target="#preparar-repositorios-y-dependencias">Preparar repositorios y dependencias</a></li>
-  <li><a href="#construcción-de-los-rpms-de-slurm" id="toc-construcción-de-los-rpms-de-slurm" class="nav-link" data-scroll-target="#construcción-de-los-rpms-de-slurm">Construcción de los RPMs de Slurm</a></li>
-  <li><a href="#instalación-de-slurm" id="toc-instalación-de-slurm" class="nav-link" data-scroll-target="#instalación-de-slurm">Instalación de Slurm</a></li>
-  <li><a href="#crear-usuario-y-grupo-de-slurm" id="toc-crear-usuario-y-grupo-de-slurm" class="nav-link" data-scroll-target="#crear-usuario-y-grupo-de-slurm">Crear usuario y grupo de Slurm</a></li>
-  <li><a href="#configurar-munge" id="toc-configurar-munge" class="nav-link" data-scroll-target="#configurar-munge">Configurar MUNGE</a></li>
-  <li><a href="#crear-directorios-de-slurm-en-srvbishop" id="toc-crear-directorios-de-slurm-en-srvbishop" class="nav-link" data-scroll-target="#crear-directorios-de-slurm-en-srvbishop">Crear directorios de Slurm en /srv/bishop</a></li>
-  <li><a href="#detectar-recursos-del-servidor" id="toc-detectar-recursos-del-servidor" class="nav-link" data-scroll-target="#detectar-recursos-del-servidor">Detectar recursos del servidor</a></li>
-  <li><a href="#crear-slurm.conf" id="toc-crear-slurm.conf" class="nav-link" data-scroll-target="#crear-slurm.conf">Crear slurm.conf</a></li>
-  <li><a href="#crear-cgroup.conf" id="toc-crear-cgroup.conf" class="nav-link" data-scroll-target="#crear-cgroup.conf">Crear cgroup.conf</a></li>
-  <li><a href="#crear-archivos-de-log" id="toc-crear-archivos-de-log" class="nav-link" data-scroll-target="#crear-archivos-de-log">Crear archivos de log</a></li>
-  <li><a href="#iniciar-servicios" id="toc-iniciar-servicios" class="nav-link" data-scroll-target="#iniciar-servicios">Iniciar servicios</a></li>
-  <li><a href="#verificar-instalación" id="toc-verificar-instalación" class="nav-link" data-scroll-target="#verificar-instalación">Verificar instalación</a></li>
-  <li><a href="#probar-ejecución-con-srun" id="toc-probar-ejecución-con-srun" class="nav-link" data-scroll-target="#probar-ejecución-con-srun">Probar ejecución con srun</a></li>
-  <li><a href="#probar-ejecución-con-sbatch" id="toc-probar-ejecución-con-sbatch" class="nav-link" data-scroll-target="#probar-ejecución-con-sbatch">Probar ejecución con sbatch</a></li>
-  <li><a href="#probar-encolamiento-de-trabajos" id="toc-probar-encolamiento-de-trabajos" class="nav-link" data-scroll-target="#probar-encolamiento-de-trabajos">Probar encolamiento de trabajos</a></li>
-  <li><a href="#revisar-registros-de-trabajos-completados" id="toc-revisar-registros-de-trabajos-completados" class="nav-link" data-scroll-target="#revisar-registros-de-trabajos-completados">Revisar registros de trabajos completados</a></li>
-  <li><a href="#notas-sobre-sacct" id="toc-notas-sobre-sacct" class="nav-link" data-scroll-target="#notas-sobre-sacct">Notas sobre sacct</a></li>
-  <li><a href="#comandos-útiles-para-usuarios" id="toc-comandos-útiles-para-usuarios" class="nav-link" data-scroll-target="#comandos-útiles-para-usuarios">Comandos útiles para usuarios</a></li>
-  <li><a href="#comandos-útiles-para-administración" id="toc-comandos-útiles-para-administración" class="nav-link" data-scroll-target="#comandos-útiles-para-administración">Comandos útiles para administración</a></li>
-  <li><a href="#conclusión" id="toc-conclusión" class="nav-link" data-scroll-target="#conclusión">Conclusión</a></li>
+  <li><a href="#qué-es-slurm" id="toc-qué-es-slurm" class="nav-link active" data-scroll-target="#qué-es-slurm">¿Qué es Slurm?</a></li>
+  <li><a href="#conceptos-básicos" id="toc-conceptos-básicos" class="nav-link" data-scroll-target="#conceptos-básicos">Conceptos básicos</a></li>
+  <li><a href="#comandos-básicos" id="toc-comandos-básicos" class="nav-link" data-scroll-target="#comandos-básicos">Comandos básicos</a></li>
+  <li><a href="#primer-ejemplo-ejecutar-un-comando-simple" id="toc-primer-ejemplo-ejecutar-un-comando-simple" class="nav-link" data-scroll-target="#primer-ejemplo-ejecutar-un-comando-simple">Primer ejemplo: ejecutar un comando simple</a></li>
+  <li><a href="#script-mínimo-de-ejemplo" id="toc-script-mínimo-de-ejemplo" class="nav-link" data-scroll-target="#script-mínimo-de-ejemplo">Script mínimo de ejemplo</a></li>
+  <li><a href="#parámetros-principales-de-slurm" id="toc-parámetros-principales-de-slurm" class="nav-link" data-scroll-target="#parámetros-principales-de-slurm">Parámetros principales de Slurm</a></li>
+  <li><a href="#cuántas-cpus-pedir" id="toc-cuántas-cpus-pedir" class="nav-link" data-scroll-target="#cuántas-cpus-pedir">¿Cuántas CPUs pedir?</a></li>
+  <li><a href="#variables-útiles-de-slurm" id="toc-variables-útiles-de-slurm" class="nav-link" data-scroll-target="#variables-útiles-de-slurm">Variables útiles de Slurm</a></li>
+  <li><a href="#buenas-prácticas" id="toc-buenas-prácticas" class="nav-link" data-scroll-target="#buenas-prácticas">Buenas prácticas</a></li>
+  <li><a href="#revisar-trabajos-completados" id="toc-revisar-trabajos-completados" class="nav-link" data-scroll-target="#revisar-trabajos-completados">Revisar trabajos completados</a></li>
+  <li><a href="#plantilla-recomendada-para-usuarios" id="toc-plantilla-recomendada-para-usuarios" class="nav-link" data-scroll-target="#plantilla-recomendada-para-usuarios">Plantilla recomendada para usuarios</a></li>
+  <li><a href="#recomendación-final" id="toc-recomendación-final" class="nav-link" data-scroll-target="#recomendación-final">Recomendación final</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/slurm.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Instalación de Slurm para una sola máquina</span></h1>
+<h1 class="title"><span class="chapter-title">Software en MAGINOT</span></h1>
 </div>
 
 
@@ -253,330 +242,571 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="configuración-de-un-nodo-local-con-partición-ripley-munge-y-registros-en-srvbishop" class="level2">
-<h2 class="anchored" data-anchor-id="configuración-de-un-nodo-local-con-partición-ripley-munge-y-registros-en-srvbishop">Configuración de un nodo local con partición ripley, MUNGE y registros en /srv/bishop</h2>
-<p>Slurm, acrónimo de <em>Simple Linux Utility for Resource Management</em>, es un sistema de administración de trabajos utilizado en servidores de cómputo y clústeres de alto rendimiento.</p>
-<p>Su función principal es organizar el uso de los recursos computacionales, como CPUs, memoria y nodos de cómputo. En lugar de que los usuarios ejecuten procesos directamente en el servidor, envían trabajos a una cola. Slurm decide cuándo ejecutarlos, cuántos recursos asignarles y registra información básica sobre su ejecución.</p>
-<p>En un clúster grande, Slurm puede administrar muchos nodos. Sin embargo, también puede utilizarse en una sola máquina. Esto es útil cuando se desea controlar el uso de recursos, evitar que un usuario sature el servidor y enseñar buenas prácticas de cómputo reproducible.</p>
-</section>
-<section id="objetivo" class="level2">
-<h2 class="anchored" data-anchor-id="objetivo">Objetivo</h2>
-<p>El objetivo de este tutorial es instalar y configurar Slurm en un servidor con Rocky Linux 10.1 usando una sola máquina como controlador y nodo de cómputo.</p>
-<p>La partición de Slurm se llamará:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ripley</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Además, para evitar llenar la partición raíz /, los archivos persistentes de Slurm se almacenarán en:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/srv/bishop/slurm</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="esquema-general" class="level2">
-<h2 class="anchored" data-anchor-id="esquema-general">Esquema general</h2>
-<p>La instalación tendrá los siguientes componentes:</p>
+<section id="qué-es-slurm" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-slurm">¿Qué es Slurm?</h2>
+<p>Slurm es un sistema de administración de trabajos para servidores de cómputo. Su función es organizar el uso de los recursos del servidor, como CPUs, memoria y tiempo de ejecución.</p>
+<p>En lugar de ejecutar análisis directamente en la terminal, los usuarios envían sus trabajos a una cola. Slurm decide cuándo correrlos de acuerdo con los recursos disponibles.</p>
+<p>Esto ayuda a:</p>
 <ul>
-<li><p><code>munge</code>: servicio de autenticación usado por Slurm.</p></li>
-<li><p><code>slurmctld</code>: controlador principal de Slurm.</p></li>
-<li><p><code>slurmd</code>: daemon que ejecuta trabajos en el nodo de cómputo.</p></li>
-<li><p><code>slurm.conf</code>: archivo principal de configuración.</p></li>
-<li><p><code>cgroup.conf</code>: configuración para controlar recursos con cgroups v2.</p></li>
-<li><p><code>jobcomp/filetxt</code>: registro básico de trabajos terminados.</p></li>
+<li>evitar que una sola persona sature el servidor;</li>
+<li>ordenar los análisis de varios usuarios;</li>
+<li>asignar CPUs de manera controlada;</li>
+<li>dejar registro de los trabajos ejecutados;</li>
+<li>mejorar la reproducibilidad de los análisis.</li>
 </ul>
 </section>
-<section id="información-del-servidor" class="level2">
-<h2 class="anchored" data-anchor-id="información-del-servidor">Información del servidor</h2>
-<p>Antes de instalar Slurm, es importante conocer las características del servidor.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span> <span class="at">-f</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /etc/os-release</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nproc</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">free</span> <span class="at">-h</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span> <span class="at">-h</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">lsblk</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">getent</span> ahostsv4 maginot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>En este caso, el servidor reportó:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Hostname:</span> maginot</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Sistema</span> operativo: Rocky Linux 10.1</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">CPUs:</span> 72</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">RAM:</span> 251 GiB</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>También se decidió usar <code>/srv/bishop</code> para almacenar los archivos persistentes de Slurm, ya que la raíz <code>/</code> tiene poco espacio disponible.</p>
+<section id="conceptos-básicos" class="level2">
+<h2 class="anchored" data-anchor-id="conceptos-básicos">Conceptos básicos</h2>
+<section id="job" class="level3">
+<h3 class="anchored" data-anchor-id="job">Job</h3>
+<p>Un <em>job</em> es un trabajo enviado a Slurm. Puede ser un script de Bash que ejecuta un análisis bioinformático, un programa de R, Python, Apptainer, BLAST, IQ-TREE, MAFFT, etc.</p>
 </section>
-<section id="preparar-repositorios-y-dependencias" class="level2">
-<h2 class="anchored" data-anchor-id="preparar-repositorios-y-dependencias">Preparar repositorios y dependencias</h2>
-<p>En Rocky Linux 10.1, Slurm no se encuentra directamente disponible en los repositorios base como paquete listo para instalar. Por ello, se construyeron paquetes RPM a partir del código fuente de Slurm.</p>
-<p>Primero se instalan las dependencias necesarias:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf update <span class="at">-y</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> epel-release dnf-plugins-core</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf config-manager <span class="at">--set-enabled</span> crb</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Después:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> <span class="dt">\</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  autoconf automake dbus-devel libbpf-devel make mariadb-devel <span class="dt">\</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  munge munge-libs munge-devel <span class="dt">\</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  pam-devel perl-devel perl-ExtUtils-MakeMaker <span class="dt">\</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  python3 readline-devel rpm-build rpmdevtools wget tar gcc gcc-c++</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="cola" class="level3">
+<h3 class="anchored" data-anchor-id="cola">Cola</h3>
+<p>La cola es la lista de trabajos esperando o ejecutándose.</p>
 </section>
-<section id="construcción-de-los-rpms-de-slurm" class="level2">
-<h2 class="anchored" data-anchor-id="construcción-de-los-rpms-de-slurm">Construcción de los RPMs de Slurm</h2>
-<p>Crear el árbol de construcción RPM:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rpmdev-setuptree</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Descargar Slurm:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/rpmbuild/SOURCES</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://download.schedmd.com/slurm/slurm-25.05.5.tar.bz2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Construir los paquetes:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rpmbuild</span> <span class="at">-ta</span> ~/rpmbuild/SOURCES/slurm-25.05.5.tar.bz2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Al finalizar, los RPMs quedan en:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/rpmbuild/RPMS/x86_64/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Los paquetes mínimos necesarios para una instalación de una sola máquina son:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">slurm-25.05.5-1.el10.x86_64.rpm</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">slurm-slurmctld-25.05.5-1.el10.x86_64.rpm</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">slurm-slurmd-25.05.5-1.el10.x86_64.rpm</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="partición" class="level3">
+<h3 class="anchored" data-anchor-id="partición">Partición</h3>
+<p>Una partición es una sección lógica del servidor. En MAGINOT la partición principal se llama:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ripley</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>significa:</p>
+<p>“enviar mi trabajo a la cola llamada <code>ripley</code>”</p>
 </section>
-<section id="instalación-de-slurm" class="level2">
-<h2 class="anchored" data-anchor-id="instalación-de-slurm">Instalación de Slurm</h2>
-<p>Instalar los RPMs generados:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> <span class="dt">\</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  ~/rpmbuild/RPMS/x86_64/slurm-25.05.5-1.el10.x86_64.rpm <span class="dt">\</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  ~/rpmbuild/RPMS/x86_64/slurm-slurmctld-25.05.5-1.el10.x86_64.rpm <span class="dt">\</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  ~/rpmbuild/RPMS/x86_64/slurm-slurmd-25.05.5-1.el10.x86_64.rpm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="recursos" class="level3">
+<h3 class="anchored" data-anchor-id="recursos">Recursos</h3>
+<p>Cuando envías un trabajo, debes indicar cuántos recursos necesitas. Por ejemplo:</p>
+<ul>
+<li><p>número de CPUs;</p></li>
+<li><p>memoria;</p></li>
+<li><p>tiempo máximo;</p></li>
+<li><p>nombre del trabajo;</p></li>
+<li><p>partición donde se ejecutará.</p></li>
+</ul>
 </section>
-<section id="crear-usuario-y-grupo-de-slurm" class="level2">
-<h2 class="anchored" data-anchor-id="crear-usuario-y-grupo-de-slurm">Crear usuario y grupo de Slurm</h2>
-<p>Slurm debe ejecutarse con un usuario de sistema dedicado.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> groupadd <span class="at">-g</span> 2002 slurm <span class="dv">2</span><span class="op">&gt;</span>/dev/null <span class="kw">||</span> <span class="fu">true</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd <span class="at">-u</span> 2002 <span class="at">-g</span> slurm <span class="at">-c</span> <span class="st">"SLURM Workload Manager"</span> <span class="dt">\</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> /var/lib/slurm <span class="at">-s</span> /sbin/nologin <span class="at">-m</span> slurm <span class="dv">2</span><span class="op">&gt;</span>/dev/null <span class="kw">||</span> <span class="fu">true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Verificar:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">id</span> slurm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="configurar-munge" class="level2">
-<h2 class="anchored" data-anchor-id="configurar-munge">Configurar MUNGE</h2>
-<p>MUNGE permite autenticar los componentes de Slurm.</p>
-<p>Crear la llave:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dd if=/dev/urandom bs=1 count=1024 of=/etc/munge/munge.key</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown munge:munge /etc/munge/munge.key</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 0400 /etc/munge/munge.key</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Iniciar el servicio:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable <span class="at">--now</span> munge</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> status munge <span class="at">--no-pager</span> <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Probar MUNGE:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">munge</span> <span class="at">-n</span> <span class="kw">|</span> <span class="ex">unmunge</span> <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Si el resultado muestra:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">STATUS:</span> Success <span class="er">(</span><span class="ex">0</span><span class="kw">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>MUNGE está funcionando correctamente.</p>
+<section id="comandos-básicos" class="level2">
+<h2 class="anchored" data-anchor-id="comandos-básicos">Comandos básicos</h2>
+<section id="ver-el-estado-del-servidor" class="level3">
+<h3 class="anchored" data-anchor-id="ver-el-estado-del-servidor">Ver el estado del servidor</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sinfo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Salida esperada:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">PARTITION</span> AVAIL  TIMELIMIT  NODES  STATE NODELIST</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ripley*</span>      up   infinite      1   idle maginot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Estados comunes:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Estado</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>idle</code></td>
+<td>El nodo está libre</td>
+</tr>
+<tr class="even">
+<td><code>alloc</code></td>
+<td>El nodo está ocupado</td>
+</tr>
+<tr class="odd">
+<td><code>mix</code></td>
+<td>El nodo tiene algunos recursos ocupados y otros libres</td>
+</tr>
+<tr class="even">
+<td><code>down</code></td>
+<td>El nodo no está disponible</td>
+</tr>
+<tr class="odd">
+<td><code>drain</code></td>
+<td>El nodo no acepta nuevos trabajos</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="crear-directorios-de-slurm-en-srvbishop" class="level2">
-<h2 class="anchored" data-anchor-id="crear-directorios-de-slurm-en-srvbishop">Crear directorios de Slurm en /srv/bishop</h2>
-<p>Para evitar llenar la partición raíz, los archivos persistentes de Slurm se guardarán en <code>/srv/bishop/slurm</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> /srv/bishop/slurm/<span class="dt">{log</span><span class="op">,</span><span class="dt">state</span><span class="op">,</span><span class="dt">spool/slurmd}</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> slurm:slurm /srv/bishop/slurm</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod <span class="at">-R</span> 755 /srv/bishop/slurm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>También crear el directorio de configuración:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> /etc/slurm</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown slurm:slurm /etc/slurm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="ver-trabajos-en-cola" class="level3">
+<h3 class="anchored" data-anchor-id="ver-trabajos-en-cola">Ver trabajos en cola</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ejemplo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">JOBID</span> PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="er">(</span><span class="ex">REASON</span><span class="kw">)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> <span class="ex">1234</span>    ripley  analisis   usuario  R       1:23      1 maginot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Estados comunes de trabajos:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Estado</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>R</code></td>
+<td>Running, el trabajo está corriendo</td>
+</tr>
+<tr class="even">
+<td><code>PD</code></td>
+<td>Pending, el trabajo está esperando</td>
+</tr>
+<tr class="odd">
+<td><code>CG</code></td>
+<td>Completing, el trabajo está terminando</td>
+</tr>
+<tr class="even">
+<td><code>CD</code></td>
+<td>Completed, el trabajo terminó correctamente</td>
+</tr>
+<tr class="odd">
+<td><code>F</code></td>
+<td>Failed, el trabajo falló</td>
+</tr>
+<tr class="even">
+<td><code>CA</code></td>
+<td>Cancelled, el trabajo fue cancelado</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="detectar-recursos-del-servidor" class="level2">
-<h2 class="anchored" data-anchor-id="detectar-recursos-del-servidor">Detectar recursos del servidor</h2>
-<p>Una vez instalado Slurm, se debe obtener la configuración real del nodo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">slurmd</span> <span class="at">-C</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Este comando devuelve una línea similar a:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="va">NodeName</span><span class="op">=</span>maginot <span class="va">CPUs</span><span class="op">=</span>72 <span class="va">Boards</span><span class="op">=</span>1 <span class="va">SocketsPerBoard</span><span class="op">=</span>... <span class="va">CoresPerSocket</span><span class="op">=</span>... <span class="va">ThreadsPerCore</span><span class="op">=</span>... <span class="va">RealMemory</span><span class="op">=</span>...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Esta línea debe usarse como base para configurar el nodo en <code>slurm.conf</code>.</p>
+<section id="ver-solo-tus-trabajos" class="level3">
+<h3 class="anchored" data-anchor-id="ver-solo-tus-trabajos">Ver solo tus trabajos</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="va">$USER</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="crear-slurm.conf" class="level2">
-<h2 class="anchored" data-anchor-id="crear-slurm.conf">Crear slurm.conf</h2>
-<p>Crear el archivo principal de configuración:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tee /etc/slurm/slurm.conf <span class="op">&gt;</span> /dev/null <span class="op">&lt;&lt;'EOF'</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="st">ClusterName=maginot</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="st">SlurmctldHost=maginot</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="st">SlurmUser=slurm</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="st">AuthType=auth/munge</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="st">StateSaveLocation=/srv/bishop/slurm/state</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="st">SlurmdSpoolDir=/srv/bishop/slurm/spool/slurmd</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="st">SlurmctldPidFile=/run/slurmctld.pid</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="st">SlurmdPidFile=/run/slurmd.pid</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="st">SlurmctldLogFile=/srv/bishop/slurm/log/slurmctld.log</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="st">SlurmdLogFile=/srv/bishop/slurm/log/slurmd.log</span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="st">SwitchType=switch/none</span></span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="st">MpiDefault=none</span></span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="st">ProctrackType=proctrack/cgroup</span></span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="st">TaskPlugin=task/cgroup,task/affinity</span></span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="st">ReturnToService=2</span></span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="st">SchedulerType=sched/backfill</span></span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a><span class="st">SelectType=select/cons_tres</span></span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="st">SelectTypeParameters=CR_Core</span></span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="st">JobCompType=jobcomp/filetxt</span></span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="st">JobCompLoc=/srv/bishop/slurm/log/job_completions.log</span></span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="st">NodeName=maginot CPUs=72 Boards=1 SocketsPerBoard=2 CoresPerSocket=18 ThreadsPerCore=2 RealMemory=257303 State=UNKNOWN</span></span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a><span class="st">PartitionName=ripley Nodes=maginot Default=YES MaxTime=INFINITE State=UP</span></span>
-<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>La línea NodeName debe ajustarse con la salida real de:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">slurmd</span> <span class="at">-C</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="cancelar-un-trabajo" class="level3">
+<h3 class="anchored" data-anchor-id="cancelar-un-trabajo">Cancelar un trabajo</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> JOBID</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ejemplo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> 1234</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="crear-cgroup.conf" class="level2">
-<h2 class="anchored" data-anchor-id="crear-cgroup.conf">Crear cgroup.conf</h2>
-<p>Rocky Linux 10 usa cgroups v2, por lo que se crea el archivo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tee /etc/slurm/cgroup.conf <span class="op">&gt;</span> /dev/null <span class="op">&lt;&lt;'EOF'</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="st">CgroupPlugin=cgroup/v2</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="st">EnableControllers=yes</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ajustar permisos:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown slurm:slurm /etc/slurm/slurm.conf /etc/slurm/cgroup.conf</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 644 /etc/slurm/slurm.conf /etc/slurm/cgroup.conf</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> setfacl <span class="at">-m</span> u:slurm:x /srv/bishop</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="cancelar-todos-tus-trabajos" class="level3">
+<h3 class="anchored" data-anchor-id="cancelar-todos-tus-trabajos">Cancelar todos tus trabajos</h3>
+<p>Usar con cuidado:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="at">-u</span> <span class="va">$USER</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="crear-archivos-de-log" class="level2">
-<h2 class="anchored" data-anchor-id="crear-archivos-de-log">Crear archivos de log</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> touch /srv/bishop/slurm/log/slurmctld.log</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> touch /srv/bishop/slurm/log/slurmd.log</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> touch /srv/bishop/slurm/log/job_completions.log</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown slurm:slurm /srv/bishop/slurm/log/<span class="pp">*</span>.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="iniciar-servicios" class="level2">
-<h2 class="anchored" data-anchor-id="iniciar-servicios">Iniciar servicios</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable <span class="at">--now</span> munge</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable <span class="at">--now</span> slurmctld</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable <span class="at">--now</span> slurmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Si ya estaban iniciados:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart munge</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart slurmctld</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart slurmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="verificar-instalación" class="level2">
-<h2 class="anchored" data-anchor-id="verificar-instalación">Verificar instalación</h2>
-<p>Revisar el estado de los servicios:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> status munge <span class="at">--no-pager</span> <span class="at">-l</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> status slurmctld <span class="at">--no-pager</span> <span class="at">-l</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> status slurmd <span class="at">--no-pager</span> <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ver la partición:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sinfo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>La salida esperada debe mostrar algo similar a:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">PARTITION</span> AVAIL  TIMELIMIT  NODES  STATE NODELIST</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ripley*</span>      up   infinite      1   idle maginot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Revisar el nodo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scontrol</span> show node maginot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="probar-ejecución-con-srun" class="level2">
-<h2 class="anchored" data-anchor-id="probar-ejecución-con-srun">Probar ejecución con srun</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-p</span> ripley <span class="at">-N1</span> <span class="at">-n1</span> hostname</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="primer-ejemplo-ejecutar-un-comando-simple" class="level2">
+<h2 class="anchored" data-anchor-id="primer-ejemplo-ejecutar-un-comando-simple">Primer ejemplo: ejecutar un comando simple</h2>
+<p>Puedes probar Slurm con:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-p</span> ripley <span class="at">-N1</span> <span class="at">-n1</span> hostname</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>La salida esperada es:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">maginot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">maginot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Esto significa que Slurm ejecutó el comando en el servidor.</p>
+<section id="enviar-trabajos-con-sbatch" class="level3">
+<h3 class="anchored" data-anchor-id="enviar-trabajos-con-sbatch">Enviar trabajos con sbatch</h3>
+<p>La forma recomendada de usar Slurm es crear un script y enviarlo con:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> script.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Un script de Slurm es un archivo de Bash con instrucciones especiales que empiezan con:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Estas líneas le dicen a Slurm qué recursos necesitas.</p>
 </section>
-<section id="probar-ejecución-con-sbatch" class="level2">
-<h2 class="anchored" data-anchor-id="probar-ejecución-con-sbatch">Probar ejecución con sbatch</h2>
-<p>Crear un script de prueba:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> ~/prueba_slurm.sh <span class="op">&lt;&lt;'EOF'</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/bash</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="st">#SBATCH -J prueba</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="st">#SBATCH -p ripley</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="st">#SBATCH -N 1</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="st">#SBATCH -n 1</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="st">#SBATCH -c 2</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="st">echo "Inicio: $(date)"</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="st">echo "Host: $(hostname)"</span></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="st">echo "Job ID: $SLURM_JOB_ID"</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="st">echo "CPUs asignadas: $SLURM_CPUS_PER_TASK"</span></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="st">sleep 10</span></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="st">echo "Fin: $(date)"</span></span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Enviar el trabajo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> ~/prueba_slurm.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ver la cola:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Revisar la salida:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> slurm-<span class="pp">*</span>.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="probar-encolamiento-de-trabajos" class="level2">
-<h2 class="anchored" data-anchor-id="probar-encolamiento-de-trabajos">Probar encolamiento de trabajos</h2>
-<p>Para verificar que Slurm administra correctamente los recursos, se pueden enviar más trabajos de los que caben simultáneamente.</p>
-<p>Crear script:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> ~/test_cola_maginot.sh <span class="op">&lt;&lt;'EOF'</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/bash</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="st">#SBATCH -J cola_maginot</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="st">#SBATCH -p ripley</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="st">#SBATCH -N 1</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="st">#SBATCH -n 1</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="st">#SBATCH -c 8</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="st">#SBATCH --time=00:05:00</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="st">echo "JobID: $SLURM_JOB_ID"</span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="st">echo "Host: $(hostname)"</span></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="st">echo "Inicio: $(date)"</span></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="st">echo "CPUs asignadas: $SLURM_CPUS_PER_TASK"</span></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="st">sleep 120</span></span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="st">echo "Fin: $(date)"</span></span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Enviar 20 trabajos:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">20</span><span class="dt">}</span><span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">sbatch</span> ~/test_cola_maginot.sh</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ver la cola:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>También se puede observar en vivo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ex">watch</span> <span class="at">-n</span> 2 squeue</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Salir de <code>watch</code> con:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Ctrl</span> + C</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="script-mínimo-de-ejemplo" class="level2">
+<h2 class="anchored" data-anchor-id="script-mínimo-de-ejemplo">Script mínimo de ejemplo</h2>
+<p>Crear un archivo llamado <code>prueba_slurm.sh</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> prueba_slurm.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Contenido:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -J prueba</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -p ripley</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 1</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -c 2</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:05:00</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Inicio: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Host: </span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Job ID: </span><span class="va">$SLURM_JOB_ID</span><span class="st">"</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"CPUs asignadas: </span><span class="va">$SLURM_CPUS_PER_TASK</span><span class="st">"</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">sleep</span> 10</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Fin: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Enviar:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> prueba_slurm.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Slurm responderá algo como:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Submitted</span> batch job 1234</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="revisar-la-salida-del-trabajo" class="level3">
+<h3 class="anchored" data-anchor-id="revisar-la-salida-del-trabajo">Revisar la salida del trabajo</h3>
+<p>Por defecto, Slurm crea un archivo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">slurm-JOBID.out</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Por ejemplo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> slurm-1234.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="revisar-registros-de-trabajos-completados" class="level2">
-<h2 class="anchored" data-anchor-id="revisar-registros-de-trabajos-completados">Revisar registros de trabajos completados</h2>
-<p>Como se configuró:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="va">JobCompType</span><span class="op">=</span>jobcomp/filetxt</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="va">JobCompLoc</span><span class="op">=</span>/srv/bishop/slurm/log/job_completions.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>los trabajos completados pueden revisarse con:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-n</span> 20 /srv/bishop/slurm/log/job_completions.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Para seguir el registro en vivo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tail <span class="at">-f</span> /srv/bishop/slurm/log/job_completions.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="personalizar-el-nombre-de-salida" class="level3">
+<h3 class="anchored" data-anchor-id="personalizar-el-nombre-de-salida">Personalizar el nombre de salida</h3>
+<p>Es recomendable guardar las salidas en una carpeta.</p>
+<p>Crear carpeta:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> logs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ejemplo de script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -J prueba</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -p ripley</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 1</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -c 2</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:05:00</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -o logs/%x_%j.out</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -e logs/%x_%j.err</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Inicio: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Host: </span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Job ID: </span><span class="va">$SLURM_JOB_ID</span><span class="st">"</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Fin: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Donde:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Código</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>%x</code></td>
+<td>Nombre del trabajo</td>
+</tr>
+<tr class="even">
+<td><code>%j</code></td>
+<td>ID del trabajo</td>
+</tr>
+</tbody>
+</table>
+<p>Así se generan archivos como:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">logs/prueba_1234.out</span> logs/prueba_1234.err</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="notas-sobre-sacct" class="level2">
-<h2 class="anchored" data-anchor-id="notas-sobre-sacct">Notas sobre sacct</h2>
-<p>En esta instalación no se configuró <code>slurmdbd</code>, por lo que el comando:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>puede mostrar:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Slurm</span> accounting storage is disabled</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Esto no indica un error en la instalación básica. Significa que no se ha configurado el sistema completo de contabilidad de Slurm con base de datos.</p>
-<p>Para una instalación inicial en una sola máquina, el registro con <code>jobcomp/filetxt</code> puede ser suficiente.</p>
 </section>
-<section id="comandos-útiles-para-usuarios" class="level2">
-<h2 class="anchored" data-anchor-id="comandos-útiles-para-usuarios">Comandos útiles para usuarios</h2>
-<p>Ver particiones disponibles:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sinfo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ver trabajos en cola:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Enviar un trabajo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> script.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Cancelar un trabajo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> JOBID</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ejecutar un comando interactivo sencillo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-p</span> ripley <span class="at">-N1</span> <span class="at">-n1</span> hostname</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="parámetros-principales-de-slurm" class="level2">
+<h2 class="anchored" data-anchor-id="parámetros-principales-de-slurm">Parámetros principales de Slurm</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Opción</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>#SBATCH -J nombre</code></td>
+<td>Nombre del trabajo</td>
+</tr>
+<tr class="even">
+<td><code>#SBATCH -p ripley</code></td>
+<td>Partición donde se ejecuta</td>
+</tr>
+<tr class="odd">
+<td><code>#SBATCH -N 1</code></td>
+<td>Número de nodos</td>
+</tr>
+<tr class="even">
+<td><code>#SBATCH -n 1</code></td>
+<td>Número de tareas</td>
+</tr>
+<tr class="odd">
+<td><code>#SBATCH -c 4</code></td>
+<td>CPUs por tarea</td>
+</tr>
+<tr class="even">
+<td><code>#SBATCH --mem=16G</code></td>
+<td>Memoria solicitada</td>
+</tr>
+<tr class="odd">
+<td><code>#SBATCH --time=01:00:00</code></td>
+<td>Tiempo máximo</td>
+</tr>
+<tr class="even">
+<td><code>#SBATCH -o archivo.out</code></td>
+<td>Archivo de salida estándar</td>
+</tr>
+<tr class="odd">
+<td><code>#SBATCH -e archivo.err</code></td>
+<td>Archivo de error</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="comandos-útiles-para-administración" class="level2">
-<h2 class="anchored" data-anchor-id="comandos-útiles-para-administración">Comandos útiles para administración</h2>
-<p>Reiniciar servicios:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb55"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart slurmctld</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart slurmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Releer configuración:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> scontrol reconfigure</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ver estado del nodo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb57"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scontrol</span> show node maginot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ver logs del controlador:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb58"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tail <span class="at">-f</span> /srv/bishop/slurm/log/slurmctld.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ver logs del nodo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb59"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tail <span class="at">-f</span> /srv/bishop/slurm/log/slurmd.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ver trabajos completados:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tail <span class="at">-f</span> /srv/bishop/slurm/log/job_completions.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="cuántas-cpus-pedir" class="level2">
+<h2 class="anchored" data-anchor-id="cuántas-cpus-pedir">¿Cuántas CPUs pedir?</h2>
+<p>No siempre conviene pedir muchas CPUs. Solo deben solicitarse si el programa realmente puede usarlas.</p>
+<p>Ejemplos:</p>
+<section id="programa-de-un-solo-hilo" class="level3">
+<h3 class="anchored" data-anchor-id="programa-de-un-solo-hilo">Programa de un solo hilo</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -c 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="conclusión" class="level2">
-<h2 class="anchored" data-anchor-id="conclusión">Conclusión</h2>
-<p>Con esta configuración, Slurm queda funcionando en una sola máquina con Rocky Linux 10.1. Aunque no se trata de un clúster multinodo, esta instalación permite controlar el uso de CPUs, organizar trabajos en cola y registrar ejecuciones.</p>
-<p>Este esquema es útil para servidores compartidos de bioinformática, donde distintos usuarios ejecutan análisis que pueden consumir muchos recursos. Al obligar a enviar trabajos mediante Slurm, se reduce el riesgo de saturar el servidor y se promueve una forma más ordenada y reproducible de trabajar.</p>
+<section id="programa-con-4-hilos" class="level3">
+<h3 class="anchored" data-anchor-id="programa-con-4-hilos">Programa con 4 hilos</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -c 4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="programa-con-16-hilos" class="level3">
+<h3 class="anchored" data-anchor-id="programa-con-16-hilos">Programa con 16 hilos</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -c 16</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Además, dentro del comando del programa hay que indicar el mismo número de hilos.</p>
+<p>Ejemplo con <code>fastp</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastp</span> <span class="dt">\</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-i</span> muestra_R1.fastq.gz <span class="dt">\</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> muestra_R2.fastq.gz <span class="dt">\</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-o</span> limpia_R1.fastq.gz <span class="dt">\</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> limpia_R2.fastq.gz <span class="dt">\</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-w</span> <span class="va">$SLURM_CPUS_PER_TASK</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ejemplo con <code>iqtree2</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> alineamiento.phy <span class="at">-T</span> <span class="va">$SLURM_CPUS_PER_TASK</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ejemplo con <code>mafft</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mafft</span> <span class="at">--thread</span> <span class="va">$SLURM_CPUS_PER_TASK</span> entrada.fasta <span class="op">&gt;</span> alineado.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ejemplo-para-un-programa-bioinformático" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-para-un-programa-bioinformático">Ejemplo para un programa bioinformático</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -J mafft_test</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -p ripley</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 1</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -c 8</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=16G</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=02:00:00</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -o logs/%x_%j.out</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -e logs/%x_%j.err</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> logs resultados</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Inicio: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Host: </span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"CPUs: </span><span class="va">$SLURM_CPUS_PER_TASK</span><span class="st">"</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="ex">mafft</span> <span class="at">--thread</span> <span class="va">$SLURM_CPUS_PER_TASK</span> datos/secuencias.fasta <span class="op">&gt;</span> resultados/secuencias_alineadas.fasta</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Fin: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Enviar:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> mafft_test.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ejemplo-con-apptainer" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-con-apptainer">Ejemplo con Apptainer</h3>
+<p>Si el análisis usa un contenedor de Apptainer:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -J apptainer_test</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -p ripley</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 1</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -c 4</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=8G</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -o logs/%x_%j.out</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -e logs/%x_%j.err</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> logs resultados</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Inicio: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Host: </span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec programa.sif programa <span class="at">--help</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Fin: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ejemplo con carpetas enlazadas:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -J apptainer_test</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -p ripley</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 1</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -c 4</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=8G</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -o logs/%x_%j.out</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -e logs/%x_%j.err</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> logs resultados</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Inicio: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Host: </span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="dt">\</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">--bind</span> <span class="va">$PWD</span>:/work <span class="dt">\</span></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">--pwd</span> /work <span class="dt">\</span></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>  programa.sif <span class="dt">\</span></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>  programa input.fasta output.txt</span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Fin: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="variables-útiles-de-slurm" class="level2">
+<h2 class="anchored" data-anchor-id="variables-útiles-de-slurm">Variables útiles de Slurm</h2>
+<p>Dentro de un script, Slurm crea variables automáticamente.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>$SLURM_JOB_ID</code></td>
+<td>ID del trabajo</td>
+</tr>
+<tr class="even">
+<td><code>$SLURM_JOB_NAME</code></td>
+<td>Nombre del trabajo</td>
+</tr>
+<tr class="odd">
+<td><code>$SLURM_CPUS_PER_TASK</code></td>
+<td>CPUs asignadas</td>
+</tr>
+<tr class="even">
+<td><code>$SLURM_SUBMIT_DIR</code></td>
+<td>Carpeta desde donde se envió el job</td>
+</tr>
+<tr class="odd">
+<td><code>$SLURM_JOB_NODELIST</code></td>
+<td>Nodo asignado</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Job ID: </span><span class="va">$SLURM_JOB_ID</span><span class="st">"</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Nombre: </span><span class="va">$SLURM_JOB_NAME</span><span class="st">"</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"CPUs: </span><span class="va">$SLURM_CPUS_PER_TASK</span><span class="st">"</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Directorio de envío: </span><span class="va">$SLURM_SUBMIT_DIR</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="buenas-prácticas" class="level2">
+<h2 class="anchored" data-anchor-id="buenas-prácticas">Buenas prácticas</h2>
+<section id="no-correr-análisis-pesados-directamente-en-la-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="no-correr-análisis-pesados-directamente-en-la-terminal">1. No correr análisis pesados directamente en la terminal</h3>
+<p>Evita ejecutar programas pesados así:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> archivo.phy <span class="at">-T</span> 72</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>En su lugar, crea un script y envíalo con:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> script.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="no-pedir-más-cpus-de-las-necesarias" class="level3">
+<h3 class="anchored" data-anchor-id="no-pedir-más-cpus-de-las-necesarias">2. No pedir más CPUs de las necesarias</h3>
+<p>Si un programa solo usa 4 hilos, no pidas 32 CPUs.</p>
+<p>Mal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -c 32</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Bien:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -c 4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="siempre-usar-carpetas-organizadas" class="level3">
+<h3 class="anchored" data-anchor-id="siempre-usar-carpetas-organizadas">3. Siempre usar carpetas organizadas</h3>
+<p>Ejemplo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">proyecto/</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> datos/</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> scripts/</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> resultados/</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> logs/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="guardar-salidas-y-errores" class="level3">
+<h3 class="anchored" data-anchor-id="guardar-salidas-y-errores">4. Guardar salidas y errores</h3>
+<p>Usa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -o logs/%x_%j.out</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -e logs/%x_%j.err</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="probar-primero-con-datos-pequeños" class="level3">
+<h3 class="anchored" data-anchor-id="probar-primero-con-datos-pequeños">5. Probar primero con datos pequeños</h3>
+<p>Antes de enviar un análisis grande, prueba con un subconjunto.</p>
+</section>
+<section id="revisar-los-logs" class="level3">
+<h3 class="anchored" data-anchor-id="revisar-los-logs">6. Revisar los logs</h3>
+<p>Si un trabajo falla, revisa primero:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> logs/nombre_JOBID.err</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> logs/nombre_JOBID.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="revisar-trabajos-completados" class="level2">
+<h2 class="anchored" data-anchor-id="revisar-trabajos-completados">Revisar trabajos completados</h2>
+<p>El servidor guarda un registro básico de trabajos completados en:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/srv/bishop/slurm/log/job_completions.log</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Puedes revisar los últimos trabajos con:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-n</span> 20 /srv/bishop/slurm/log/job_completions.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="plantilla-recomendada-para-usuarios" class="level2">
+<h2 class="anchored" data-anchor-id="plantilla-recomendada-para-usuarios">Plantilla recomendada para usuarios</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -J nombre_del_analisis</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -p ripley</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 1</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -c 4</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=16G</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=02:00:00</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -o logs/%x_%j.out</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -e logs/%x_%j.err</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> logs resultados</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"===================================="</span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Trabajo: </span><span class="va">$SLURM_JOB_NAME</span><span class="st">"</span></span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Job ID: </span><span class="va">$SLURM_JOB_ID</span><span class="st">"</span></span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Usuario: </span><span class="va">$USER</span><span class="st">"</span></span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Host: </span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Inicio: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"CPUs asignadas: </span><span class="va">$SLURM_CPUS_PER_TASK</span><span class="st">"</span></span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Directorio: </span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"===================================="</span></span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar ambiente, módulo o contenedor aquí</span></span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a><span class="co"># module load programa</span></span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a><span class="co"># micromamba activate ambiente</span></span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a><span class="co"># apptainer exec programa.sif programa</span></span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Comando principal</span></span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Aquí va el análisis"</span></span>
+<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"===================================="</span></span>
+<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Fin: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"===================================="</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="resumen-de-comandos-esenciales" class="level3">
+<h3 class="anchored" data-anchor-id="resumen-de-comandos-esenciales">Resumen de comandos esenciales</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Acción</th>
+<th>Comando</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ver estado del servidor</td>
+<td><code>sinfo</code></td>
+</tr>
+<tr class="even">
+<td>Ver cola</td>
+<td><code>squeue</code></td>
+</tr>
+<tr class="odd">
+<td>Ver tus trabajos</td>
+<td><code>squeue -u $USER</code></td>
+</tr>
+<tr class="even">
+<td>Enviar trabajo</td>
+<td><code>sbatch script.sh</code></td>
+</tr>
+<tr class="odd">
+<td>Cancelar trabajo</td>
+<td><code>scancel JOBID</code></td>
+</tr>
+<tr class="even">
+<td>Ejecutar comando simple</td>
+<td><code>srun -p ripley -N1 -n1 hostname</code></td>
+</tr>
+<tr class="odd">
+<td>Ver últimos trabajos registrados</td>
+<td><code>tail -n 20 /srv/bishop/slurm/log/job_completions.log</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="recomendación-final" class="level2">
+<h2 class="anchored" data-anchor-id="recomendación-final">Recomendación final</h2>
+<p>Antes de enviar un análisis grande:</p>
+<ol type="1">
+<li><p>Revisa que tu script funcione con pocos datos.</p></li>
+<li><p>Pide solo los recursos necesarios.</p></li>
+<li><p>Guarda salidas y errores en <code>logs/</code>.</p></li>
+<li><p>Verifica la cola con <code>squeue</code>.</p></li>
+<li><p>Revisa los archivos <code>.out</code> y <code>.err</code>.</p></li>
+</ol>
+<p>El uso correcto de Slurm permite que MAGINOT sea utilizado por varias personas de forma ordenada, evitando saturar el servidor y facilitando el seguimiento de los análisis.</p>
 
 
 </section>
@@ -984,11 +1214,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./monitor.html" class="pagination-link" aria-label="Monitoreo y Observabilidad">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Monitoreo y Observabilidad</span></span>
+      <a href="./services.html" class="pagination-link" aria-label="Servicios: RStudio Server">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Servicios: RStudio Server</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="Referencias">
+        <span class="nav-page-text"><span class="chapter-title">Referencias</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -996,4 +1229,4 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/slurm.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
