@@ -6,7 +6,7 @@ project:
 
 
 book:
-  title: "Servidor MAGINOT"
+  title: "Servidor MAGINOT - Anexo II"
   author: "Dr. Cristian Cervantes"
   date: today
   repo-url: https://cristoichkov.github.io/maginot_server/
@@ -16,7 +16,6 @@ book:
     logo: images/logo.png   # aquí apuntas al logo
     collapse-level: 1
   page-navigation: true
-  search: true
 
   chapters:
     - index.qmd
@@ -24,6 +23,7 @@ book:
     - commands.qmd
     - module.qmd
     - services.qmd
+    - slurm.qmd
     - references.qmd
 
 format:
@@ -43,6 +43,35 @@ format:
         <meta property="og:type" content="website">
         <meta name="twitter:card" content="summary_large_image">
         <link rel="canonical" href="https://cristoichkov.github.io/maginot_server/">
+  
+  pdf:
+    documentclass: scrreprt
+    latex-auto-install: false
+    listings: true
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \usepackage{listings}
+
+        \lstdefinestyle{maginot}{
+          basicstyle=\ttfamily\small,
+          backgroundcolor=\color{black!5},
+          frame=single,
+          rulecolor=\color{black!20},
+          framesep=6pt,
+          framerule=0.4pt,
+          breaklines=true,
+          breakatwhitespace=true,
+          columns=fullflexible,
+          keepspaces=true,
+          showspaces=false,
+          showtabs=false,
+          showstringspaces=false,
+          upquote=true
+        }
+        
+        \lstset{style=maginot}      
+    
         
 website:
   site-url: https://cristoichkov.github.io/maginot_server/

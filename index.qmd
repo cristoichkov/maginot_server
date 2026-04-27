@@ -17,40 +17,31 @@ A estudiantes, técnicos y personal académico que requieran ejecutar análisis 
 
 ## Alcances del manual
 
-**Incluye**
-- Acceso (VPN/SSH)
-- Navegación y organización de proyectos
-- Transferencia de archivos (SFTP/SCP/rsync)
-- Uso de software (módulos/ambientes/contenedores)
-- Ejecución y monitoreo básico de análisis
+**Incluye** - Acceso (VPN/SSH) - Navegación y organización de proyectos - Transferencia de archivos (SFTP/SCP/rsync) - Uso de software (módulos/ambientes/contenedores) - Ejecución y monitoreo básico de análisis
 
-**No incluye**
-- Cursos completos de Linux o bioinformática
-- Desarrollo de pipelines desde cero
-- Instalación libre de software sin solicitud previa al administrador
+**No incluye** - Cursos completos de Linux o bioinformática - Desarrollo de pipelines desde cero - Instalación libre de software sin solicitud previa al administrador
 
 ## Reglas rápidas (uso responsable)
 
-- La cuenta es personal e intransferible.
-- No compartas contraseñas.
-- Mantén tus proyectos ordenados y limpia datos temporales.
-- Reporta incidentes o problemas al administrador.
+-   La cuenta es personal e intransferible.
+-   No compartas contraseñas.
+-   Mantén tus proyectos ordenados y limpia datos temporales.
+-   Reporta incidentes o problemas al administrador.
 
 ## Buenas prácticas recomendadas
 
-- **Organiza tus proyectos:** usa una estructura consistente (por ejemplo `data/`, `scripts/`, `results/`, `logs/`, `metadata/`).
-- **Reproducibilidad:** registra versiones, parámetros y comandos (idealmente en scripts).
-- **Logs:** guarda salida estándar y errores; te ahorran tiempo para depurar.
-- **Almacenamiento responsable:** comprime resultados grandes y elimina temporales cuando ya no se requieran.
-- **Seguridad:** usa contraseñas fuertes.
+-   **Organiza tus proyectos:** usa una estructura consistente (por ejemplo `data/`, `scripts/`, `results/`, `logs/`, `metadata/`).
+-   **Reproducibilidad:** registra versiones, parámetros y comandos (idealmente en scripts).
+-   **Logs:** guarda salida estándar y errores; te ahorran tiempo para depurar.
+-   **Almacenamiento responsable:** comprime resultados grandes y elimina temporales cuando ya no se requieran.
+-   **Seguridad:** usa contraseñas fuertes.
 
 ## Ruta rápida (para usuarios con prisa)
 
-1. Conéctate a la VPN (WireGuard).
-2. Entra por SSH al servidor.
-3. Ubica o crea tu carpeta de proyecto.
-4. Sube tus datos (SFTP/rsync/scp).
-5. Carga software (modules/conda) o usa contenedores (Apptainer).
-6. Ejecuta tu análisis siguiendo las reglas de recursos.
-7. Monitorea y guarda logs/resultados.
-
+1.  Conéctate a la VPN (WireGuard).
+2.  Entra por SSH al servidor.
+3.  Ubica o crea tu carpeta de proyecto.
+4.  Sube tus datos (SFTP/rsync/scp).
+5.  Carga software (modules/conda) o usa contenedores (Apptainer).
+6.  Ejecuta tu análisis siguiendo las reglas de recursos.
+7.  Monitorea y guarda logs/resultados.

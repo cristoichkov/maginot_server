@@ -1,0 +1,575 @@
+---
+title: "Software en MAGINOT"
+---
+
+## ¿Qué es Slurm?
+
+Slurm es un sistema de administración de trabajos para servidores de cómputo. Su función es organizar el uso de los recursos del servidor, como CPUs, memoria y tiempo de ejecución.
+
+En lugar de ejecutar análisis directamente en la terminal, los usuarios envían sus trabajos a una cola. Slurm decide cuándo correrlos de acuerdo con los recursos disponibles.
+
+Esto ayuda a:
+
+-   evitar que una sola persona sature el servidor;
+-   ordenar los análisis de varios usuarios;
+-   asignar CPUs de manera controlada;
+-   dejar registro de los trabajos ejecutados;
+-   mejorar la reproducibilidad de los análisis.
+
+## Conceptos básicos
+
+### Job
+
+Un *job* es un trabajo enviado a Slurm. Puede ser un script de Bash que ejecuta un análisis bioinformático, un programa de R, Python, Apptainer, BLAST, IQ-TREE, MAFFT, etc.
+
+### Cola
+
+La cola es la lista de trabajos esperando o ejecutándose.
+
+### Partición
+
+Una partición es una sección lógica del servidor. En MAGINOT la partición principal se llama:
+
+``` bash
+ripley
+```
+
+significa:
+
+“enviar mi trabajo a la cola llamada `ripley`”
+
+### Recursos
+
+Cuando envías un trabajo, debes indicar cuántos recursos necesitas. Por ejemplo:
+
+-    número de CPUs;
+
+-    memoria;
+
+-    tiempo máximo;
+
+-    nombre del trabajo;
+
+-    partición donde se ejecutará.
+
+## Comandos básicos
+
+### Ver el estado del servidor
+
+``` bash
+sinfo
+```
+
+Salida esperada:
+
+``` bash
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+ripley*      up   infinite      1   idle maginot
+```
+
+Estados comunes:
+
+| Estado  | Significado                                            |
+|---------|--------------------------------------------------------|
+| `idle`  | El nodo está libre                                     |
+| `alloc` | El nodo está ocupado                                   |
+| `mix`   | El nodo tiene algunos recursos ocupados y otros libres |
+| `down`  | El nodo no está disponible                             |
+| `drain` | El nodo no acepta nuevos trabajos                      |
+
+### Ver trabajos en cola
+
+``` bash
+squeue
+```
+
+Ejemplo:
+
+``` bash
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+ 1234    ripley  analisis   usuario  R       1:23      1 maginot
+```
+
+Estados comunes de trabajos:
+
+| Estado | Significado                                 |
+|--------|---------------------------------------------|
+| `R`    | Running, el trabajo está corriendo          |
+| `PD`   | Pending, el trabajo está esperando          |
+| `CG`   | Completing, el trabajo está terminando      |
+| `CD`   | Completed, el trabajo terminó correctamente |
+| `F`    | Failed, el trabajo falló                    |
+| `CA`   | Cancelled, el trabajo fue cancelado         |
+
+### Ver solo tus trabajos
+
+``` bash
+squeue -u $USER
+```
+
+### Cancelar un trabajo
+
+``` bash
+scancel JOBID
+```
+
+Ejemplo:
+
+``` bash
+scancel 1234
+```
+
+### Cancelar todos tus trabajos
+
+Usar con cuidado:
+
+``` bash
+scancel -u $USER
+```
+
+## Primer ejemplo: ejecutar un comando simple
+
+Puedes probar Slurm con:
+
+``` bash
+srun -p ripley -N1 -n1 hostname
+```
+
+La salida esperada es:
+
+``` bash
+maginot
+```
+
+Esto significa que Slurm ejecutó el comando en el servidor.
+
+### Enviar trabajos con sbatch
+
+La forma recomendada de usar Slurm es crear un script y enviarlo con:
+
+``` bash
+sbatch script.sh
+```
+
+Un script de Slurm es un archivo de Bash con instrucciones especiales que empiezan con:
+
+``` bash
+#SBATCH
+```
+
+Estas líneas le dicen a Slurm qué recursos necesitas.
+
+## Script mínimo de ejemplo
+
+Crear un archivo llamado `prueba_slurm.sh`:
+
+``` bash
+nano prueba_slurm.sh
+```
+
+Contenido:
+
+``` bash
+#!/bin/bash
+#SBATCH -J prueba
+#SBATCH -p ripley
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 2
+#SBATCH --time=00:05:00
+
+echo "Inicio: $(date)"
+echo "Host: $(hostname)"
+echo "Job ID: $SLURM_JOB_ID"
+echo "CPUs asignadas: $SLURM_CPUS_PER_TASK"
+
+sleep 10
+
+echo "Fin: $(date)"
+```
+
+Enviar:
+
+``` bash
+sbatch prueba_slurm.sh
+```
+
+Slurm responderá algo como:
+
+``` bash
+Submitted batch job 1234
+```
+
+### Revisar la salida del trabajo
+
+Por defecto, Slurm crea un archivo:
+
+``` bash
+slurm-JOBID.out
+```
+
+Por ejemplo:
+
+``` bash
+cat slurm-1234.out
+```
+
+### Personalizar el nombre de salida
+
+Es recomendable guardar las salidas en una carpeta.
+
+Crear carpeta:
+
+``` bash
+mkdir -p logs
+```
+
+Ejemplo de script:
+
+``` bash
+#!/bin/bash
+#SBATCH -J prueba
+#SBATCH -p ripley
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 2
+#SBATCH --time=00:05:00
+#SBATCH -o logs/%x_%j.out
+#SBATCH -e logs/%x_%j.err
+
+echo "Inicio: $(date)"
+echo "Host: $(hostname)"
+echo "Job ID: $SLURM_JOB_ID"
+echo "Fin: $(date)"
+```
+
+Donde:
+
+| Código | Significado        |
+|--------|--------------------|
+| `%x`   | Nombre del trabajo |
+| `%j`   | ID del trabajo     |
+
+Así se generan archivos como:
+
+``` bash
+logs/prueba_1234.out logs/prueba_1234.err
+```
+
+## Parámetros principales de Slurm
+
+| Opción                    | Significado                |
+|---------------------------|----------------------------|
+| `#SBATCH -J nombre`       | Nombre del trabajo         |
+| `#SBATCH -p ripley`       | Partición donde se ejecuta |
+| `#SBATCH -N 1`            | Número de nodos            |
+| `#SBATCH -n 1`            | Número de tareas           |
+| `#SBATCH -c 4`            | CPUs por tarea             |
+| `#SBATCH --mem=16G`       | Memoria solicitada         |
+| `#SBATCH --time=01:00:00` | Tiempo máximo              |
+| `#SBATCH -o archivo.out`  | Archivo de salida estándar |
+| `#SBATCH -e archivo.err`  | Archivo de error           |
+
+## ¿Cuántas CPUs pedir?
+
+No siempre conviene pedir muchas CPUs. Solo deben solicitarse si el programa realmente puede usarlas.
+
+Ejemplos:
+
+### Programa de un solo hilo
+
+``` bash
+#SBATCH -c 1
+```
+
+### Programa con 4 hilos
+
+``` bash
+#SBATCH -c 4
+```
+
+### Programa con 16 hilos
+
+``` bash
+#SBATCH -c 16
+```
+
+Además, dentro del comando del programa hay que indicar el mismo número de hilos.
+
+Ejemplo con `fastp`:
+
+``` bash
+fastp \
+  -i muestra_R1.fastq.gz \
+  -I muestra_R2.fastq.gz \
+  -o limpia_R1.fastq.gz \
+  -O limpia_R2.fastq.gz \
+  -w $SLURM_CPUS_PER_TASK
+```
+
+Ejemplo con `iqtree2`:
+
+``` bash
+iqtree2 -s alineamiento.phy -T $SLURM_CPUS_PER_TASK
+```
+
+Ejemplo con `mafft`:
+
+``` bash
+mafft --thread $SLURM_CPUS_PER_TASK entrada.fasta > alineado.fasta
+```
+
+### Ejemplo para un programa bioinformático
+
+``` bash
+#!/bin/bash
+#SBATCH -J mafft_test
+#SBATCH -p ripley
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 8
+#SBATCH --mem=16G
+#SBATCH --time=02:00:00
+#SBATCH -o logs/%x_%j.out
+#SBATCH -e logs/%x_%j.err
+
+mkdir -p logs resultados
+
+echo "Inicio: $(date)"
+echo "Host: $(hostname)"
+echo "CPUs: $SLURM_CPUS_PER_TASK"
+
+mafft --thread $SLURM_CPUS_PER_TASK datos/secuencias.fasta > resultados/secuencias_alineadas.fasta
+
+echo "Fin: $(date)"
+```
+
+Enviar:
+
+``` bash
+sbatch mafft_test.sh
+```
+
+### Ejemplo con Apptainer
+
+Si el análisis usa un contenedor de Apptainer:
+
+``` bash
+#!/bin/bash
+#SBATCH -J apptainer_test
+#SBATCH -p ripley
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 4
+#SBATCH --mem=8G
+#SBATCH --time=01:00:00
+#SBATCH -o logs/%x_%j.out
+#SBATCH -e logs/%x_%j.err
+
+mkdir -p logs resultados
+
+echo "Inicio: $(date)"
+echo "Host: $(hostname)"
+
+apptainer exec programa.sif programa --help
+
+echo "Fin: $(date)"
+```
+
+Ejemplo con carpetas enlazadas:
+
+``` bash
+#!/bin/bash
+#SBATCH -J apptainer_test
+#SBATCH -p ripley
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 4
+#SBATCH --mem=8G
+#SBATCH --time=01:00:00
+#SBATCH -o logs/%x_%j.out
+#SBATCH -e logs/%x_%j.err
+
+mkdir -p logs resultados
+
+echo "Inicio: $(date)"
+echo "Host: $(hostname)"
+
+apptainer exec \
+  --bind $PWD:/work \
+  --pwd /work \
+  programa.sif \
+  programa input.fasta output.txt
+
+echo "Fin: $(date)"
+```
+
+## Variables útiles de Slurm
+
+Dentro de un script, Slurm crea variables automáticamente.
+
+| Variable               | Significado                         |
+|------------------------|-------------------------------------|
+| `$SLURM_JOB_ID`        | ID del trabajo                      |
+| `$SLURM_JOB_NAME`      | Nombre del trabajo                  |
+| `$SLURM_CPUS_PER_TASK` | CPUs asignadas                      |
+| `$SLURM_SUBMIT_DIR`    | Carpeta desde donde se envió el job |
+| `$SLURM_JOB_NODELIST`  | Nodo asignado                       |
+
+Ejemplo:
+
+``` bash
+echo "Job ID: $SLURM_JOB_ID"
+echo "Nombre: $SLURM_JOB_NAME"
+echo "CPUs: $SLURM_CPUS_PER_TASK"
+echo "Directorio de envío: $SLURM_SUBMIT_DIR"
+```
+
+## Buenas prácticas
+
+### 1. No correr análisis pesados directamente en la terminal
+
+Evita ejecutar programas pesados así:
+
+``` bash
+iqtree2 -s archivo.phy -T 72
+```
+
+En su lugar, crea un script y envíalo con:
+
+``` bash
+sbatch script.sh
+```
+
+### 2. No pedir más CPUs de las necesarias
+
+Si un programa solo usa 4 hilos, no pidas 32 CPUs.
+
+Mal:
+
+``` bash
+#SBATCH -c 32
+```
+
+Bien:
+
+``` bash
+#SBATCH -c 4
+```
+
+### 3. Siempre usar carpetas organizadas
+
+Ejemplo:
+
+``` bash
+proyecto/
+├── datos/
+├── scripts/
+├── resultados/
+└── logs/
+```
+
+### 4. Guardar salidas y errores
+
+Usa:
+
+``` bash
+#SBATCH -o logs/%x_%j.out
+#SBATCH -e logs/%x_%j.err
+```
+
+### 5. Probar primero con datos pequeños
+
+Antes de enviar un análisis grande, prueba con un subconjunto.
+
+### 6. Revisar los logs
+
+Si un trabajo falla, revisa primero:
+
+``` bash
+cat logs/nombre_JOBID.err
+cat logs/nombre_JOBID.out
+```
+
+## Revisar trabajos completados
+
+El servidor guarda un registro básico de trabajos completados en:
+
+``` bash
+/srv/bishop/slurm/log/job_completions.log
+```
+
+Puedes revisar los últimos trabajos con:
+
+``` bash
+tail -n 20 /srv/bishop/slurm/log/job_completions.log
+```
+
+## Plantilla recomendada para usuarios
+
+``` bash
+#!/bin/bash
+#SBATCH -J nombre_del_analisis
+#SBATCH -p ripley
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 4
+#SBATCH --mem=16G
+#SBATCH --time=02:00:00
+#SBATCH -o logs/%x_%j.out
+#SBATCH -e logs/%x_%j.err
+
+set -euo pipefail
+
+mkdir -p logs resultados
+
+echo "===================================="
+echo "Trabajo: $SLURM_JOB_NAME"
+echo "Job ID: $SLURM_JOB_ID"
+echo "Usuario: $USER"
+echo "Host: $(hostname)"
+echo "Inicio: $(date)"
+echo "CPUs asignadas: $SLURM_CPUS_PER_TASK"
+echo "Directorio: $(pwd)"
+echo "===================================="
+
+# Cargar ambiente, módulo o contenedor aquí
+# module load programa
+# micromamba activate ambiente
+# apptainer exec programa.sif programa
+
+# Comando principal
+echo "Aquí va el análisis"
+
+echo "===================================="
+echo "Fin: $(date)"
+echo "===================================="
+```
+
+### Resumen de comandos esenciales
+
+| Acción | Comando |
+|----|----|
+| Ver estado del servidor | `sinfo` |
+| Ver cola | `squeue` |
+| Ver tus trabajos | `squeue -u $USER` |
+| Enviar trabajo | `sbatch script.sh` |
+| Cancelar trabajo | `scancel JOBID` |
+| Ejecutar comando simple | `srun -p ripley -N1 -n1 hostname` |
+| Ver últimos trabajos registrados | `tail -n 20 /srv/bishop/slurm/log/job_completions.log` |
+
+## Recomendación final
+
+Antes de enviar un análisis grande:
+
+1.   Revisa que tu script funcione con pocos datos.
+
+2.   Pide solo los recursos necesarios.
+
+3.   Guarda salidas y errores en `logs/`.
+
+4.   Verifica la cola con `squeue`.
+
+5.   Revisa los archivos `.out` y `.err`.
+
+El uso correcto de Slurm permite que MAGINOT sea utilizado por varias personas de forma ordenada, evitando saturar el servidor y facilitando el seguimiento de los análisis.

@@ -92,7 +92,7 @@ samtools --version
 module spider revbayes
 ```
 
-![](images/software/pic2.png){fig-align="center"}
+![](images/software/pic2.png){fig-align="center" width="650"}
 
 El módulo **`revbayes/1.2.5-mpi`** proporciona **RevBayes 1.2.5 con soporte MPI**, ejecutándose **dentro de un contenedor Apptainer**, pero tú lo usas como un módulo normal.
 
