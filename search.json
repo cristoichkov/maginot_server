@@ -342,131 +342,131 @@
   {
     "objectID": "slurm.html",
     "href": "slurm.html",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "",
     "text": "¿Qué es Slurm?\nSlurm es un sistema de administración de trabajos para servidores de cómputo. Su función es organizar el uso de los recursos del servidor, como CPUs, memoria y tiempo de ejecución.\nEn lugar de ejecutar análisis directamente en la terminal, los usuarios envían sus trabajos a una cola. Slurm decide cuándo correrlos de acuerdo con los recursos disponibles.\nEsto ayuda a:",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
     "objectID": "slurm.html#qué-es-slurm",
     "href": "slurm.html#qué-es-slurm",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "",
     "text": "evitar que una sola persona sature el servidor;\nordenar los análisis de varios usuarios;\nasignar CPUs de manera controlada;\ndejar registro de los trabajos ejecutados;\nmejorar la reproducibilidad de los análisis.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
     "objectID": "slurm.html#conceptos-básicos",
     "href": "slurm.html#conceptos-básicos",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "Conceptos básicos",
     "text": "Conceptos básicos\n\nJob\nUn job es un trabajo enviado a Slurm. Puede ser un script de Bash que ejecuta un análisis bioinformático, un programa de R, Python, Apptainer, BLAST, IQ-TREE, MAFFT, etc.\n\n\nCola\nLa cola es la lista de trabajos esperando o ejecutándose.\n\n\nPartición\nUna partición es una sección lógica del servidor. En MAGINOT la partición principal se llama:\nripley\nsignifica:\n“enviar mi trabajo a la cola llamada ripley”\n\n\nRecursos\nCuando envías un trabajo, debes indicar cuántos recursos necesitas. Por ejemplo:\n\nnúmero de CPUs;\nmemoria;\ntiempo máximo;\nnombre del trabajo;\npartición donde se ejecutará.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
     "objectID": "slurm.html#comandos-básicos",
     "href": "slurm.html#comandos-básicos",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "Comandos básicos",
     "text": "Comandos básicos\n\nVer el estado del servidor\nsinfo\nSalida esperada:\nPARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST\nripley*      up   infinite      1   idle maginot\nEstados comunes:\n\n\n\nEstado\nSignificado\n\n\n\n\nidle\nEl nodo está libre\n\n\nalloc\nEl nodo está ocupado\n\n\nmix\nEl nodo tiene algunos recursos ocupados y otros libres\n\n\ndown\nEl nodo no está disponible\n\n\ndrain\nEl nodo no acepta nuevos trabajos\n\n\n\n\n\nVer trabajos en cola\nsqueue\nEjemplo:\nJOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)\n 1234    ripley  analisis   usuario  R       1:23      1 maginot\nEstados comunes de trabajos:\n\n\n\nEstado\nSignificado\n\n\n\n\nR\nRunning, el trabajo está corriendo\n\n\nPD\nPending, el trabajo está esperando\n\n\nCG\nCompleting, el trabajo está terminando\n\n\nCD\nCompleted, el trabajo terminó correctamente\n\n\nF\nFailed, el trabajo falló\n\n\nCA\nCancelled, el trabajo fue cancelado\n\n\n\n\n\nVer solo tus trabajos\nsqueue -u $USER\n\n\nCancelar un trabajo\nscancel JOBID\nEjemplo:\nscancel 1234\n\n\nCancelar todos tus trabajos\nUsar con cuidado:\nscancel -u $USER",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
     "objectID": "slurm.html#primer-ejemplo-ejecutar-un-comando-simple",
     "href": "slurm.html#primer-ejemplo-ejecutar-un-comando-simple",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "Primer ejemplo: ejecutar un comando simple",
     "text": "Primer ejemplo: ejecutar un comando simple\nPuedes probar Slurm con:\nsrun -p ripley -N1 -n1 hostname\nLa salida esperada es:\nmaginot\nEsto significa que Slurm ejecutó el comando en el servidor.\n\nEnviar trabajos con sbatch\nLa forma recomendada de usar Slurm es crear un script y enviarlo con:\nsbatch script.sh\nUn script de Slurm es un archivo de Bash con instrucciones especiales que empiezan con:\n#SBATCH\nEstas líneas le dicen a Slurm qué recursos necesitas.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
     "objectID": "slurm.html#script-mínimo-de-ejemplo",
     "href": "slurm.html#script-mínimo-de-ejemplo",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "Script mínimo de ejemplo",
     "text": "Script mínimo de ejemplo\nCrear un archivo llamado prueba_slurm.sh:\nnano prueba_slurm.sh\nContenido:\n#!/bin/bash\n#SBATCH -J prueba\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 2\n#SBATCH --time=00:05:00\n\necho \"Inicio: $(date)\"\necho \"Host: $(hostname)\"\necho \"Job ID: $SLURM_JOB_ID\"\necho \"CPUs asignadas: $SLURM_CPUS_PER_TASK\"\n\nsleep 10\n\necho \"Fin: $(date)\"\nEnviar:\nsbatch prueba_slurm.sh\nSlurm responderá algo como:\nSubmitted batch job 1234\n\nRevisar la salida del trabajo\nPor defecto, Slurm crea un archivo:\nslurm-JOBID.out\nPor ejemplo:\ncat slurm-1234.out\n\n\nPersonalizar el nombre de salida\nEs recomendable guardar las salidas en una carpeta.\nCrear carpeta:\nmkdir -p logs\nEjemplo de script:\n#!/bin/bash\n#SBATCH -J prueba\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 2\n#SBATCH --time=00:05:00\n#SBATCH -o logs/%x_%j.out\n#SBATCH -e logs/%x_%j.err\n\necho \"Inicio: $(date)\"\necho \"Host: $(hostname)\"\necho \"Job ID: $SLURM_JOB_ID\"\necho \"Fin: $(date)\"\nDonde:\n\n\n\nCódigo\nSignificado\n\n\n\n\n%x\nNombre del trabajo\n\n\n%j\nID del trabajo\n\n\n\nAsí se generan archivos como:\nlogs/prueba_1234.out logs/prueba_1234.err",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
     "objectID": "slurm.html#parámetros-principales-de-slurm",
     "href": "slurm.html#parámetros-principales-de-slurm",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "Parámetros principales de Slurm",
     "text": "Parámetros principales de Slurm\n\n\n\nOpción\nSignificado\n\n\n\n\n#SBATCH -J nombre\nNombre del trabajo\n\n\n#SBATCH -p ripley\nPartición donde se ejecuta\n\n\n#SBATCH -N 1\nNúmero de nodos\n\n\n#SBATCH -n 1\nNúmero de tareas\n\n\n#SBATCH -c 4\nCPUs por tarea\n\n\n#SBATCH --mem=16G\nMemoria solicitada\n\n\n#SBATCH --time=01:00:00\nTiempo máximo\n\n\n#SBATCH -o archivo.out\nArchivo de salida estándar\n\n\n#SBATCH -e archivo.err\nArchivo de error",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
     "objectID": "slurm.html#cuántas-cpus-pedir",
     "href": "slurm.html#cuántas-cpus-pedir",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "¿Cuántas CPUs pedir?",
     "text": "¿Cuántas CPUs pedir?\nNo siempre conviene pedir muchas CPUs. Solo deben solicitarse si el programa realmente puede usarlas.\nEjemplos:\n\nPrograma de un solo hilo\n#SBATCH -c 1\n\n\nPrograma con 4 hilos\n#SBATCH -c 4\n\n\nPrograma con 16 hilos\n#SBATCH -c 16\nAdemás, dentro del comando del programa hay que indicar el mismo número de hilos.\nEjemplo con fastp:\nfastp \\\n  -i muestra_R1.fastq.gz \\\n  -I muestra_R2.fastq.gz \\\n  -o limpia_R1.fastq.gz \\\n  -O limpia_R2.fastq.gz \\\n  -w $SLURM_CPUS_PER_TASK\nEjemplo con iqtree2:\niqtree2 -s alineamiento.phy -T $SLURM_CPUS_PER_TASK\nEjemplo con mafft:\nmafft --thread $SLURM_CPUS_PER_TASK entrada.fasta &gt; alineado.fasta\n\n\nEjemplo para un programa bioinformático\n#!/bin/bash\n#SBATCH -J mafft_test\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 8\n#SBATCH --mem=16G\n#SBATCH --time=02:00:00\n#SBATCH -o logs/%x_%j.out\n#SBATCH -e logs/%x_%j.err\n\nmkdir -p logs resultados\n\necho \"Inicio: $(date)\"\necho \"Host: $(hostname)\"\necho \"CPUs: $SLURM_CPUS_PER_TASK\"\n\nmafft --thread $SLURM_CPUS_PER_TASK datos/secuencias.fasta &gt; resultados/secuencias_alineadas.fasta\n\necho \"Fin: $(date)\"\nEnviar:\nsbatch mafft_test.sh\n\n\nEjemplo con Apptainer\nSi el análisis usa un contenedor de Apptainer:\n#!/bin/bash\n#SBATCH -J apptainer_test\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 4\n#SBATCH --mem=8G\n#SBATCH --time=01:00:00\n#SBATCH -o logs/%x_%j.out\n#SBATCH -e logs/%x_%j.err\n\nmkdir -p logs resultados\n\necho \"Inicio: $(date)\"\necho \"Host: $(hostname)\"\n\napptainer exec programa.sif programa --help\n\necho \"Fin: $(date)\"\nEjemplo con carpetas enlazadas:\n#!/bin/bash\n#SBATCH -J apptainer_test\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 4\n#SBATCH --mem=8G\n#SBATCH --time=01:00:00\n#SBATCH -o logs/%x_%j.out\n#SBATCH -e logs/%x_%j.err\n\nmkdir -p logs resultados\n\necho \"Inicio: $(date)\"\necho \"Host: $(hostname)\"\n\napptainer exec \\\n  --bind $PWD:/work \\\n  --pwd /work \\\n  programa.sif \\\n  programa input.fasta output.txt\n\necho \"Fin: $(date)\"",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
     "objectID": "slurm.html#variables-útiles-de-slurm",
     "href": "slurm.html#variables-útiles-de-slurm",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "Variables útiles de Slurm",
     "text": "Variables útiles de Slurm\nDentro de un script, Slurm crea variables automáticamente.\n\n\n\nVariable\nSignificado\n\n\n\n\n$SLURM_JOB_ID\nID del trabajo\n\n\n$SLURM_JOB_NAME\nNombre del trabajo\n\n\n$SLURM_CPUS_PER_TASK\nCPUs asignadas\n\n\n$SLURM_SUBMIT_DIR\nCarpeta desde donde se envió el job\n\n\n$SLURM_JOB_NODELIST\nNodo asignado\n\n\n\nEjemplo:\necho \"Job ID: $SLURM_JOB_ID\"\necho \"Nombre: $SLURM_JOB_NAME\"\necho \"CPUs: $SLURM_CPUS_PER_TASK\"\necho \"Directorio de envío: $SLURM_SUBMIT_DIR\"",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
     "objectID": "slurm.html#buenas-prácticas",
     "href": "slurm.html#buenas-prácticas",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "Buenas prácticas",
     "text": "Buenas prácticas\n\n1. No correr análisis pesados directamente en la terminal\nEvita ejecutar programas pesados así:\niqtree2 -s archivo.phy -T 72\nEn su lugar, crea un script y envíalo con:\nsbatch script.sh\n\n\n2. No pedir más CPUs de las necesarias\nSi un programa solo usa 4 hilos, no pidas 32 CPUs.\nMal:\n#SBATCH -c 32\nBien:\n#SBATCH -c 4\n\n\n3. Siempre usar carpetas organizadas\nEjemplo:\nproyecto/\n├── datos/\n├── scripts/\n├── resultados/\n└── logs/\n\n\n4. Guardar salidas y errores\nUsa:\n#SBATCH -o logs/%x_%j.out\n#SBATCH -e logs/%x_%j.err\n\n\n5. Probar primero con datos pequeños\nAntes de enviar un análisis grande, prueba con un subconjunto.\n\n\n6. Revisar los logs\nSi un trabajo falla, revisa primero:\ncat logs/nombre_JOBID.err\ncat logs/nombre_JOBID.out",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
     "objectID": "slurm.html#revisar-trabajos-completados",
     "href": "slurm.html#revisar-trabajos-completados",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "Revisar trabajos completados",
     "text": "Revisar trabajos completados\nEl servidor guarda un registro básico de trabajos completados en:\n/srv/bishop/slurm/log/job_completions.log\nPuedes revisar los últimos trabajos con:\ntail -n 20 /srv/bishop/slurm/log/job_completions.log",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
     "objectID": "slurm.html#plantilla-recomendada-para-usuarios",
     "href": "slurm.html#plantilla-recomendada-para-usuarios",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "Plantilla recomendada para usuarios",
     "text": "Plantilla recomendada para usuarios\n#!/bin/bash\n#SBATCH -J nombre_del_analisis\n#SBATCH -p ripley\n#SBATCH -N 1\n#SBATCH -n 1\n#SBATCH -c 4\n#SBATCH --mem=16G\n#SBATCH --time=02:00:00\n#SBATCH -o logs/%x_%j.out\n#SBATCH -e logs/%x_%j.err\n\nset -euo pipefail\n\nmkdir -p logs resultados\n\necho \"====================================\"\necho \"Trabajo: $SLURM_JOB_NAME\"\necho \"Job ID: $SLURM_JOB_ID\"\necho \"Usuario: $USER\"\necho \"Host: $(hostname)\"\necho \"Inicio: $(date)\"\necho \"CPUs asignadas: $SLURM_CPUS_PER_TASK\"\necho \"Directorio: $(pwd)\"\necho \"====================================\"\n\n# Cargar ambiente, módulo o contenedor aquí\n# module load programa\n# micromamba activate ambiente\n# apptainer exec programa.sif programa\n\n# Comando principal\necho \"Aquí va el análisis\"\n\necho \"====================================\"\necho \"Fin: $(date)\"\necho \"====================================\"\n\nResumen de comandos esenciales\n\n\n\n\n\n\n\nAcción\nComando\n\n\n\n\nVer estado del servidor\nsinfo\n\n\nVer cola\nsqueue\n\n\nVer tus trabajos\nsqueue -u $USER\n\n\nEnviar trabajo\nsbatch script.sh\n\n\nCancelar trabajo\nscancel JOBID\n\n\nEjecutar comando simple\nsrun -p ripley -N1 -n1 hostname\n\n\nVer últimos trabajos registrados\ntail -n 20 /srv/bishop/slurm/log/job_completions.log",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
     "objectID": "slurm.html#recomendación-final",
     "href": "slurm.html#recomendación-final",
-    "title": "Software en MAGINOT",
+    "title": "Uso básico de Slurm",
     "section": "Recomendación final",
     "text": "Recomendación final\nAntes de enviar un análisis grande:\n\nRevisa que tu script funcione con pocos datos.\nPide solo los recursos necesarios.\nGuarda salidas y errores en logs/.\nVerifica la cola con squeue.\nRevisa los archivos .out y .err.\n\nEl uso correcto de Slurm permite que MAGINOT sea utilizado por varias personas de forma ordenada, evitando saturar el servidor y facilitando el seguimiento de los análisis.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Software en MAGINOT</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Uso básico de Slurm</span>"
     ]
   },
   {
