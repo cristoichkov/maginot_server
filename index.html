@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr.&nbsp;Cristian Cervantes">
-<meta name="dcterms.date" content="2026-01-28">
+<meta name="dcterms.date" content="2026-04-26">
 
-<title>Servidor MAGINOT</title>
+<title>Servidor MAGINOT - Anexo I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./requirements.html" rel="next">
+<link href="./intro.html" rel="next">
 <link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -72,14 +72,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<meta name="description" content="Guía rápida de acceso y uso del servidor MAGINOT">
-<meta name="robots" content="index,follow">
-<meta property="og:title" content="Servidor MAGINOT">
-<meta property="og:description" content="Guía para acceder, trabajar y ejecutar análisis en el servidor">
-<meta property="og:image" content="https://cristoichkov.github.io/maginot_server/images/logo.png">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://cristoichkov.github.io/maginot_server/">
 
 
 <link rel="stylesheet" href="styles/styles.css">
@@ -94,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">MAGINOT — Manual de usuario</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -113,10 +105,7 @@ ul.task-list li input[type="checkbox"] {
       <img src="./images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Servidor MAGINOT</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://cristoichkov.github.io/maginot_server/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
-</div>
+      <a href="./">Servidor MAGINOT - Anexo I</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -128,32 +117,48 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">MAGINOT — Manual de usuario</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./requirements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conexión: VPN, SSH y transferencia de archivos</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./commands.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Uso básico de Linux</span></a>
+  <a href="./disk.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Validación y configuración de discos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./module.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Software en MAGINOT</span></a>
+  <a href="./vpn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">VPN con WireGuard</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./services.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Servicios: RStudio Server</span></a>
+  <a href="./pass_sec.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fortalecimiento de Acceso y Autenticación</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Referencias</span></a>
+  <a href="./containers.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Contenedores y Entornos Reproducibles</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./samba.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Servidor de archivos con Samba</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./monitor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Monitoreo y Observabilidad</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slurm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Instalación de Slurm para una sola máquina</span></a>
   </div>
 </li>
     </ul>
@@ -166,23 +171,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#qué-es-maginot" id="toc-qué-es-maginot" class="nav-link active" data-scroll-target="#qué-es-maginot">¿Qué es MAGINOT?</a></li>
-  <li><a href="#objetivo-del-servidor" id="toc-objetivo-del-servidor" class="nav-link" data-scroll-target="#objetivo-del-servidor">Objetivo del servidor</a></li>
-  <li><a href="#a-quién-está-dirigido" id="toc-a-quién-está-dirigido" class="nav-link" data-scroll-target="#a-quién-está-dirigido">¿A quién está dirigido?</a></li>
-  <li><a href="#alcances-del-manual" id="toc-alcances-del-manual" class="nav-link" data-scroll-target="#alcances-del-manual">Alcances del manual</a></li>
-  <li><a href="#reglas-rápidas-uso-responsable" id="toc-reglas-rápidas-uso-responsable" class="nav-link" data-scroll-target="#reglas-rápidas-uso-responsable">Reglas rápidas (uso responsable)</a></li>
-  <li><a href="#buenas-prácticas-recomendadas" id="toc-buenas-prácticas-recomendadas" class="nav-link" data-scroll-target="#buenas-prácticas-recomendadas">Buenas prácticas recomendadas</a></li>
-  <li><a href="#ruta-rápida-para-usuarios-con-prisa" id="toc-ruta-rápida-para-usuarios-con-prisa" class="nav-link" data-scroll-target="#ruta-rápida-para-usuarios-con-prisa">Ruta rápida (para usuarios con prisa)</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <ul class="collapse">
+  <li><a href="#ficha-técnica-del-servidor-maginot" id="toc-ficha-técnica-del-servidor-maginot" class="nav-link" data-scroll-target="#ficha-técnica-del-servidor-maginot">Ficha técnica del servidor MAGINOT</a></li>
+  <li><a href="#arquitectura-de-red-y-acceso" id="toc-arquitectura-de-red-y-acceso" class="nav-link" data-scroll-target="#arquitectura-de-red-y-acceso">Arquitectura de red y acceso</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Servidor MAGINOT</h1>
-<p class="subtitle lead">Guía para acceder, trabajar y ejecutar análisis en el servidor</p>
+<h1 class="title">Servidor MAGINOT - Anexo I</h1>
 </div>
 
 
@@ -199,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 28, 2026</p>
+      <p class="date">April 26, 2026</p>
     </div>
   </div>
   
@@ -211,55 +213,115 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="qué-es-maginot" class="level2">
-<h2 class="anchored" data-anchor-id="qué-es-maginot">¿Qué es MAGINOT?</h2>
-<p>MAGINOT es un servidor GNU/Linux multiusuario orientado a la ejecución rápida y reproducible de pipelines bioinformáticos, con acceso seguro, almacenamiento organizado y control responsable de recursos.</p>
-</section>
-<section id="objetivo-del-servidor" class="level2">
-<h2 class="anchored" data-anchor-id="objetivo-del-servidor">Objetivo del servidor</h2>
-<p>Diseñar e implementar un servidor GNU/Linux multiusuario, seguro y observable que permita la ejecución rápida y reproducible de pipelines bioinformáticos mediante contenedores y control de recursos, con almacenamiento confiable y cuotas, para dar un servicio estable.</p>
-</section>
-<section id="a-quién-está-dirigido" class="level2">
-<h2 class="anchored" data-anchor-id="a-quién-está-dirigido">¿A quién está dirigido?</h2>
-<p>A estudiantes, técnicos y personal académico que requieran ejecutar análisis bioinformáticos en un entorno compartido, siguiendo buenas prácticas de seguridad, organización y uso responsable de recursos.</p>
-</section>
-<section id="alcances-del-manual" class="level2">
-<h2 class="anchored" data-anchor-id="alcances-del-manual">Alcances del manual</h2>
-<p><strong>Incluye</strong> - Acceso (VPN/SSH) - Navegación y organización de proyectos - Transferencia de archivos (SFTP/SCP/rsync) - Uso de software (módulos/ambientes/contenedores) - Ejecución y monitoreo básico de análisis</p>
-<p><strong>No incluye</strong> - Cursos completos de Linux o bioinformática - Desarrollo de pipelines desde cero - Instalación libre de software sin solicitud previa al administrador</p>
-</section>
-<section id="reglas-rápidas-uso-responsable" class="level2">
-<h2 class="anchored" data-anchor-id="reglas-rápidas-uso-responsable">Reglas rápidas (uso responsable)</h2>
+<section id="preface" class="level1 unnumbered">
+<h1 class="unnumbered">Preface</h1>
+<p>El servidor <strong>MAGINOT</strong> es un equipo de cómputo orientado principalmente a flujos de trabajo bioinformáticos, diseñado con énfasis en <strong>reproducibilidad</strong>, <strong>seguridad</strong> y <strong>mantenibilidad</strong>. Su objetivo es centralizar recursos (<strong>CPU, GPU, almacenamiento y software</strong>) y ofrecer un esquema de <strong>acceso remoto controlado</strong> para usuarios autorizados.</p>
+<p>Este documento funciona como una <strong>bitácora técnica</strong>: registra decisiones de configuración, comandos, rutas, servicios y cambios relevantes realizados en MAGINOT. La intención es que sirva como <strong>evidencia</strong> (anexo) y como <strong>guía operativa</strong> para mantenimiento, respaldo y futuras ampliaciones, facilitando la continuidad del servicio y la trazabilidad de las configuraciones.</p>
+<section id="alcance-de-la-bitácora" class="level3">
+<h3 class="anchored" data-anchor-id="alcance-de-la-bitácora">Alcance de la bitácora</h3>
+<p><strong>Incluye:</strong></p>
 <ul>
-<li>La cuenta es personal e intransferible.</li>
-<li>No compartas contraseñas.</li>
-<li>Mantén tus proyectos ordenados y limpia datos temporales.</li>
-<li>Reporta incidentes o problemas al administrador.</li>
+<li><p>Configuración de red y esquema de acceso remoto seguro.</p></li>
+<li><p>Montaje y organización de almacenamiento.</p></li>
+<li><p>Gestión de usuarios y políticas básicas.</p></li>
+<li><p>Organización de software (módulos/ambientes/contenedores) cuando aplique.</p></li>
+<li><p>Monitoreo y verificación de servicios.</p></li>
+<li><p>Registro de cambios y notas operativas.</p></li>
 </ul>
 </section>
-<section id="buenas-prácticas-recomendadas" class="level2">
-<h2 class="anchored" data-anchor-id="buenas-prácticas-recomendadas">Buenas prácticas recomendadas</h2>
+<section id="ficha-técnica-del-servidor-maginot" class="level2">
+<h2 class="anchored" data-anchor-id="ficha-técnica-del-servidor-maginot">Ficha técnica del servidor MAGINOT</h2>
 <ul>
-<li><strong>Organiza tus proyectos:</strong> usa una estructura consistente (por ejemplo <code>data/</code>, <code>scripts/</code>, <code>results/</code>, <code>logs/</code>, <code>metadata/</code>).</li>
-<li><strong>Reproducibilidad:</strong> registra versiones, parámetros y comandos (idealmente en scripts).</li>
-<li><strong>Logs:</strong> guarda salida estándar y errores; te ahorran tiempo para depurar.</li>
-<li><strong>Almacenamiento responsable:</strong> comprime resultados grandes y elimina temporales cuando ya no se requieran.</li>
-<li><strong>Seguridad:</strong> usa contraseñas fuertes.</li>
+<li><p><strong>Nombre del host:</strong> <code>maginot</code></p></li>
+<li><p><strong>Sistema operativo:</strong> Rocky Linux 10.1 (Red Quartz)</p></li>
+<li><p><strong>Kernel:</strong> Linux 6.12.0-124.21.1.el10_1.x86_64</p></li>
+<li><p><strong>Arquitectura:</strong> x86_64</p></li>
+<li><p><strong>Plataforma/board:</strong> MACHINIST E5-D8-MAX (Firmware 5.11, 2023-04-19)</p></li>
+</ul>
+<section id="cpu" class="level3">
+<h3 class="anchored" data-anchor-id="cpu">CPU</h3>
+<ul>
+<li><p><strong>Modelo:</strong> Intel® Xeon® E5-2695 v4 @ 2.10 GHz</p></li>
+<li><p><strong>Sockets:</strong> 2</p></li>
+<li><p><strong>Cores por socket:</strong> 18</p></li>
+<li><p><strong>Hilos por core:</strong> 2</p></li>
+<li><p><strong>Total:</strong> 36 cores / 72 hilos</p></li>
+<li><p><strong>Frecuencia máx.:</strong> 3.30 GHz (según <code>lscpu</code>)</p></li>
 </ul>
 </section>
-<section id="ruta-rápida-para-usuarios-con-prisa" class="level2">
-<h2 class="anchored" data-anchor-id="ruta-rápida-para-usuarios-con-prisa">Ruta rápida (para usuarios con prisa)</h2>
-<ol type="1">
-<li>Conéctate a la VPN (WireGuard).</li>
-<li>Entra por SSH al servidor.</li>
-<li>Ubica o crea tu carpeta de proyecto.</li>
-<li>Sube tus datos (SFTP/rsync/scp).</li>
-<li>Carga software (modules/conda) o usa contenedores (Apptainer).</li>
-<li>Ejecuta tu análisis siguiendo las reglas de recursos.</li>
-<li>Monitorea y guarda logs/resultados.</li>
-</ol>
+<section id="memoria-ram" class="level3">
+<h3 class="anchored" data-anchor-id="memoria-ram">Memoria RAM</h3>
+<ul>
+<li><p><strong>Total usable:</strong> ~251 GiB (según <code>free -h</code>)</p></li>
+<li><p><strong>Configuración física:</strong> 8 × 32 GB = 256 GB</p></li>
+<li><p><strong>Tipo:</strong> DDR4 ECC (ancho 72 bits)</p></li>
+<li><p><strong>Velocidad configurada:</strong> 2400 MT/s</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>Nota: la diferencia entre 256 GB físicos y ~251 GiB visibles es normal por conversión GB/GiB y reserva del sistema.</p>
+</blockquote>
+</section>
+<section id="gpu" class="level3">
+<h3 class="anchored" data-anchor-id="gpu">GPU</h3>
+<ul>
+<li><p><strong>Modelo:</strong> NVIDIA GeForce RTX 3070 (8 GB VRAM)</p></li>
+<li><p><strong>Driver:</strong> 590.48.01</p></li>
+<li><p><strong>CUDA:</strong> 13.1 (según <code>nvidia-smi</code>)</p></li>
+</ul>
+</section>
+<section id="almacenamiento-y-puntos-de-montaje-xfs" class="level3">
+<h3 class="anchored" data-anchor-id="almacenamiento-y-puntos-de-montaje-xfs">Almacenamiento y puntos de montaje (XFS)</h3>
+<p><strong>Disco NVMe (sistema):</strong></p>
+<ul>
+<li><p><strong>NVMe:</strong> Predator SSD GM7 M.2 2TB (1.9T)</p>
+<ul>
+<li><p><code>/</code> (root): 70G (LVM)</p></li>
+<li><p><code>/home</code>: 1.8T (LVM)</p></li>
+<li><p><code>/boot</code> y <code>/boot/efi</code></p></li>
+</ul></li>
+</ul>
+<p><strong>Discos SATA (datos en /srv):</strong></p>
+<ul>
+<li><p><code>/srv/call</code> (CALL) — 4 TB (WDC WD40EZAX)</p></li>
+<li><p><code>/srv/ash</code> (ASH) — 4 TB (WDC WD40EZRZ)</p></li>
+<li><p><code>/srv/david</code> (DAVID) — 6 TB (WDC WD60EFRX)</p></li>
+<li><p><code>/srv/walter</code>(WALTER) — 6 TB (WDC WD60EFRX)</p></li>
+<li><p><code>/srv/bishop</code>(BISHOP) — 6 TB (WDC WD60PURX)</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>Nota: Todos los volúmenes de datos están formateados en <strong>XFS</strong> y montados de forma persistente bajo <code>/srv</code>.</p>
+</blockquote>
+</section>
+<section id="red-resumen" class="level3">
+<h3 class="anchored" data-anchor-id="red-resumen">Red (resumen)</h3>
+<ul>
+<li><p><strong>Interfaz LAN:</strong> <code>enp6s0</code></p></li>
+<li><p><strong>IP LAN:</strong> 192.168.50.211/24</p></li>
+<li><p><strong>Gateway:</strong> 192.168.50.1</p></li>
+<li><p><strong>VPN WireGuard:</strong> <code>wg0</code> → 10.8.0.1/24</p></li>
+<li><p><strong>Overlay adicional:</strong> <code>tailscale0</code> (100.105.117.111/32)</p></li>
+<li><p><strong>DNS (según resolv.conf):</strong> 100.100.100.100 (Tailscale)</p></li>
+</ul>
+</section>
+</section>
+<section id="arquitectura-de-red-y-acceso" class="level2">
+<h2 class="anchored" data-anchor-id="arquitectura-de-red-y-acceso">Arquitectura de red y acceso</h2>
+<p>MAGINOT se integra a la red mediante un esquema perimetral donde el enlace de Internet de <strong>Telmex</strong> delega conectividad hacia una <strong>DMZ</strong>, y el control de seguridad queda a cargo del <strong>ASUS RT-AX86U Pro</strong>, que opera como <strong>gateway/firewall</strong> y servidor de servicios de red (DHCP). En este diseño:</p>
+<ul>
+<li><p>El equipo Telmex entrega conectividad hacia el ASUS mediante <strong>DMZ</strong>.</p></li>
+<li><p>El ASUS funciona como <strong>gateway principal</strong> y <strong>firewall</strong> (NAT/políticas).</p></li>
+<li><p>El <strong>servicio de VPN (WireGuard) está hospedado en MAGINOT</strong>; el ASUS <strong>únicamente expone/redirige</strong> el puerto de la VPN hacia el servidor.</p></li>
+<li><p><strong>Acceso interno (LAN):</strong> sin restricciones adicionales.</p></li>
+<li><p>El servidor MAGINOT <strong>no expone puertos directamente a Internet</strong>; el único punto de entrada remoto es el puerto de VPN publicado por el gateway.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/preface/maginot_red-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="450"></p>
+</figure>
+</div></li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -667,8 +729,8 @@ ul.task-list li input[type="checkbox"] {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./requirements.html" class="pagination-link" aria-label="Conexión: VPN, SSH y transferencia de archivos">
-        <span class="nav-page-text"><span class="chapter-title">Conexión: VPN, SSH y transferencia de archivos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./intro.html" class="pagination-link" aria-label="Introducción">
+        <span class="nav-page-text"><span class="chapter-title">Introducción</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -677,4 +739,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+</body></html>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Conexión: VPN, SSH y transferencia de archivos – Servidor MAGINOT</title>
+<title>Introducción – Servidor MAGINOT - Anexo I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,7 +30,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./commands.html" rel="next">
+<link href="./disk.html" rel="next">
 <link href="./index.html" rel="prev">
 <link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -106,14 +71,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta name="description" content="Guía rápida de acceso y uso del servidor MAGINOT">
-<meta name="robots" content="index,follow">
-<meta property="og:title" content="Conexión: VPN, SSH y transferencia de archivos – Servidor MAGINOT">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://cristoichkov.github.io/maginot_server/images/logo.png">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://cristoichkov.github.io/maginot_server/">
 
 
 <link rel="stylesheet" href="styles/styles.css">
@@ -128,7 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./requirements.html"><span class="chapter-title">Conexión: VPN, SSH y transferencia de archivos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-title">Introducción</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -147,10 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <img src="./images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Servidor MAGINOT</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://cristoichkov.github.io/maginot_server/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
-</div>
+      <a href="./">Servidor MAGINOT - Anexo I</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -162,32 +116,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">MAGINOT — Manual de usuario</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./requirements.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Conexión: VPN, SSH y transferencia de archivos</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introducción</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./commands.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Uso básico de Linux</span></a>
+  <a href="./disk.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Validación y configuración de discos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./module.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Software en MAGINOT</span></a>
+  <a href="./vpn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">VPN con WireGuard</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./services.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Servicios: RStudio Server</span></a>
+  <a href="./pass_sec.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fortalecimiento de Acceso y Autenticación</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Referencias</span></a>
+  <a href="./containers.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Contenedores y Entornos Reproducibles</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./samba.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Servidor de archivos con Samba</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./monitor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Monitoreo y Observabilidad</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slurm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Instalación de Slurm para una sola máquina</span></a>
   </div>
 </li>
     </ul>
@@ -200,23 +170,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#objetivo" id="toc-objetivo" class="nav-link active" data-scroll-target="#objetivo">Objetivo</a></li>
-  <li><a href="#lo-que-necesitas-antes-de-empezar" id="toc-lo-que-necesitas-antes-de-empezar" class="nav-link" data-scroll-target="#lo-que-necesitas-antes-de-empezar">Lo que necesitas (antes de empezar)</a></li>
-  <li><a href="#vpn-wireguard-obligatorio" id="toc-vpn-wireguard-obligatorio" class="nav-link" data-scroll-target="#vpn-wireguard-obligatorio">1) VPN — WireGuard (obligatorio)</a></li>
-  <li><a href="#verificar-que-la-vpn-está-funcionando-recomendado" id="toc-verificar-que-la-vpn-está-funcionando-recomendado" class="nav-link" data-scroll-target="#verificar-que-la-vpn-está-funcionando-recomendado">2) Verificar que la VPN está funcionando (recomendado)</a></li>
-  <li><a href="#acceso-por-ssh" id="toc-acceso-por-ssh" class="nav-link" data-scroll-target="#acceso-por-ssh">3) Acceso por SSH</a></li>
-  <li><a href="#contraseña-y-primer-cambio" id="toc-contraseña-y-primer-cambio" class="nav-link" data-scroll-target="#contraseña-y-primer-cambio">4) Contraseña y primer cambio</a></li>
-  <li><a href="#transferencia-de-archivos-con-scp" id="toc-transferencia-de-archivos-con-scp" class="nav-link" data-scroll-target="#transferencia-de-archivos-con-scp">5) Transferencia de archivos con <code>scp</code></a></li>
-  <li><a href="#clientes-gráficos-recomendado-termius" id="toc-clientes-gráficos-recomendado-termius" class="nav-link" data-scroll-target="#clientes-gráficos-recomendado-termius">6) Clientes gráficos (recomendado): Termius</a></li>
+  <li><a href="#objetivo-principal" id="toc-objetivo-principal" class="nav-link active" data-scroll-target="#objetivo-principal">Objetivo principal</a></li>
+  <li><a href="#objetivos-específicos" id="toc-objetivos-específicos" class="nav-link" data-scroll-target="#objetivos-específicos">Objetivos específicos</a></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/requirements.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Conexión: VPN, SSH y transferencia de archivos</span></h1>
+<h1 class="title"><span class="chapter-title">Introducción</span></h1>
 </div>
 
 
@@ -233,195 +197,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="objetivo" class="level2">
-<h2 class="anchored" data-anchor-id="objetivo">Objetivo</h2>
-<p>Esta sección describe lo necesario para conectarte a MAGINOT desde tu sistema operativo: <strong>VPN (WireGuard)</strong> + <strong>SSH</strong>, y (opcional) <strong>SFTP</strong> para transferir archivos.</p>
-<hr>
+<p>La <strong>Unidad de Síntesis en Sistemática y Evolución (UniSSE)</strong> del Instituto de Biología (IB-UNAM) se concibe como un espacio especializado para <strong>plantear, desarrollar, fomentar y brindar apoyo</strong> a investigaciones orientadas a entender los <strong>procesos evolutivos</strong> que <strong>originan, mantienen y estructuran</strong> la biota en distintas dimensiones (p.&nbsp;ej., riqueza de especies, diversidad genética, distribución geográfica) y a diferentes escalas (p.&nbsp;ej., macroevolución, biogeografía). Estas investigaciones se sostienen en la <strong>síntesis de datos</strong> provenientes de colecciones biológicas, inventarios, bases de datos cibernéticas y datos aportados por especialistas, integrados mediante enfoques analíticos y transversales dentro del IB.</p>
+<p>En este marco, mi papel como <strong>técnico académico responsable de los análisis</strong> en la UniSSE se centra en <strong>habilitar y mantener la infraestructura informática</strong> que permite gestionar datos genómicos, implementar y optimizar software de bioinformática y filogenética comparativa, y acompañar a la comunidad académica y estudiantil del IB en la ejecución reproducible de análisis. Esta función requiere plataformas estables, seguras y escalables, capaces de sostener flujos de trabajo exigentes y diversos, con demandas crecientes de procesamiento, almacenamiento y trazabilidad.</p>
+<p>Por ello, el <strong>servidor “Maginot”</strong> se plantea como una pieza de infraestructura estratégica para la UniSSE: un sistema GNU/Linux diseñado para ofrecer <strong>servicio multiusuario confiable</strong>, facilitar la <strong>reproducibilidad</strong>, asegurar el <strong>uso ordenado y justo de recursos</strong>, y permitir <strong>observabilidad</strong> y mantenimiento continuo para garantizar la continuidad operativa de los análisis en los que apoya la Unidad.</p>
+<section id="objetivo-principal" class="level2">
+<h2 class="anchored" data-anchor-id="objetivo-principal">Objetivo principal</h2>
+<p>Diseñar e implementar un servidor GNU/Linux multiusuario, seguro y observable que permita la ejecución rápida y reproducible de pipelines bioinformáticos mediante contenedores y control de recursos, con almacenamiento confiable y cuotas, para dar un servicio estable.</p>
 </section>
-<section id="lo-que-necesitas-antes-de-empezar" class="level2">
-<h2 class="anchored" data-anchor-id="lo-que-necesitas-antes-de-empezar">Lo que necesitas (antes de empezar)</h2>
-<p>Debes contar con:</p>
+<section id="objetivos-específicos" class="level2">
+<h2 class="anchored" data-anchor-id="objetivos-específicos">Objetivos específicos</h2>
 <ul>
-<li>✅ <strong>Usuario</strong> en MAGINOT</li>
-<li>✅ <strong>Acceso VPN</strong>: archivo <strong>WireGuard <code>.conf</code></strong></li>
-<li>✅ <strong>Datos de conexión SSH</strong>
-<ul>
-<li><strong>Host</strong> (IP)</li>
-<li><strong>Puerto</strong></li>
-<li><strong>Usuario</strong></li>
-</ul></li>
-<li>✅ Conexión a internet</li>
-</ul>
-<blockquote class="blockquote">
-<p>Importante: normalmente MAGINOT <strong>solo es accesible después de conectarte a la VPN</strong>.</p>
-</blockquote>
-<hr>
-</section>
-<section id="vpn-wireguard-obligatorio" class="level2">
-<h2 class="anchored" data-anchor-id="vpn-wireguard-obligatorio">1) VPN — WireGuard (obligatorio)</h2>
-<section id="windows" class="level3">
-<h3 class="anchored" data-anchor-id="windows">Windows</h3>
-<ol type="1">
-<li>Instala <strong>WireGuard</strong> (Windows).</li>
-<li>Abre WireGuard → <strong>Add Tunnel</strong> → <strong>Import tunnel(s) from file</strong>.</li>
-<li>Selecciona tu archivo <code>usuario.conf</code>.</li>
-<li>Activa el túnel (<strong>Activate</strong>).</li>
-</ol>
-</section>
-<section id="macos" class="level3">
-<h3 class="anchored" data-anchor-id="macos">macOS</h3>
-<ol type="1">
-<li>Instala <strong>WireGuard</strong> desde la App Store.</li>
-<li>Abre WireGuard → <strong>Import tunnel(s) from file</strong> (o “Add Tunnel”).</li>
-<li>Selecciona tu <code>usuario.conf</code>.</li>
-<li>Activa el túnel.</li>
-</ol>
-</section>
-<section id="linux" class="level3">
-<h3 class="anchored" data-anchor-id="linux">Linux</h3>
-<p>Dependiendo de la distribución:</p>
-<ul>
-<li><strong>Cliente CLI</strong>: <code>wireguard-tools</code></li>
-<li><strong>Cliente GUI</strong>: WireGuard app / NetworkManager plugin (si aplica)</li>
-</ul>
-<p>Flujo general: 1. Importa tu configuración <code>.conf</code> en la herramienta que uses (GUI o CLI). 2. Levanta el túnel.</p>
-<hr>
-</section>
-</section>
-<section id="verificar-que-la-vpn-está-funcionando-recomendado" class="level2">
-<h2 class="anchored" data-anchor-id="verificar-que-la-vpn-está-funcionando-recomendado">2) Verificar que la VPN está funcionando (recomendado)</h2>
-<p>Con el túnel activo, valida conectividad con la IP que te indique el administrador.</p>
-<p>Ejemplo:</p>
-<p>IP: <code>192.168.50.211</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ping</span> <span class="at">-c</span> 3 192.168.50.211</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Si el ping falla:</p>
-<ul>
-<li><p>revisa que el túnel esté activo</p></li>
-<li><p>revisa que importaste el <code>.conf</code> correcto</p></li>
-<li><p>contacta al administrador si persiste</p></li>
-</ul>
-<hr>
-</section>
-<section id="acceso-por-ssh" class="level2">
-<h2 class="anchored" data-anchor-id="acceso-por-ssh">3) Acceso por SSH</h2>
-<blockquote class="blockquote">
-<p>Nota: La IP y el puerto es la que te indique el administrador.</p>
-</blockquote>
-<section id="opción-a-terminal-openssh-recomendado" class="level3">
-<h3 class="anchored" data-anchor-id="opción-a-terminal-openssh-recomendado">Opción A — Terminal (OpenSSH) recomendado</h3>
-<p><strong>macOS / Linux</strong></p>
-<p>Ejemplo:</p>
-<p>IP: <code>192.168.50.25</code></p>
-<p>Puerto: <code>14232</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-p</span> 14232 usuario@192.168.50.25</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Windows 10/11 (PowerShell o Windows Terminal)</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-p</span> 14232 usuario@192.168.50.25</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>La primera vez, te pedirá confirmar la llave del servidor:</p>
-<ul>
-<li>escribe <code>yes</code> y Enter</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="contraseña-y-primer-cambio" class="level2">
-<h2 class="anchored" data-anchor-id="contraseña-y-primer-cambio">4) Contraseña y primer cambio</h2>
-<p>Tu cuenta se crea con una <strong>contraseña temporal</strong>.<br>
-✅ <strong>En tu primer inicio de sesión, el sistema te pedirá cambiarla automáticamente</strong> (no podrás continuar sin hacerlo).</p>
-<p>Si por alguna razón no te aparece el cambio automático, puedes forzarlo manualmente con:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">passwd</span> usuario</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="reglas-de-contraseña-obligatorias" class="level3">
-<h3 class="anchored" data-anchor-id="reglas-de-contraseña-obligatorias">Reglas de contraseña (obligatorias)</h3>
-<ul>
-<li><p>Mínimo <strong>10 caracteres</strong></p></li>
-<li><p>Debe incluir al menos:</p>
-<ul>
-<li><p><strong>1 letra minúscula</strong></p></li>
-<li><p><strong>1 letra mayúscula</strong></p></li>
-<li><p><strong>1 número</strong></p></li>
-<li><p><strong>1 símbolo</strong></p></li>
-</ul></li>
-<li><p><strong>No compartir credenciales</strong> (la cuenta es personal e intransferible)</p></li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="transferencia-de-archivos-con-scp" class="level2">
-<h2 class="anchored" data-anchor-id="transferencia-de-archivos-con-scp">5) Transferencia de archivos con <code>scp</code></h2>
-<p><code>scp</code> (Secure Copy) permite copiar archivos y carpetas <strong>de forma segura</strong> usando SSH.<br>
-Funciona en <strong>macOS, Linux</strong> y también en <strong>Windows (PowerShell/Windows Terminal)</strong>.</p>
-<blockquote class="blockquote">
-<p>Requisito: debes estar conectado a la <strong>VPN (WireGuard)</strong> y tener acceso por <strong>SSH</strong>.</p>
-</blockquote>
-<section id="sintaxis-básica-linux-y-macos" class="level3">
-<h3 class="anchored" data-anchor-id="sintaxis-básica-linux-y-macos">Sintaxis básica (Linux y macOS)</h3>
-<p>IP: <code>192.168.50.25</code></p>
-<p>Puerto: <code>14232</code></p>
-<p>Copiar <strong>archivo local → servidor</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-P</span> 14232 archivo.ext USUARIO@192.168.50.25:/ruta/destino/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Copiar <strong>archivo servidor → local</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-P</span> 14232 USUARIO@192.168.50.25:/ruta/archivo.ext /ruta/local/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Copiar carpetas (recursivo)</strong></p>
-<p>Para subir una carpeta completa usa <code>-r</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="at">-P</span> 14232 carpeta_proyecto/ USUARIO@192.168.50.25:/ruta/destino/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Para bajar una carpeta del servidor:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> <span class="at">-P</span> 14232 USUARIO@192.168.50.25:/ruta/carpeta_en_servidor/ ./</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="windows-powershell-windows-terminal" class="level3">
-<h3 class="anchored" data-anchor-id="windows-powershell-windows-terminal">Windows (PowerShell / Windows Terminal)</h3>
-<p>En Windows 10/11, <code>scp</code> suele venir incluido. Los comandos son iguales:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-P</span> 14232 archivo.ext USUARIO@192.168.50.25:~/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Tip de rutas en Windows:</strong> usa comillas si hay espacios:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-P</span> 14232 <span class="st">"C:\Users\TuUsuario\Desktop\archivo.ext"</span> USUARIO@192.168.50.25:~/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="errores-comunes" class="level3">
-<h3 class="anchored" data-anchor-id="errores-comunes">Errores comunes</h3>
-<p><strong><code>Permission denied</code></strong></p>
-<ul>
-<li><p>No tienes permisos de escritura en esa ruta.</p></li>
-<li><p>Solución: copia primero a tu <code>HOME</code> y luego mueve dentro del servidor (si tienes permisos), o pide acceso.</p></li>
-</ul>
-<p><strong><code>No such file or directory</code></strong></p>
-<ul>
-<li><p>La ruta remota no existe o está mal escrita.</p></li>
-<li><p>Verifica con <code>ls</code> en SSH.</p></li>
-</ul>
-<p><strong>Se corta la transferencia</strong></p>
-<ul>
-<li>Para archivos grandes, considera <code>rsync</code> (más robusto).</li>
-</ul>
-</section>
-<section id="buenas-prácticas" class="level3">
-<h3 class="anchored" data-anchor-id="buenas-prácticas">Buenas prácticas</h3>
-<ul>
-<li><p>Usa rutas claras y estructura de proyecto (<code>data/</code>, <code>results/</code>, <code>logs/</code>).</p></li>
-<li><p>Para archivos grandes, comprime antes de transferir (<code>tar.gz</code>) o usa <code>rsync</code>.</p></li>
-<li><p>Evita copiar datos sensibles sin autorización.</p></li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="clientes-gráficos-recomendado-termius" class="level2">
-<h2 class="anchored" data-anchor-id="clientes-gráficos-recomendado-termius">6) Clientes gráficos (recomendado): Termius</h2>
-<p>Además de la terminal (OpenSSH) y <code>scp</code>, existen <strong>clientes gráficos</strong> que facilitan mucho el trabajo diario: guardan tus hosts, simplifican la autenticación, integran <strong>SFTP</strong> para transferencia de archivos y permiten <strong>port forwarding</strong> con asistentes.</p>
-<p>Una opción que recomiendo es <a href="https://termius.com/index.html"><strong>Termius</strong></a>, un cliente moderno de SSH disponible para <strong>Windows, macOS, Linux, iOS, iPadOS y Android</strong>. Incluye funciones como “hosts”, <strong>SFTP integrado</strong> y <strong>port forwarding</strong> con un asistente paso a paso.</p>
-<section id="por-qué-termius" class="level3">
-<h3 class="anchored" data-anchor-id="por-qué-termius">¿Por qué Termius?</h3>
-<ul>
-<li><strong>Multiplataforma</strong> (desktop y móvil).</li>
-<li><strong>Organización de accesos</strong>: guardas hosts (IP/dominio, puerto, usuario) para conectar con un clic.</li>
-<li><strong>SFTP integrado</strong>: transferencia de archivos sin salir de la app.</li>
-<li><strong>Port forwarding</strong> guiado<strong>:</strong> ideal para acceder a servicios como RStudio Server u otros puertos internos (cuando esté permitido).</li>
-</ul>
-<blockquote class="blockquote">
-<p>Nota: Termius tiene planes gratuitos y de pago; algunas funciones avanzadas dependen del plan.</p>
-</blockquote>
-<p><strong>Buenas prácticas de seguridad (muy importante)</strong></p>
-<ul>
-<li>Evita guardar contraseñas en equipos compartidos.</li>
+<li><p><strong>Multiusuario y control de acceso:</strong> cuentas, grupos, permisos, políticas de autenticación y buenas prácticas de uso.</p></li>
+<li><p><strong>Ejecución reproducible:</strong> estandarizar la ejecución de pipelines con contenedores (p.&nbsp;ej., Apptainer/Podman) para minimizar variaciones por dependencias.</p></li>
+<li><p><strong>Control y asignación de recursos:</strong> lineamientos y herramientas para limitar/administrar CPU, RAM y tiempos de ejecución (p.&nbsp;ej., colas o políticas de prioridad según el diseño del servicio).</p></li>
+<li><p><strong>Almacenamiento confiable:</strong> estructura de directorios de trabajo, respaldos, y <strong>cuotas</strong> por usuario/proyecto para sostener operación a largo plazo.</p></li>
+<li><p><strong>Seguridad operativa:</strong> endurecimiento básico del sistema, registro de eventos y medidas contra accesos no autorizados.</p></li>
+<li><p><strong>Observabilidad y mantenimiento:</strong> monitoreo de rendimiento/uso (CPU, RAM, disco, red), alertas y bitácoras para diagnóstico y continuidad del servicio.</p></li>
+<li><p><strong>Documentación y soporte:</strong> guías mínimas para usuarios (acceso, ejecución, buenas prácticas) y registro técnico para mantenimiento y auditoría.</p></li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -827,13 +622,13 @@ Funciona en <strong>macOS, Linux</strong> y también en <strong>Windows (PowerSh
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="MAGINOT — Manual de usuario">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">MAGINOT — Manual de usuario</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./commands.html" class="pagination-link" aria-label="Uso básico de Linux">
-        <span class="nav-page-text"><span class="chapter-title">Uso básico de Linux</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./disk.html" class="pagination-link" aria-label="Validación y configuración de discos">
+        <span class="nav-page-text"><span class="chapter-title">Validación y configuración de discos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -842,4 +637,4 @@ Funciona en <strong>macOS, Linux</strong> y también en <strong>Windows (PowerSh
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://cristoichkov.github.io/maginot_server/edit/main/requirements.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://cristoichkov.github.io/maginot_server/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+</body></html>
